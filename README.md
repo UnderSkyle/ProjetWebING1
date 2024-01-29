@@ -7,10 +7,10 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-How to run the project:
-install nodejs (21.6.1) : https://nodejs.org/en
-git clone https://github.com/UnderSkyle/ProjetWebING1
-cd ProjetWebING1
-npm install
-npm run dev
+How to run the project: <br>
+install nodejs (21.6.1) : https://nodejs.org/en <br>
+git clone https://github.com/UnderSkyle/ProjetWebING1 <br>
+cd ProjetWebING1 <br>
+npm install <br>
+npm run dev <br>
 (ensuite aller sur l'url afficher dans le terminal)
