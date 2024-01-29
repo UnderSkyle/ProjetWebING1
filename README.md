@@ -9,8 +9,10 @@ Currently, two official plugins are available:
 
 How to run the project: <br>
 install nodejs (21.6.1) : https://nodejs.org/en <br>
-git clone https://github.com/UnderSkyle/ProjetWebING1 <br>
-cd ProjetWebING1 <br>
-npm install <br>
-npm run dev <br>
+```bash
+git clone https://github.com/UnderSkyle/ProjetWebING1
+cd ProjetWebING1 
+npm install 
+npm run dev 
+```
 (ensuite aller sur l'url afficher dans le terminal)
