@@ -6,7 +6,7 @@ function Header(){
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="/about/">About</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="mailto:landrysimo@cy-tech.fr">Contact</a></li>
                 </ul>
