@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <h1>Hello World {data}</h1>
+      <h1>Hello World</h1>
     </>
   )
 }
