@@ -48,6 +48,8 @@ CORS_ALLOWED_ORIGINS = ["https://localhost:5173",
                         "https://127.0.0.1:5173"]
 CORS_ORIGIN_ALLOW_ALL = True
 
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
+
 MIDDLEWARE = [
       'django.middleware.security.SecurityMiddleware',
       'django.contrib.sessions.middleware.SessionMiddleware',
