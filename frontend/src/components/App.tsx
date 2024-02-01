@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   const HandleClick = () => {
-    window.location.href = 'https://pornhub.com'
+    console.log(data)
   }
 
   return (
