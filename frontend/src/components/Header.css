@@ -1,0 +1,13 @@
+
+.header{
+  display: flex;
+  background: #7E664A;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+}
+
+

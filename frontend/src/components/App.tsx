@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import headgehog_img from '../assets/logo.png'
 import './App.css'
-
+import Header from './Header.tsx'
+import Footer from './Footer.tsx'
 function App() {
   // @ts-ignore
   const [data, setData] = useState([])
@@ -25,14 +25,13 @@ function App() {
     fetchData();
   }, []);
 
-  const HandleClick = () => {
-    console.log(data)
-  }
+
 
   return (
     <>
-      <img src={headgehog_img} alt="react_logo" className="logo" />
-      <h1 onClick={HandleClick}>Hello World</h1>
+      <Header/>
+      <div> arraera</div>
+      <Footer/>
     </>
   )
 }
