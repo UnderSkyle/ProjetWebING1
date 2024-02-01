@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import react_img from '../assets/stickers-sticker-herisson.jpg'
+import headgehog_img from '../assets/logo.png'
+import './App.css'
 
 function App() {
+  // @ts-ignore
   const [data, setData] = useState([])
 
   useEffect(()=> {
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <>
-      <img src={react_img} alt="react_logo" className="logo"/>
+      <img src={headgehog_img} alt="react_logo" className="logo" />
       <h1>Hello World</h1>
     </>
   )
