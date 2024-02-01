@@ -25,10 +25,14 @@ function App() {
     fetchData();
   }, []);
 
+  const HandleClick = () => {
+    window.location.href = 'https://pornhub.com'
+  }
+
   return (
     <>
       <img src={headgehog_img} alt="react_logo" className="logo" />
-      <h1>Hello World</h1>
+      <h1 onClick={HandleClick}>Hello World</h1>
     </>
   )
 }
