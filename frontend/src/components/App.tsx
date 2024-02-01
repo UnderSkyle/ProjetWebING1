@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import react_img from '../assets/stickers-sticker-herisson.jpg'
 
 function App() {
   const [data, setData] = useState([])
@@ -13,7 +13,7 @@ function App() {
         throw new Error('Network response was not ok')
       }
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       setData(result);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -25,6 +25,7 @@ function App() {
 
   return (
     <>
+      <img src={react_img} alt="react_logo" className="logo"/>
       <h1>Hello World</h1>
     </>
   )
