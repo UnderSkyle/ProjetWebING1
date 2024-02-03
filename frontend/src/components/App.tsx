@@ -1,38 +1,45 @@
-import { useState, useEffect } from 'react'
+import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import './App.css'
 import Header from './Header.tsx'
 import Footer from './Footer.tsx'
-function App() {
-  // @ts-ignore
-  const [data, setData] = useState([])
 
-  useEffect(()=> {
-    async function fetchData(){
-    console.log(import.meta.env.VITE_API_URL)
-    try{
-      const response = await fetch(`${import.meta.env.VITE_API_URL}posts`)
-      if(!response.ok){
-        throw new Error('Network response was not ok')
-      }
-      const result = await response.json();
-      console.log(result);
-      setData(result);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <> <Header/> <Outlet/> <Footer/> </>,
+      children: [
+        {
+          path: 'food',
+          element: <div>Nourriture</div>
+        },
+        {
+          path: 'house',
+          element: <div>Cabane</div>
+        },
+        {
+          path: 'toys',
+          element: <div>Jouet</div>
+        },
+        {
+          path: 'contact',
+          element: <div>Contact</div>
+        },
+        {
+          path: 'login',
+          element: <div>Se connecter</div>
+        },
+      ]
     }
-  }
-  
-    fetchData();
-  }, []);
+])
+
+
+function App() {
 
 
 
   return (
-    <>
-      <Header/>
-      <div> arraera</div>
-      <Footer/>
-    </>
+      <RouterProvider router={router}>
+      </RouterProvider>
   )
 }
 
