@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
     const { text, link, isStyled } = props;
     const baseStyle = {
-        fontFamily: "Pacifico, cursive",
+        fontFamily: "Pacifico",
         fontSize: "1.6em",
         color: "white",
         textDecoration: "none",
@@ -13,7 +13,7 @@ function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
 
     const specialStyle = {
         borderRadius: "50px",
-        backgroundColor: "#3E3223",
+        backgroundColor: "#463018",
     };
 
     const combinedStyle = isStyled ? { ...baseStyle, ...specialStyle } : baseStyle;
