@@ -2,6 +2,7 @@ import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import './App.css'
 import Header from './Header.tsx'
 import Footer from './Footer.tsx'
+import Contact from "./Contact.tsx"
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'contact',
-          element: <div>Contact</div>
+          element: <Contact/>
         },
         {
           path: 'login',
