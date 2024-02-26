@@ -26,50 +26,74 @@ function Contact() {
 
     return(
         <>
+        <div className="container">
+                <h1 className="text">Contactez nous !</h1>
+                <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
             <form onSubmit = {handleSubmit}>
-                <label className="formInputText">Prénom
-                    <input required type="text" 
+                <div className="form-row">
+                    <div className="input-data">
+                        <input required type="text" 
                             name="prenom"
                             value={inputs.prenom || ""}
                             onChange={handleChange}/>
-                </label>
-                <label className="formInputText">Nom
-                    <input required type="text"
+                        <div className="underline"></div>
+                        <label for="">Prénom</label>
+                    </div>
+
+
+                    <div className="input-data">
+                        <input required type="text"
                             name="nom"
                             value={inputs.nom || ""}
                             onChange={handleChange}/>
-                </label>
-                <label className="formInputText">Email
-                    <input required type="email"
+                            <div className="underline"></div>
+                            <label for="">Nom</label>
+                    </div>
+                </div>
+
+
+                <div className="form-row">
+                    <div className="input-data">
+                        <input required type="email"
                             name="email"
                             value={inputs.email || ""}
                             onChange={handleChange}/>
-                </label>
+                            <div className="underline"></div>
+                            <label for="">Email</label>
+                    </div>
+                </div>
 
-                Genre
-                    <input type="radio"
+
+                <div className="form-row">
+                    <div className="input-radio">
+                        Genre<br/><br/>
+                        <label className="radio-label">
+                        <input type="radio"
                             name="genre"
                             value="Femme"
                             checked = {inputs.genre == "Femme"}
                             onChange = {handleChange}
                             required/>
-                    <label>Femme</label>
+                            Femme</label>
 
-                    <input type="radio"
+                        <label className="radio-label">
+                        <input type="radio"
                             name="genre"
                             value="Homme"
                             checked = {inputs.genre == "Homme"}
                             onChange = {handleChange}/>
-                    <label>Homme</label>    
+                            Homme</label>    
 
-                    <input type="radio"
+                        <label className="radio-label"> 
+                        <input type="radio"
                             name="genre"
                             value="Autre"
                             checked = {inputs.genre == "Autre"}
                             onChange = {handleChange}/>
-                    <label>Autre</label>        
-
-
+                            Autre</label> 
+                        </div>      
+                </div>
+                <div className="form-row">
                 <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                     <option value="enseignant">Enseignant</option>
                     <option value="agriculteur">Agriculteur</option>
@@ -82,20 +106,37 @@ function Contact() {
                                     name = "date"
                                     value = {inputs.date}/>
                 </label>
+                </div>
 
-                <label>Objet du message
-                    <textarea required name="obj"
+
+                <div className="form-row">
+                    <div className="input-data textarea">
+                        <textarea required name="obj" rows="5" cols="8" 
                             value={inputs.obj || ""}
                             onChange={handleChange}/>
-                </label>
-                <label>Contenu du message
-                    <textarea required name="mess"
-                            value={inputs.mess || ""}
-                            onChange={handleChange}/>
-                </label>
+                        <br/>
+                        <div className="underline"></div>
+                        <label for="">Objet du message</label>
+                        <br/>
+                    </div>
+                </div>
+                
+
+                <div className="form-row">
+                    <div className="input-data textarea">
+                        <textarea required name="mess" rows="5" cols="8"
+                                    value={inputs.mess || ""}
+                                    onChange={handleChange}/>
+                        <br/>
+                        <div className="underline"></div>
+                        <label for="">Contenu du message</label>
+                        <br/>   
+                    </div>
+               </div>
 
                 <input className="submitButton" type="submit"/>
             </form>
+            </div>
         </>
     )
 }

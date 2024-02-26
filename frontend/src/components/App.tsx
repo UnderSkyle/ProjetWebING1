@@ -1,5 +1,6 @@
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import './App.css'
+import Welcome from './Welcome.tsx'
 import Header from './Header.tsx'
 import Footer from './Footer.tsx'
 import Contact from "./Contact.tsx"
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
       path: '/',
       element: <> <Header/> <Outlet/> <Footer/> </>,
       children: [
+        {
+          path: 'welcome',
+          element: <Welcome/>
+        },
         {
           path: 'food',
           element: <Card/>
