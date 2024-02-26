@@ -5,7 +5,7 @@ function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
     const baseStyle = {
         fontFamily: "Pacifico, cursive",
         fontSize: "1.6em",
-        color: "white",
+        color: "rgb(243,237,179)",
         textDecoration: "none",
         margin: "10px 15px",
         padding: "0.5rem 1rem",
@@ -13,7 +13,8 @@ function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
 
     const specialStyle = {
         borderRadius: "50px",
-        backgroundColor: "#3E3223",
+        color: "rgb(62,50,35)",
+        backgroundColor: "rgb(243,237,179)",
     };
 
     const combinedStyle = isStyled ? { ...baseStyle, ...specialStyle } : baseStyle;
