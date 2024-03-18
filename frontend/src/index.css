@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Paytone One';
+  src: url('fonts/Paytone_One/PaytoneOne-Regular.ttf') format('truetype');
+}
+
 :root {
   font-family: "Pacifico", system-ui, Avenir, Helvetica, Arial, sans-serif;
 

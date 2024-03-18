@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Paytone One';
+  src: url('fonts/Paytone_One/PaytoneOne-Regular.ttf') format('truetype');
+}
 .Himage{
     background-image: url("../assets/hedgehog.png") ;
     background-repeat: no-repeat;
@@ -7,11 +15,11 @@
 }
 
 .Title{
-    color:"rgb(70,48,24)";
+    color:rgb(70,48,24);
     padding-left:5%;
     padding-top:5%;
     font-size:xxx-large;
-    font-family: Arial;
+    font-family: Pacifico;
     letter-spacing: .25px;
 }
 
@@ -26,7 +34,7 @@
   color: rgb(244,238,180);
   cursor: pointer;
   display: inline-flex;
-  font-family: Arial,sans-serif;
+  font-family: Paytone One;
   font-size: 20px;
   font-weight: 500;
   height: 48px;

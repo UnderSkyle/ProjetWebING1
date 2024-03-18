@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Pacifico';
+  src: url('fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Paytone One';
+  src: url('fonts/Paytone_One/PaytoneOne-Regular.ttf') format('truetype');
+}
+
 .submitButton{
 
 }
@@ -7,11 +16,11 @@
 }
 
 .Title{
-    color:"rgb(70,48,24)";
+    color:rgb(70,48,24);
     padding-left:5%;
     padding-top:5%;
     font-size:xxx-large;
-    font-family: Arial;
+    font-family: Pacifico;
     letter-spacing: .25px;
 }
 

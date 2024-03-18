@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
     const { text, link, isStyled } = props;
     const baseStyle = {
-        fontFamily: "Arial, cursive",
+        fontFamily: "Paytone One",
         fontSize: "1.6em",
         color: "rgb(243,237,179)",
         textDecoration: "none",
