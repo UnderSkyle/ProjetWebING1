@@ -93,7 +93,7 @@ function Contact() {
                             Autre</label> 
                     </div>      
                 </div>
-                <div className="form_row">
+                <div className="form_row">Métier<br/><br/>
                 <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                     <option value="enseignant">Enseignant</option>
                     <option value="agriculteur">Agriculteur</option>

@@ -201,7 +201,6 @@ select {
   width: 20em;
   height: 3em;
   padding: 0 4em 0 1em;
-
   border-radius: 0.25em;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -210,7 +209,6 @@ select {
 select option {
   color: inherit;
   background-color: rgba(0,0,0,0.2);
-  padding:50px;
 }
 select:focus {
   outline: none;
