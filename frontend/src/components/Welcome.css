@@ -1,0 +1,47 @@
+.Himage{
+    background-image: url("../assets/hedgehog.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    width:100%;
+}
+
+.Title{
+    color:"rgb(70,48,24)";
+    padding-left:5%;
+    padding-top:5%;
+    font-size:xxx-large;
+    font-family: Arial;
+    letter-spacing: .25px;
+}
+
+.LinkButton {
+  align-items: center;
+  appearance: none;
+  background-color: rgb(70,48,24);
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: rgb(244,238,180);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  max-width: 100%;
+  padding: 15px 60px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  width: auto;
+  margin-left:5%;
+}
+
+.LinkButton:hover {
+  background: rgb(244,238,180);
+  color: rgb(70,48,24);
+}

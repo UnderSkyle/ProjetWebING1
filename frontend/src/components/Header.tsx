@@ -8,7 +8,7 @@ function Header() {
             <header className="header">
                 <img src={hedgehog_img} alt="hedgehog img" className="logo" />
                 <div className="navBarContainer">
-                    <ButtonNavbar text="Accueil" link="/" />
+                    <ButtonNavbar text="Accueil" link="/welcome" />
                     <ButtonNavbar text="Nourriture" link="/food" />
                     <ButtonNavbar text="Cabane" link="/house" />
                     <ButtonNavbar text="Jouets" link="/toys" />

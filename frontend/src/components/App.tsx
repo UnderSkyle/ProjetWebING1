@@ -1,7 +1,10 @@
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import './App.css'
+import Welcome from './Welcome.tsx'
 import Header from './Header.tsx'
 import Footer from './Footer.tsx'
+import Contact from "./Contact.tsx"
+import Card from "./Card.tsx"
 
 const router = createBrowserRouter([
     {
@@ -9,8 +12,12 @@ const router = createBrowserRouter([
       element: <> <Header/> <Outlet/> <Footer/> </>,
       children: [
         {
+          path: 'welcome',
+          element: <Welcome/>
+        },
+        {
           path: 'food',
-          element: <div>Nourriture</div>
+          element: <Card/>
         },
         {
           path: 'house',
@@ -22,7 +29,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'contact',
-          element: <div>Contact</div>
+          element: <Contact/>
         },
         {
           path: 'login',
