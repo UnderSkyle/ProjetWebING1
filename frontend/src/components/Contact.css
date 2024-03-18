@@ -26,6 +26,14 @@ body{
 
 }
 
+.big_container{
+  background-image: url("../assets/Hedgehog_leaf.jpg") ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100%;
+  width:100%;
+}
+
 .first_container{
   margin:auto;
   text-align: center;
