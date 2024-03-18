@@ -210,6 +210,7 @@ select {
 select option {
   color: inherit;
   background-color: rgba(0,0,0,0.2);
+  padding:50px;
 }
 select:focus {
   outline: none;
@@ -217,6 +218,7 @@ select:focus {
 select::-ms-expand {
   display: none;
 }
+
 .submit_btn .input_data{
   overflow: hidden;
   height: 45px!important;
