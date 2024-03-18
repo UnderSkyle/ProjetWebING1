@@ -3,9 +3,9 @@ import {useState} from "react";
 
 function Contact() {
     const [inputs, setInputs] = useState({
-        prenom:"invité",
-        nom:"invité",
-        email:"invite@gmail.com",
+        prenom:"",
+        nom:"",
+        email:"",
         genre:"Autre",
         metier:"Enseignant",
         obj:"",
@@ -30,8 +30,8 @@ function Contact() {
                 <h1 className="text">Contactez nous !</h1>
                 <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
             <form onSubmit = {handleSubmit}>
-                <div className="form-row">
-                    <div className="input-data">
+                <div className="form_row">
+                    <div className="input_data">
                         <input required type="text" 
                             name="prenom"
                             value={inputs.prenom || ""}
@@ -41,7 +41,7 @@ function Contact() {
                     </div>
 
 
-                    <div className="input-data">
+                    <div className="input_data">
                         <input required type="text"
                             name="nom"
                             value={inputs.nom || ""}
@@ -52,8 +52,8 @@ function Contact() {
                 </div>
 
 
-                <div className="form-row">
-                    <div className="input-data">
+                <div className="form_row">
+                    <div className="input_data">
                         <input required type="email"
                             name="email"
                             value={inputs.email || ""}
@@ -64,11 +64,11 @@ function Contact() {
                 </div>
 
 
-                <div className="form-row">
-                    <div className="input-radio">
+                <div className="form_row">
+                    <div className="radio_container">
                         Genre<br/><br/>
-                        <label className="radio-label">
-                        <input type="radio"
+                        <label className="radio_label">
+                        <input type="radio" className="input_radio"
                             name="genre"
                             value="Femme"
                             checked = {inputs.genre == "Femme"}
@@ -76,24 +76,24 @@ function Contact() {
                             required/>
                             Femme</label>
 
-                        <label className="radio-label">
-                        <input type="radio"
+                        <label className="radio_label">
+                        <input type="radio" className="input_radio"
                             name="genre"
                             value="Homme"
                             checked = {inputs.genre == "Homme"}
                             onChange = {handleChange}/>
                             Homme</label>    
 
-                        <label className="radio-label"> 
-                        <input type="radio"
+                        <label className="radio_label"> 
+                        <input type="radio" className="input_radio"
                             name="genre"
                             value="Autre"
                             checked = {inputs.genre == "Autre"}
                             onChange = {handleChange}/>
                             Autre</label> 
-                        </div>      
+                    </div>      
                 </div>
-                <div className="form-row">
+                <div className="form_row">
                 <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                     <option value="enseignant">Enseignant</option>
                     <option value="agriculteur">Agriculteur</option>
@@ -109,8 +109,8 @@ function Contact() {
                 </div>
 
 
-                <div className="form-row">
-                    <div className="input-data textarea">
+                <div className="form_row">
+                    <div className="input_data textarea">
                         <textarea required name="obj" rows="5" cols="8" 
                             value={inputs.obj || ""}
                             onChange={handleChange}/>
@@ -122,8 +122,8 @@ function Contact() {
                 </div>
                 
 
-                <div className="form-row">
-                    <div className="input-data textarea">
+                <div className="form_row">
+                    <div className="input_data textarea">
                         <textarea required name="mess" rows="5" cols="8"
                                     value={inputs.mess || ""}
                                     onChange={handleChange}/>
@@ -133,8 +133,12 @@ function Contact() {
                         <br/>   
                     </div>
                </div>
-
-                <input className="submitButton" type="submit"/>
+               <div className="form_row submit_btn">
+                    <div className="input_data">
+                        <div className="inner"></div>
+                        <input type="submit" value="submit"/>
+                    </div>
+                </div>
             </form>
             </div>
         </>
