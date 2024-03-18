@@ -1,23 +1,12 @@
-.submitButton{
-
-}
-
-.formInputText{
-    
-}
-
-.Title{
-    color:"rgb(70,48,24)";
-    padding-left:5%;
-    padding-top:5%;
-    font-size:xxx-large;
-    font-family: Arial;
-    letter-spacing: .25px;
+p{
+  font-family: Arial;
+  letter-spacing: .25px;
+  font-size: medium;
+  text-align: center;
 }
 
 .Text{
     padding-left:5%;
-
 }
 
 *{
@@ -36,12 +25,22 @@ body{
   font-family: 'Poppins', sans-serif;
 
 }
+
+.first_container{
+  margin:auto;
+  text-align: center;
+  color:#A6AA53;
+  height: 100px;
+}
+
 .container{
   max-width: 800px;
   background: #fff;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  margin:auto;
+  border-radius: 24px;
 }
 .container .text{
   text-align: center;
@@ -59,11 +58,20 @@ body{
   display: flex;
   margin: 32px 0;
 }
-form .form_row .input_data{
+form .form_row .input_data,
+form .form_row .radio,
+form .form_row .select,
+form .form_row .date{
   width: 100%;
-  height: 40px;
+  height: 50px;
   margin: 0 20px;
   position: relative;
+}
+
+
+form .form_row .select,
+form .form_row .date{
+  height:100px
 }
 form .form_row .textarea{
   height: 70px;
@@ -121,76 +129,59 @@ form .form_row .textarea{
 .textarea textarea:valid ~ .underline:before{
   transform: scale(1);
 }
-
-.radio_container {
+input[type=radio] {
   --s: 1em;     /* control the size */
-  --g: 10px;    /* the gap */
-  --c: #009688; /* the active color */
-  
-  display: grid;
-  grid-auto-rows: 1fr;
-  gap: var(--g);
-  position: relative;
-}
-.radio_container:before {
-  content:"";
-  position: absolute;
-  height: calc(var(--s)/2);
-  left: calc(var(--s)/4 + var(--_x,0px));
-  top: calc(var(--s)/4);
-  background: var(--c);
-  border-radius: 50%;
+  --c:  rgb(73,106,45); /* the active color */
+  margin-right:10px;
+  height: var(--s);
   aspect-ratio: 1;
-  transition: .4s,left cubic-bezier(.1,-2000,.7,-2000) .4s;
-}
-.input_radio{
-  height: 1em;
-  aspect-ratio: 1;
-  border: calc(1em/8) solid var(#009688,#939393);
+  border: calc(var(--s)/8) solid #939393;
+  padding: calc(var(--s)/8);
+  background: 
+     radial-gradient(farthest-side,var(--c) 94%,#0000) 
+     50%/0 0 no-repeat content-box;
   border-radius: 50%;
-  outline-offset: calc(1em/10);
-  padding: calc(1em/8);
+  outline-offset: calc(var(--s)/10);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
   font-size: inherit;
-  margin: 0;
-  transition: .3s;    
+  transition: .3s;
 }
-.input_radio:checked {
-  --_c: var(--c);
+input[type=radio]:checked {
+  border-color: var(--c);
+  background-size: 100% 100%;
 }
-.radio_container:not(:has(input:checked)):before {
-  --_i: -1;
-  opacity: 0;
+.radio label{
+  padding-left:15px;
 }
-.radio_container:has(input:checked):before {
-  opacity: 1;
-  transform: translateY(calc(var(--_i)*(var(--s) + var(--g))))
-}
-.radio_container:has(label:nth-child(1) input:checked):before {--_i:0;--_x:.02px}
-.radio_container:has(label:nth-child(2) input:checked):before {--_i:1;--_x:.04px}
-.radio_container:has(label:nth-child(3) input:checked):before {--_i:2;--_x:.06px}
-.radio_container:has(label:nth-child(4) input:checked):before {--_i:3;--_x:.08px}
-.radio_container:has(label:nth-child(5) input:checked):before {--_i:4;--_x:.1px}
-
-.radio_input:disabled {
-  background: 
-     linear-gradient(#939393 0 0) 
-     50%/100% 20% no-repeat content-box;
-  opacity: .5;
-  cursor: not-allowed;
+.radio,
+.select{
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 17px;
 }
 
+
+@media print {
+  input[type=radio] {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background: none;
+  }
+}
 
 .radio_label {
-    display: inline-flex;
-    line-height: var(--s);
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-  }
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin:5px 0;
+  cursor: pointer;
+}
+
 select {
   -webkit-appearance: none;
     -moz-appearance: none;
@@ -198,13 +189,13 @@ select {
   border: 0;
   outline: 0;
   font: inherit;
-  width: 20em;
+  width: 17em;
   height: 3em;
   padding: 0 4em 0 1em;
   border-radius: 0.25em;
   box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  
+  position: relative;
 }
 select option {
   color: inherit;
@@ -216,11 +207,36 @@ select:focus {
 select::-ms-expand {
   display: none;
 }
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  margin-left:10px;
+  border-radius: 0.25em;
+  font-size: 1em;
+  width: 17em;
+  height: 3em;
 
+  display:block;
+  outline:none;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+}
+input[type="date"]:focus {
+  outline: none;
+  border-color: rgb(166,170,83); 
+  box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+}
+
+.submit_btn{
+  justify-content: center;
+}
 .submit_btn .input_data{
   overflow: hidden;
   height: 45px!important;
   width: 25%!important;
+  border-radius: 24px;
 }
 .submit_btn .input_data .inner{
   height: 100%;

@@ -21,14 +21,18 @@ function Contact() {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        alert(`Votre formulaire a été envoyé ${inputs.metier}`)
+        alert(`Votre formulaire a été envoyé ${inputs.prenom}`)
     }
 
     return(
         <>
+        <br/><br/><br/>
+        <div className="first_container">
+            <h1 className="text">Contactez nous !</h1>
+            <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
+        </div>
         <div className="container">
-                <h1 className="text">Contactez nous !</h1>
-                <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
+                
             <form onSubmit = {handleSubmit}>
                 <div className="form_row">
                     <div className="input_data">
@@ -65,9 +69,9 @@ function Contact() {
 
 
                 <div className="form_row">
-                    <div className="radio_container">
+                    <div className="radio">
                         Genre<br/><br/>
-                        <label className="radio_label">
+                        <label>
                         <input type="radio" className="input_radio"
                             name="genre"
                             value="Femme"
@@ -76,7 +80,7 @@ function Contact() {
                             required/>
                             Femme</label>
 
-                        <label className="radio_label">
+                        <label>
                         <input type="radio" className="input_radio"
                             name="genre"
                             value="Homme"
@@ -84,28 +88,31 @@ function Contact() {
                             onChange = {handleChange}/>
                             Homme</label>    
 
-                        <label className="radio_label"> 
+                        <label> 
                         <input type="radio" className="input_radio"
                             name="genre"
                             value="Autre"
                             checked = {inputs.genre == "Autre"}
                             onChange = {handleChange}/>
                             Autre</label> 
-                    </div>      
-                </div>
-                <div className="form_row">Métier<br/><br/>
-                <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
-                    <option value="enseignant">Enseignant</option>
-                    <option value="agriculteur">Agriculteur</option>
-                    <option value="medecin">Médecin</option>
-                    <option value="cadre">Cadre</option>
-                </select>
-
-                <label>Date
-                    <input required type = "date"
-                                    name = "date"
-                                    value = {inputs.date}/>
-                </label>
+                    </div> 
+                </div>      
+                <div className="form_row">
+                    <div className="select">Métier<br/><br/>
+                        <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
+                            <option value="enseignant">Enseignant</option>
+                            <option value="agriculteur">Agriculteur</option>
+                            <option value="medecin">Médecin</option>
+                            <option value="cadre">Cadre</option>
+                        </select>
+                    </div>
+                    <div className="date">
+                        Date<label><br/><br/>
+                            <input required type = "date"
+                                            name = "date"
+                                            value = {inputs.date}/>
+                        </label>
+                    </div>
                 </div>
 
 
@@ -141,6 +148,7 @@ function Contact() {
                 </div>
             </form>
             </div>
+            <br/><br/>
         </>
     )
 }

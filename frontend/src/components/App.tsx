@@ -5,6 +5,7 @@ import Header from './Header.tsx'
 import Footer from './Footer.tsx'
 import Contact from "./Contact.tsx"
 import Card from "./Card.tsx"
+import Login from "./Login.tsx"
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'login',
-          element: <div>Se connecter</div>
+          element: <Login/>
         },
       ]
     }
