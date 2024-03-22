@@ -24,9 +24,48 @@
     letter-spacing: .25px;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 960px) and (orientation:portrait){
   .Title{
     font-size: 20px;
+  }
+  .Himage{
+    height:35%;
+    width:140%;
+    background-position-y: center;
+  }
+  .LinkButton {
+    font-size: 12px !important;
+    height: 30px !important;
+    padding: 15px 30px !important;
+  }
+  .icons-advantages{
+    grid-template-rows: repeat(3,33.3%);
+    grid-template-columns: none !important;
+  }
+}
+
+@media only screen and (max-width: 960px) and (orientation:landscape){
+  .Title{
+    font-size: 30px;
+    padding-top: 2%;
+  }
+  .Himage{
+    height:70%;
+    width:140%;
+    background-position-y: center;
+  }
+  .LinkButton {
+    font-size: 12px !important;
+    height: 30px !important;
+    padding: 15px 30px !important;
+  }
+}
+
+@media only screen and (min-width: 960px) and (orientation: portrait){
+  .Himage{
+    height:35%;
+    width:140%;
+    background-position-y: center;
   }
 }
 
@@ -59,4 +98,97 @@
 .LinkButton:hover {
   background: rgb(244,238,180);
   color: rgb(70,48,24);
+}
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  font-size: 120px !important;
+  color: #496A2D;
+}
+
+.icons-advantages{
+  display: grid;
+  grid-template-columns: repeat(3,33.3%);
+  text-align: center;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.icons-advantages div{
+  display: grid;
+}
+
+.text-advantages{
+  color: #496A2D;
+  font-family: Paytone One;
+  font-size: 20px;
+}
+
+#blocks-know-more{
+  display: grid;
+  grid-template-columns: repeat(3,33.3%);
+  height:30%;
+  margin-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#blocks-know-more div{
+  margin-left: 2%;
+  margin-right: 2%;
+  padding-left: 7%;
+  padding-top: 5%;
+}
+
+#food-block{
+  background-color: #A6AA53;
+}
+
+#houses-block{
+  background-color: #F4EEB4;
+}
+
+#toys-block{
+  background-color: #7F674B;
+}
+
+#food-block a{
+  color: #A6AA53;
+}
+
+#houses-block a{
+  color: #F4EEB4;
+}
+
+#toys-block a{
+  color: #7F674B;
+}
+
+#blocks-know-more span{
+  color: #463018;
+  font-size: 25px;
+  font-family: Paytone One;
+}
+
+#blocks-know-more button{
+  background-color: #463018;
+  border: none;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 5%;
+  padding-left: 5%;
+  border-radius: 15px;
+  position: relative;
+  top: 45%;
+}
+
+#blocks-know-more a{
+  text-decoration: none;
+  font-size: 25px;
+  font-family: Paytone One;
 }

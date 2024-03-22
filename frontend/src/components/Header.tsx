@@ -1,31 +1,59 @@
 import hedgehog_img from '../assets/logo.png'
-import person_icon from '../assets/person.svg'
-import favorite_icon from '../assets/favorite.svg'
-import cart_icon from '../assets/cart.svg'
 import './Header.css'
 import ButtonNavbar from "./ButtonNavbar.tsx";
 function Header() {
 
     return(
         <>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"/>
+            <link rel="presonnect" href="https://fonts.googleapis.com"/>
+            <link rel="presonnect" href="https://fonts.gstatic.com"/>
             <header className="header">
                 <div className="title_container">
-                    <img src={hedgehog_img} alt="hedgehog img" className="logo" />
+                    <a href="/welcome"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
                 </div>
-                <div>
-                    <img src={favorite_icon} alt="hedgehog img" />
-                    <img src={person_icon} alt="hedgehog img" />
-                    <img src={cart_icon} alt="hedgehog img" />
+                <div className='icons-container'>
+                    <span id="icon-favorite" className="material-symbols-outlined">favorite</span>
+                    <span id="icon-person" className="material-symbols-outlined">person</span>
+                    <span id="icon-cart" className="material-symbols-outlined">shopping_cart</span>
                 </div>
+                <i onClick={openNavBar} className="fas fa-bars" id="ham-menu"></i>
+                <div onClick={closeNavBar} id="overlay-nav-bar"></div>
                 <div className="navBarContainer">
-                    <ButtonNavbar text="Nourriture" link="/food" />
-                    <ButtonNavbar text="Cabane" link="/house" />
-                    <ButtonNavbar text="Jouets" link="/toys" />
-                    <ButtonNavbar text="Contact" link="/contact" />
+                    <ul id="nav_bar">
+                        <li className='li-logo'><a className='logo-nav-bar' href="/welcome"><img src={hedgehog_img} alt="hedgehog img" className="logo-nav-bar" /></a> <i onClick={openNavBar} className="fas fa-times" id="close-menu"></i></li>
+                        <li><ButtonNavbar text="Nourriture" link="/food" /></li>
+                        <li><ButtonNavbar text="Cabane" link="/house" /></li>
+                        <li><ButtonNavbar text="Jouets" link="/toys" /></li>
+                        <li><ButtonNavbar text="Contact" link="/contact" /></li>
+                        <li className='li-icons'><span id="icon-nav-bar-person" className="material-symbols-outlined">person</span><span className='text-icon-nav-bar'>Mon compte</span></li>
+                        <li className='li-icons'><span id="icon-nav-bar-cart" className="material-symbols-outlined">shopping_cart</span ><span className='text-icon-nav-bar'>Mon panier</span></li>
+                        <li className='li-icons'><span id="icon-nav-bar-favorite" className="material-symbols-outlined">favorite</span><span className='text-icon-nav-bar'>Mes favoris</span></li>
+                    </ul>
                 </div>
             </header>
         </>
     )
+}
+
+function openNavBar(){
+    let hamMenuIcon = document.getElementById("ham-menu");
+    let navBar = document.getElementById("nav_bar");
+    let overlay = document.getElementById("overlay-nav-bar");
+    navBar?.classList.toggle("active");
+    //hamMenuIcon?.classList.toggle("fa-times");
+    overlay?.classList.toggle("overlay-nav-bar");
+}
+
+function closeNavBar(){
+    let navBar = document.getElementById("nav_bar");
+    let overlay = document.getElementById("overlay-nav-bar");
+    navBar?.classList.toggle("active");
+    overlay?.classList.toggle("overlay-nav-bar");
 }
 
 export default Header

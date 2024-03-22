@@ -7,7 +7,7 @@ function ButtonNavBar(props: { text: string; link: string; isStyled: boolean}) {
         fontSize: "1.6em",
         color: "rgb(243,237,179)",
         textDecoration: "none",
-        margin: "10px 30px",
+        margin: "10px 20px",
         padding: "0.5rem 1rem",
         letterSpacing: ".25px",
         cursor:"pointer"
