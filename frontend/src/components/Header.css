@@ -69,27 +69,28 @@
     height: 4em;
   }
   .logo {
-    height: 4em;
+    height: 3.8em;
   }
   #icon-favorite{
     display: none;
   }
   #icon-person{
     grid-column: 1/1;
-    font-size: 32px !important;
+    font-size: 45px !important;
   }
   #icon-cart{
     grid-column: 2/2;
   }
   .material-symbols-outlined {
-    font-size: 35px !important;
+    font-size: 40px !important;
     vertical-align: middle;
     margin-right: 5px;
   }
   .icons-container{
     grid-template-columns: repeat(2, 60%);
-    grid-column: 42 / 49;
-    grid-row: 3 / 9;
+    grid-column: 40 / 49;
+    grid-row: 4 / 8;
+    align-self: center;
   }
     .navBarContainer ul {
       margin:0;
@@ -114,7 +115,8 @@
       color: #f3edb3;
       font-size: 30px;
       grid-column:2 / 4;
-      grid-row: 4 / 9;
+      grid-row: 4 / 8;
+      align-self: center;
     }
     .fa-bars{
       display:none;
@@ -257,29 +259,29 @@
     }
 }
 
-@media (min-width: 960px) and (orientation: portrait) {
+@media (min-width: 960px) and (orientation: portrait) { /*tablet portrait mode*/
   #icon-nav-bar-person{
     font-size: 40px !important;
     margin-right: 1px !important;
   }
   .header{
-    height: 4em;
+    height: 6em;
   }
   .logo {
-    height: 4em;
+    height: 6em;
   }
   #icon-favorite{
     display: none;
   }
   #icon-person{
     grid-column: 1/1;
-    font-size: 32px !important;
+    font-size: 60px !important;
   }
   #icon-cart{
     grid-column: 2/2;
   }
   .material-symbols-outlined {
-    font-size: 35px !important;
+    font-size: 55px !important;
     vertical-align: middle;
     margin-right: 5px;
   }
@@ -310,9 +312,10 @@
     #ham-menu {
       display: block !important;
       color: #f3edb3;
-      font-size: 30px;
+      font-size: 50px;
       grid-column:2 / 4;
-      grid-row: 4 / 9;
+      grid-row: 4 / 8;
+      align-self: center;
     }
     .fa-bars{
       display:none;

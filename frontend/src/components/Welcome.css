@@ -10,7 +10,7 @@
     background-image: url("../assets/hedgehog.png") ;
     background-repeat: no-repeat;
     background-size: cover;
-    height:100%;
+    height:80%;
     width:100%;
     background-position: left;
 }
@@ -24,48 +24,117 @@
     letter-spacing: .25px;
 }
 
-@media only screen and (max-width: 960px) and (orientation:portrait){
+@media only screen and (max-width: 960px) and (orientation:portrait){ /*phone portrait mode*/
   .Title{
-    font-size: 20px;
+    font-size: 30px;
   }
   .Himage{
+    background-image: url("../assets/hedgehog_phone.png") ;
     height:35%;
-    width:140%;
+    width:100%;
     background-position-y: center;
   }
   .LinkButton {
-    font-size: 12px !important;
+    font-size: 18px !important;
     height: 30px !important;
-    padding: 15px 30px !important;
+    padding: 20px 30px !important;
   }
   .icons-advantages{
     grid-template-rows: repeat(3,33.3%);
     grid-template-columns: none !important;
   }
+  #blocks-know-more{
+    display: none !important;
+  }
+  .slick-slider{
+    display: block !important;
+    width:80%;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  .material-symbols-rounded {
+    font-size: 110px !important;
+  }
+}
+@media only screen and (min-width: 960px){ /*not a phone*/
+  .slick-slider{
+    display: none !important;
+  }
+  .material-symbols-rounded {
+    font-size: 20vh !important;
+  }
 }
 
-@media only screen and (max-width: 960px) and (orientation:landscape){
+@media only screen and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
   .Title{
-    font-size: 30px;
+    font-size: 35px;
     padding-top: 2%;
   }
   .Himage{
+    background-image: url("../assets/hedgehog_phone.png") ;
     height:70%;
-    width:140%;
+    width:100%;
     background-position-y: center;
   }
   .LinkButton {
-    font-size: 12px !important;
-    height: 30px !important;
-    padding: 15px 30px !important;
+    font-size: 20px !important;
+    height: 15% !important;
+    padding: 1% 3% !important;
   }
+  .slick-slider{
+    display: none !important;
+  }
+  #blocks-know-more{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    height: 35% !important;
+  }
+  #blocks-know-more button{
+    top:25% !important;
+  }
+  #blocks-know-more a{
+    font-size: 20px !important;
+  }
+  .material-symbols-rounded {
+    font-size: 100px !important;
+  }
+  .icons-advantages{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+  }
+  #blocks-know-more span{
+    font-size: 150% !important;
+  }
+  
 }
 
-@media only screen and (min-width: 960px) and (orientation: portrait){
+@media only screen and (min-width: 960px) and (orientation: portrait){ /*tablet portrait mode*/
   .Himage{
     height:35%;
     width:140%;
     background-position-y: center;
+  }
+  #blocks-know-more{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    height: 15% !important;
+  }
+  #blocks-know-more button{
+    top:40% !important;
+  }
+  #blocks-know-more a{
+    font-size: 25px !important;
+  }
+  #blocks-know-more span{
+    font-size: 30px !important;
+  }
+  .icons-advantages{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+  }
+  .material-symbols-rounded {
+    font-size: 150px !important;
   }
 }
 
@@ -93,6 +162,7 @@
   text-transform: none;
   width: auto;
   margin-left:4%;
+  margin-top: 10px;
 }
 
 .LinkButton:hover {
@@ -105,7 +175,6 @@
   'wght' 400,
   'GRAD' 0,
   'opsz' 24;
-  font-size: 120px !important;
   color: #496A2D;
 }
 
@@ -132,7 +201,7 @@
 #blocks-know-more{
   display: grid;
   grid-template-columns: repeat(3,33.3%);
-  height:30%;
+  height:250px;
   margin-bottom: 5%;
   margin-left: 10%;
   margin-right: 10%;
@@ -141,6 +210,11 @@
 #blocks-know-more div{
   margin-left: 2%;
   margin-right: 2%;
+  padding-left: 7%;
+  padding-top: 5%;
+}
+
+.block-slider{
   padding-left: 7%;
   padding-top: 5%;
 }
@@ -169,13 +243,13 @@
   color: #7F674B;
 }
 
-#blocks-know-more span{
+#blocks-know-more span, .slick-slider span{
   color: #463018;
-  font-size: 25px;
+  font-size: 200%;
   font-family: Paytone One;
 }
 
-#blocks-know-more button{
+#blocks-know-more button, .block-slider button{
   background-color: #463018;
   border: none;
   padding-top: 2%;
@@ -187,8 +261,24 @@
   top: 45%;
 }
 
-#blocks-know-more a{
+.block-slider button{
+  margin-top: 15%;
+  margin-bottom: 8%;
+}
+
+#blocks-know-more a, .block-slider a{
   text-decoration: none;
-  font-size: 25px;
+  font-size: 200%;
   font-family: Paytone One;
+}
+
+.slick-next:before, .slick-prev:before{
+  opacity: 1 !important;
+}
+
+.slick-dots li button:before, .slick-dots li.slick-active button:before{
+  color: #463018 !important;
+}
+:root{
+--ifm-color-primary:#463018 !important;
 }
