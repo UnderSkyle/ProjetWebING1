@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
@@ -7,20 +8,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f"Post :{self.title}"
-    
-class User(models.Model):
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    surname = models.CharField(max_length=200)
-    birth_date = models.DateField()
-
-    def __str__(self):
-        return f"User :{self.email}"
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=50)
-
     def __str__(self):
         return f"ProductCategory :{self.name}"
     

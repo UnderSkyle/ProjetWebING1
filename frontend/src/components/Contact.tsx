@@ -1,4 +1,4 @@
-import './Contact.css'
+import './Form.css'
 import {useState} from "react";
 
 function Contact() {
@@ -9,7 +9,8 @@ function Contact() {
         genre:"Autre",
         metier:"Enseignant",
         obj:"",
-        mess:""
+        mess:"",
+        date:""
 
     });
 
@@ -26,7 +27,7 @@ function Contact() {
 
     return(
         <>
-        <div className="big_container">
+        <div className="big_container_contact">
             <br/><br/><br/>
             <div className="first_container">
                 <h1 className="text">Contactez nous !</h1>
@@ -42,7 +43,7 @@ function Contact() {
                                 value={inputs.prenom || ""}
                                 onChange={handleChange}/>
                             <div className="underline"></div>
-                            <label for="">Prénom</label>
+                            <label htmlFor="">Prénom</label>
                         </div>
 
 
@@ -52,7 +53,7 @@ function Contact() {
                                 value={inputs.nom || ""}
                                 onChange={handleChange}/>
                                 <div className="underline"></div>
-                                <label for="">Nom</label>
+                                <label htmlFor="">Nom</label>
                         </div>
                     </div>
 
@@ -64,7 +65,7 @@ function Contact() {
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
                                 <div className="underline"></div>
-                                <label for="">Email</label>
+                                <label htmlFor="">Email</label>
                         </div>
                     </div>
 
@@ -118,13 +119,13 @@ function Contact() {
 
 
                     <div className="form_row">
-                        <div className="input_data textarea">
-                            <textarea required name="obj" rows="5" cols="8" 
+                        <div className="input_data">
+                            <input type="text" required name="obj"
                                 value={inputs.obj || ""}
                                 onChange={handleChange}/>
                             <br/>
                             <div className="underline"></div>
-                            <label for="">Objet du message</label>
+                            <label htmlFor="">Objet du message</label>
                             <br/>
                         </div>
                     </div>
@@ -132,12 +133,12 @@ function Contact() {
 
                     <div className="form_row">
                         <div className="input_data textarea">
-                            <textarea required name="mess" rows="5" cols="8"
+                            <textarea required name="mess"
                                         value={inputs.mess || ""}
                                         onChange={handleChange}/>
                             <br/>
                             <div className="underline"></div>
-                            <label for="">Contenu du message</label>
+                            <label htmlFor="">Contenu du message</label>
                             <br/>   
                         </div>
                 </div>

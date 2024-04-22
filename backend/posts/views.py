@@ -2,8 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import User
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from models import Product
 
 # Create your views here.
 
@@ -31,30 +35,47 @@ def send_mail_contact(request:dict):
     )
     return HttpResponse('email envoyé')
 
+@csrf_exempt
+@api_view(['POST'])
 def connexion(request):
     """request={
         email:
         password:
     }"""
-    users = User.objects.get(email=request["email"])
-    right_password=check_password(request["password"],users.password)
-    if (right_password):
-        return HttpResponse.status_code(200)
-    else:
-        return HttpResponse.status_code(400)
+    print("here")
+    if (request.method == "POST"):
+        data = request.data
+        print(data)
+        email = data.get("email")
+        pwd = data.get("password")
+        user = authenticate(username=email, password=pwd)
+        if user is not None:
+            print("success")
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse(status=400)
 
+@csrf_exempt
+@api_view(['POST'])
 def create_account(request):
-    """request={
-        email:
-        password:
-        name:
-        surname:
-        birth_date:
-    }"""
-    users = User.objects.get(email=request["email"])
-    if (len(users)==0):
-        user = User(email=request["mail"],password=make_password(request["password"]),name=request["name"],surname=request["surname"],birth_date=request["birth_date"])
-        user.save()
-        return HttpResponse.status_code(200)
-    else:
-        return HttpResponse.status_code(400)
+    if (request.method == "POST"):
+        data = request.data
+        print(data.get("email"))
+        email = data.get("email")
+        pwd = data.get("password")
+        name = data.get("name")
+        surname = data.get("surname")
+        if (request is None or email is None or pwd is None or name is None or surname is None):
+            return HttpResponse(status=400)
+        """request={
+            email:
+            password:
+            name:
+            surname:
+        }"""
+        try:
+            users = User.objects.get(email=email)
+            return HttpResponse(status=400)
+        except User.DoesNotExist: 
+            user = User.objects.create_user(username=email,email=email,password=pwd,first_name=name,last_name=surname)
+            return HttpResponse(status=200)
