@@ -8,6 +8,7 @@ function Welcome() {
         <>
             <div className="Himage">
             <h1 className="Title">Tout pour votre <br/>hérisson !</h1>
+            <br/>
             <button className="LinkButton" role="button">En savoir plus</button>
 
 
