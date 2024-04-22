@@ -24,9 +24,8 @@ function Card(){
                 <button className="compt-bouton" onClick={increment}>+</button>
             </div>
             <img/>
-
             <h2>&euro;</h2>
-            <h4>Stock : </h4>
+            <h4>Stock : TEST </h4>
         </div>
     )
 }

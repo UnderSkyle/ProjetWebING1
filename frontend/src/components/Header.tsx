@@ -14,7 +14,7 @@ function Header() {
             <link rel="presonnect" href="https://fonts.gstatic.com"/>
             <header className="header">
                 <div className="title_container">
-                    <a href="/welcome"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
+                    <a href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
                 </div>
                 <div className='icons-container'>
                     <span id="icon-favorite" className="material-symbols-outlined">favorite</span>
@@ -25,7 +25,7 @@ function Header() {
                 <div onClick={closeNavBar} id="overlay-nav-bar"></div>
                 <div className="navBarContainer">
                     <ul id="nav_bar">
-                        <li className='li-logo'><a className='logo-nav-bar' href="/welcome"><img src={hedgehog_img} alt="hedgehog img" className="logo-nav-bar" /></a> <i onClick={openNavBar} className="fas fa-times" id="close-menu"></i></li>
+                        <li className='li-logo'><a className='logo-nav-bar' href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo-nav-bar" /></a> <i onClick={openNavBar} className="fas fa-times" id="close-menu"></i></li>
                         <li><ButtonNavbar text="Nourriture" link="/food" /></li>
                         <li><ButtonNavbar text="Cabane" link="/house" /></li>
                         <li><ButtonNavbar text="Jouets" link="/toys" /></li>

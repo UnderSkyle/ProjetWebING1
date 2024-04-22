@@ -49,6 +49,7 @@ body{
   text-align: center;
   color:#f3edb3;
   height: 100px;
+  background-color: rgba(0,0,0,.5);
 }
 
 .container{
