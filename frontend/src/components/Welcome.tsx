@@ -1,8 +1,5 @@
 
 import './Welcome.css';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 function Welcome() {
     var settings = {
@@ -65,23 +62,6 @@ function Welcome() {
                     <button><a href="/toys">Voir plus</a></button>
                 </div>
             </div>
-            <Slider {...settings}>
-                <div className="block-slider" id='food-block'>
-                    <span>Nourriture</span>
-                    <br />
-                    <button><a href='/food'>Voir plus</a></button>
-                </div>
-                <div className="block-slider" id='houses-block'>
-                    <span>Cabanes</span>
-                    <br />
-                    <button><a href="/house">Voir plus</a></button>
-                </div>
-                <div className="block-slider" id='toys-block'>
-                    <span>Jouets</span>
-                    <br />
-                    <button><a href="/toys">Voir plus</a></button>
-                </div>
-            </Slider>
         </>
     )
 }

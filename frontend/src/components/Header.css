@@ -3,14 +3,16 @@
   display: grid;
   background: #7E664A;
   text-align: center;
-  height:8em;
+  height:6em;
   width:100%;
   grid-template-columns: repeat(50,2%);
   grid-template-rows: repeat(10,10%);
+  z-index:5;
+  position: absolute;
 }
 
 .logo {
-  height: 5em;
+  height: 4em;
 }
 
 .title_container{
@@ -361,10 +363,10 @@
   display:none;
 }
 .navBarContainer {
-  height:80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 15;
 }
 .navBarContainer ul {
   list-style: none;

@@ -2,7 +2,7 @@
 .footer{
     background-color: #F4EEB4;
     position: relative;
-    bottom: 0;
+    bottom: 100px;
     width: 100%;
     text-align: center;
     color: black;
@@ -10,4 +10,5 @@
     flex-direction: column;
     justify-content: center;
     height: 100px;
+    z-index:2;
 }
