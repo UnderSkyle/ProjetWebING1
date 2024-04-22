@@ -3,8 +3,14 @@ import './Header.css'
 import ButtonNavbar from "./ButtonNavbar.tsx";
 function Header() {
 
+    var user = localStorage.getItem("user");
+    var icon_person="person";
+    if (user!=null){
+        icon_person="person_check";
+    }
     return(
         <>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -14,11 +20,11 @@ function Header() {
             <link rel="presonnect" href="https://fonts.gstatic.com"/>
             <header className="header">
                 <div className="title_container">
-                    <a href="/welcome"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
+                    <a href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
                 </div>
                 <div className='icons-container'>
                     <span id="icon-favorite" className="material-symbols-outlined">favorite</span>
-                    <a href="/login"><span id="icon-person" className="material-symbols-outlined">person</span></a>
+                    <a href="/login"><span id="icon-person" className="material-symbols-outlined">{icon_person}</span></a>
                     <span id="icon-cart" className="material-symbols-outlined">shopping_cart</span>
                 </div>
                 <i onClick={openNavBar} className="fas fa-bars" id="ham-menu"></i>

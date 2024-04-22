@@ -176,7 +176,7 @@
   }
   #icon-person{
     grid-column: 1/1;
-    font-size: 32px !important;
+    font-size: 40px !important;
   }
   #icon-cart{
     grid-column: 2/2;
@@ -187,8 +187,8 @@
     margin-right: 5px;
   }
   .icons-container{
-    grid-template-columns: repeat(2, 60%);
-    grid-column: 42 / 49;
+    grid-template-columns: repeat(2, 50%);
+    grid-column: 45 / 51;
     grid-row: 3 / 9;
   }
     .navBarContainer ul {
