@@ -6,7 +6,9 @@ import Footer from './Footer.tsx'
 import Contact from "./Contact.tsx"
 import Card from "./Card.tsx"
 import Login from "./Login.tsx"
-import SignUp from "./SignUp.tsx";
+import SignUp from "./SignUp.tsx"
+import StandardPage from "./StandardPage.tsx"
+import Basket from "./Basket.tsx";
 
 const router = createBrowserRouter([
     {
@@ -14,12 +16,12 @@ const router = createBrowserRouter([
       element: <> <Header/> <Outlet/> <Footer/> </>,
       children: [
         {
-          path: 'welcome',
+          path: '',
           element: <Welcome/>
         },
         {
           path: 'food',
-          element: <Card/>
+          element: <StandardPage/>
         },
         {
           path: 'house',
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
           path: 'signup',
           element: <SignUp/>
         },
+        {
+          path: 'basket',
+          element: <Basket/>
+        }
       ]
     }
 ])
