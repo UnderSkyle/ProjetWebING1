@@ -25,7 +25,7 @@
     letter-spacing: .25px;
 }
 
-@media only screen and (max-width: 960px) and (orientation:portrait){ /*phone portrait mode*/
+@media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
   .Title{
     font-size: 30px;
   }
@@ -55,22 +55,17 @@
     margin-left: 5% !important;
     margin-right: 5% !important;
   }
-  #blocks-know-more div{
-  }
-  #blocks-know-more button{
-    top:40% !important;
-  }
   .material-symbols-rounded {
     font-size: 110px !important;
   }
 }
-@media only screen and (min-width: 960px){ /*not a phone*/
+@media only screen and (min-width: 750px){ /*not a phone*/
   .material-symbols-rounded {
     font-size: 20vh !important;
   }
 }
 
-@media only screen and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
+@media only screen and (max-width: 750px) and (orientation:landscape){ /*phone landscape mode*/
   .Title{
     font-size: 35px;
     padding-top: 2%;
@@ -93,9 +88,6 @@
     height: 35% !important;
     margin-bottom: 20% !important;
   }
-  #blocks-know-more button{
-    top:25% !important;
-  }
   #blocks-know-more a{
     font-size: 20px !important;
   }
@@ -112,10 +104,9 @@
   
 }
 
-@media only screen and (min-width: 960px) and (orientation: portrait){ /*tablet portrait mode*/
+@media only screen and (min-width: 750px) and (orientation: portrait){ /*tablet portrait mode*/
   .Himage{
     height:35%;
-    width:140%;
     background-position-y: center;
     margin-top: 6em;
   }
@@ -124,9 +115,6 @@
     margin-right: 5% !important;
     height: 15% !important;
     margin-bottom: 15% !important;
-  }
-  #blocks-know-more button{
-    top:40% !important;
   }
   #blocks-know-more a{
     font-size: 25px !important;
@@ -139,7 +127,7 @@
     margin-left: 5% !important;
   }
   .material-symbols-rounded {
-    font-size: 150px !important;
+    font-size: 10vh !important;
   }
 }
 
@@ -217,6 +205,7 @@
   margin-right: 2%;
   padding-left: 7%;
   padding-top: 5%;
+  position: relative;
 }
 
 #food-block{
@@ -257,8 +246,8 @@
   padding-right: 5%;
   padding-left: 5%;
   border-radius: 15px;
-  position: relative;
-  top: 45%;
+  position: absolute;
+  bottom: 10%;
 }
 
 #blocks-know-more a{

@@ -2,13 +2,226 @@
 .footer{
     background-color: #F4EEB4;
     position: relative;
-    bottom: 100px;
     width: 100%;
     text-align: center;
     color: black;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    height: 100px;
     z-index:2;
+    display: grid;
+    grid-template-columns: repeat(50, 2%);
+    grid-template-rows: repeat(20,20px);
+    align-items: center;
+}
+
+.logo-footer-circle{
+    display: block;
+    grid-column: 2 / 10;
+    grid-row: 2 / 10;
+    height: 100%;
+}
+
+.logo-footer-text{
+    display: none;
+}
+
+.footer-copyright{
+    grid-column: 2 / 50;
+    grid-row: 18 / 21;
+    border-top: #496A2D solid 3px;
+    padding-top: 10px;
+    color: #496A2D;
+    font-family: Paytone One;
+    text-align: start;
+}
+
+.slogan-footer{
+    grid-column: 2 / 15;
+    grid-row: 10 / 12;
+    font-family: Pacifico;
+    color: #496A2D;
+    font-size: 2.7vh;
+    margin-bottom: 1%;
+    text-align: start;
+}
+
+.contact-button-footer{
+    grid-column: 2 / 12;
+    grid-row: 12 / 15;
+    background-color: #496A2D;
+    border: none;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 8%;
+    padding-right: 8%;
+    border-radius: 15px;
+    display: block;
+    width: fit-content;
+}
+
+.contact-button-footer a{
+    text-decoration: none;
+    color: #F4EEB4;
+    font-size: 2.3vh;
+    font-family: Paytone One;
+}
+
+.links-pages-footer{
+    grid-column: 30 / 38;
+    grid-row: 4 / 16;
+    text-align: start;
+    border-left: #496A2D solid 3px;
+    padding-left: 35px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.links-pages-footer ul{
+    list-style-type: none;
+}
+.links-pages-footer li{
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.links-pages-footer a{
+    text-decoration: none;
+    color:#496A2D;
+    font-family: Paytone One;
+    font-size: 1.5em;
+}
+
+.social-medias-footer{
+    grid-column: 40 / 45;
+    grid-row: 4 / 16;
+    text-align: start;
+    border-left: #496A2D solid 3px;
+    padding-left: 35px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.social-medias-footer ul{
+    list-style-type: none;
+}
+.social-medias-footer li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.social-medias-footer img{
+    height: 2.5em;
+}
+
+@media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
+    .footer{
+        display: block;
+        height: auto;
+    }
+    .logo-footer-circle{
+        display: none;
+    }
+    .logo-footer-text{
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding-top: 15px;
+    }
+    .links-pages-footer{
+        text-align: center;
+        border-left: none;
+        padding-left: 0px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .links-pages-footer ul{
+        margin: auto;
+    }
+    .slogan-footer{
+        font-size: 25px;
+        margin-bottom: 0px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .contact-button-footer{
+        display: none;
+    }
+    .links-pages-footer a{
+        font-size: 20px;
+    }
+    .social-medias-footer{
+        grid-column: 40 / 45;
+        grid-row: 4 / 16;
+        text-align: center;
+        border-left: none;
+        padding-left: 0px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    
+    }
+    .social-medias-footer ul{
+        margin: auto;
+        display: flex;
+        gap: 1rem;
+    }
+    .social-medias-footer img {
+        height: 7vw;
+    }
+    .footer-copyright{
+        width: 95%;
+        font-size: 12px;
+        margin: auto;
+        text-align: center;
+        padding-bottom: 8px;
+        padding-top: 8px;
+    }
+    
+}
+@media only screen and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
+    .footer{
+        grid-template-rows: repeat(20,12px);
+    }
+    .footer-copyright{
+        padding-bottom: 10px;
+        font-size: 1.2vw;
+    }
+    .slogan-footer{
+        font-size: 3vh;
+    }
+    .contact-button-footer a{
+        font-size: 3vh;
+    }
+    .links-pages-footer a {
+        font-size: 0.9em;
+    }
+    .social-medias-footer img{
+        height: 1.7em;
+    }
+}
+
+@media only screen and (min-width: 750px) and (orientation: portrait){ /*tablet portrait mode*/
+    .footer{
+        grid-template-rows: repeat(20,15px);
+    }
+    .slogan-footer{
+        font-size: 2.5vw;
+        grid-column: 2 / 25;
+    }
+    .contact-button-footer{
+        grid-column: 2 / 25;
+        padding-top: 1vw;
+        padding-bottom: 1vw;
+        grid-row: 13 / 15;
+    }
+    .contact-button-footer a{
+        font-size: 2vw;
+    }
+    .links-pages-footer a {
+        font-size: 1em;
+    }
+    .social-medias-footer img{
+        height: 2em;
+    }
 }
