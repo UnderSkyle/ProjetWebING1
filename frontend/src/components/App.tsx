@@ -12,6 +12,7 @@ import Profil from "./Profil.tsx"
 import Order from "./Order.tsx"
 import Address from "./Address.tsx"
 import OrderDone from "./OrderDone.tsx"
+import AddAddress from "./AddAddress.tsx"
 import Basket from "./Basket.tsx";
 
 
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
         {
           path: 'done',
           element: <OrderDone/>
+        },
+        {
+          path: 'add',
+          element: <AddAddress/>
         }
       ]
     }
