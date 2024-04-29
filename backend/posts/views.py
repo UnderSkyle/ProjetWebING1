@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from posts.models import Product
+from posts.models import Product, Cart, CartItem
 from posts.models import ProductCategory
 from rest_framework.response import Response
 from rest_framework import status
@@ -78,7 +78,44 @@ def create_account(request):
             user = User.objects.create_user(username=email,email=email,password=pwd,first_name=name,last_name=surname)
 
             return Response(user.id,status=status.HTTP_200_OK)
-          
+
+@csrf_exempt
+@api_view(['POST'])
+def add_to_cart(request):
+    """request={
+            id_user
+            quantity
+            ref_product
+        }"""
+    if (request.method == "POST"):
+        data = request.data
+        id_user = data.get("id_user")
+        quantity = data.get("quantity")
+        ref_product = data.get("ref_product")
+        try:
+            user = User.objects.get(id=id_user)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            product = Product.objects.get(ref=ref_product)
+        except Product.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        
+        try:
+            user_cart = Cart.objects.get(created_by=user)
+        except Cart.DoesNotExist:
+            user_cart = Cart(created_by=user)
+        user_cart.save()
+        try:
+            cartitem=user_cart.cartitem_set.get(product=product)
+            cartitem.quantity+=quantity
+            cartitem.save()
+        except CartItem.DoesNotExist:
+            user_cart.cartitem_set.create(quantity=quantity, product=product)
+        user_cart.save()
+        return Response(user.id,status=status.HTTP_200_OK)
+
+
 @csrf_exempt
 @api_view(['GET'])
 def get_products(request):
