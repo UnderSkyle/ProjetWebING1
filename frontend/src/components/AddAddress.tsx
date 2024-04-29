@@ -1,7 +1,7 @@
 import './Form.css'
 import {useState} from "react";
 
-function Contact() {
+function AddAddress() {
     const [inputs, setInputs] = useState({
         prenom:"",
         nom:"",
@@ -107,4 +107,4 @@ function Contact() {
     )
 }
 
-export default Contact
+export default AddAddress
