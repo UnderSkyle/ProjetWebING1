@@ -81,7 +81,7 @@ def create_account(request):
           
 @csrf_exempt
 @api_view(['GET'])
-def get_data(request):
+def get_products(request):
      try:
          category_id = request.GET.get('category_id')
          if category_id is None:
