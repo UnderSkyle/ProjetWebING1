@@ -11,7 +11,7 @@ function Standard(props: { category: string;}) {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/posts/getData?category_id='+props.category);
+                const response = await fetch('http://127.0.0.1:8000/posts/getProducts?category_id='+props.category);
                 if (!response.ok) {
                     throw new Error('Failed to fetch');
                 }
@@ -31,7 +31,7 @@ function Standard(props: { category: string;}) {
         <>
         <div className="CardDiv">
             {data.map(item => (
-                <Card name={item.name} id={item.ref} price={item.price} stock={item.stock}></Card>
+                <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
             ))}
         </div>
         </>
