@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -8,8 +9,9 @@ from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from posts.models import Product
-from rest_framework import status
+from posts.models import ProductCategory
 from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
 
@@ -74,4 +76,24 @@ def create_account(request):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist: 
             user = User.objects.create_user(username=email,email=email,password=pwd,first_name=name,last_name=surname)
+
             return Response(user.id,status=status.HTTP_200_OK)
+          
+@csrf_exempt
+@api_view(['GET'])
+def get_data(request):
+     try:
+         category_id = request.GET.get('category_id')
+         if category_id is None:
+             return Response(status=400)
+         category = ProductCategory.objects.get(pk=category_id)
+         products = Product.objects.filter(category=category)
+         product_data = [
+              {'name': product.name, 'price': product.price, 'stock': product.stock, 'image': product.image, 'ref': product.ref}
+               for product in products
+         ]
+         print(product_data)
+         return Response(product_data)
+     except ProductCategory.DoesNotExist:
+         return Response(status=404)
+

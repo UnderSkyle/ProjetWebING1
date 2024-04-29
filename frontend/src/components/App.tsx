@@ -7,6 +7,7 @@ import Contact from "./Contact.tsx"
 import Card from "./Card.tsx"
 import Login from "./Login.tsx"
 import SignUp from "./SignUp.tsx";
+import Temp from "./Temp.tsx";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           path: 'signup',
           element: <SignUp history={""}/>
         },
+        {
+          path: 'test',
+          element: <Temp category={'1'}></Temp>
+        }
       ]
     }
 ])
