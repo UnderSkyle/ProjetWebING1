@@ -134,3 +134,16 @@ def get_products(request):
      except ProductCategory.DoesNotExist:
          return Response(status=404)
 
+@csrf_exempt
+@api_view(['GET'])
+def get_user(request):
+     try:
+         user_id = request.GET.get('userID')
+         if user_id is None:
+             return Response(status=400)
+         user = User.objects.get(pk=user_id)
+         user_data ={'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}
+         return Response(user_data)
+     except ProductCategory.DoesNotExist:
+         return Response(status=404)
+
