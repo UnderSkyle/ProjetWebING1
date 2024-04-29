@@ -26,15 +26,15 @@ const router = createBrowserRouter([
         },
         {
           path: 'food',
-          element: <StandardPage/>
+          element: <StandardPage category={"1"}/>
         },
         {
           path: 'house',
-          element: <div>Cabane</div>
+          element: <StandardPage category={"2"}/>
         },
         {
           path: 'toys',
-          element: <div>Jouet</div>
+          element: <StandardPage category={"3"}/>
         },
         {
           path: 'contact',
