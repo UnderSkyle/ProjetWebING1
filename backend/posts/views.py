@@ -7,12 +7,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from models import Product
+from posts.models import Product
+from rest_framework import status
+from rest_framework.response import Response
 
 # Create your views here.
-
-def say_hello(request):
-    return HttpResponse('Hello World')
 
 def send_mail_contact(request:dict):
     """request={
@@ -33,7 +32,7 @@ def send_mail_contact(request:dict):
         recipient_list=["abaivel@outlook.fr"],
         fail_silently=False,
     )
-    return HttpResponse('email envoyé')
+    return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['POST'])
@@ -42,18 +41,15 @@ def connexion(request):
         email:
         password:
     }"""
-    print("here")
     if (request.method == "POST"):
         data = request.data
-        print(data)
         email = data.get("email")
         pwd = data.get("password")
         user = authenticate(username=email, password=pwd)
         if user is not None:
-            print("success")
-            return HttpResponse(status=200)
+            return Response(user.id,status=status.HTTP_200_OK)
         else:
-            return HttpResponse(status=400)
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt
 @api_view(['POST'])
@@ -66,7 +62,7 @@ def create_account(request):
         name = data.get("name")
         surname = data.get("surname")
         if (request is None or email is None or pwd is None or name is None or surname is None):
-            return HttpResponse(status=400)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         """request={
             email:
             password:
@@ -75,7 +71,7 @@ def create_account(request):
         }"""
         try:
             users = User.objects.get(email=email)
-            return HttpResponse(status=400)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist: 
             user = User.objects.create_user(username=email,email=email,password=pwd,first_name=name,last_name=surname)
-            return HttpResponse(status=200)
+            return Response(user.id,status=status.HTTP_200_OK)

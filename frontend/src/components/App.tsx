@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       element: <> <Header/> <Outlet/> <Footer/> </>,
       children: [
         {
-          path: 'welcome',
+          path: '',
           element: <Welcome/>
         },
         {
@@ -35,11 +35,11 @@ const router = createBrowserRouter([
         },
         {
           path: 'login',
-          element: <Login/>
+          element: <Login history={""}/>
         },
         {
           path: 'signup',
-          element: <SignUp/>
+          element: <SignUp history={""}/>
         },
       ]
     }
