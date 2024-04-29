@@ -1,4 +1,4 @@
-import './Basket.css'
+import './CardPages.css';
 import CardBasket from './CardBasket.tsx'
 function Basket() {
 
