@@ -43,9 +43,9 @@
 
 .icons-container{
   display: grid;
-  grid-template-columns: repeat(3, 35%);
-  grid-column: 44 / 50;
-  grid-row: 2 / 6;
+  grid-template-columns: repeat(2, 50%);
+  grid-column: 46 / 50;
+  grid-row: 1 / 6;
   align-items: center;
 }
 
@@ -56,10 +56,11 @@
 #icon-person{
   grid-column: 2/2;
   font-size: 50px !important;
+  padding-top: 5px;
 }
 
 #icon-cart{
-  grid-column: 3/3;
+  grid-column: 2/2;
 }
 
 @media only screen and (max-width: 750px) and (orientation: portrait) {
