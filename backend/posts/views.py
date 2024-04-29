@@ -13,9 +13,6 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-def say_hello(request):
-    return HttpResponse('Hello World')
-
 def send_mail_contact(request:dict):
     """request={
         surname:
@@ -35,7 +32,7 @@ def send_mail_contact(request:dict):
         recipient_list=["abaivel@outlook.fr"],
         fail_silently=False,
     )
-    return HttpResponse('email envoyé')
+    return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['POST'])
@@ -65,7 +62,7 @@ def create_account(request):
         name = data.get("name")
         surname = data.get("surname")
         if (request is None or email is None or pwd is None or name is None or surname is None):
-            return HttpResponse(status=400)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         """request={
             email:
             password:
