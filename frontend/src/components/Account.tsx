@@ -1,4 +1,4 @@
-import './Welcome.css';
+import './CardPages.css';
 function Account() {
 
 
@@ -19,19 +19,27 @@ function Account() {
                 <a href="#blocks-know-more"><button className="LinkButton" role="button">Se déconnecter</button></a>
            </div>
 
-           <div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon">account_circle
-                    <h4>Votre profil</h4>
-                    <p>Voir les informations et les modifier</p>
-                </span>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon">home
-                    <h4>Vos adresses</h4>
-                     <p>Voir vos adresses de livraison et les modifier</p>
-                </span>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon">package_2
-                    <h4>Vos commandes</h4>
-                    <p>Voir vos commandes et les suivre</p>
-                </span>
+           <div className="bigcontainer">
+                <div className="container">
+                    <span className="material-symbols-outlined-card material-symbols-outlined icon">account_circle
+                        <h6>Votre profil</h6>
+                        <p>Voir les informations et les modifier</p>
+                    </span>
+                </div>
+
+                <div className="container">
+                    <span className="material-symbols-outlined-card material-symbols-outlined icon">home
+                        <h4>Vos adresses</h4>
+                        <p>Voir vos adresses de livraison et les modifier</p>
+                    </span>
+                </div>
+
+                <div className="container">
+                    <span className="material-symbols-outlined-card material-symbols-outlined icon">package_2
+                        <h4>Vos commandes</h4>
+                        <p>Voir vos commandes et les suivre</p>
+                    </span>
+                </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
            </div>
 
