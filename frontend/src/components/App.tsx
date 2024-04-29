@@ -4,10 +4,16 @@ import Welcome from './Welcome.tsx'
 import Header from './Header.tsx'
 import Footer from './Footer.tsx'
 import Contact from "./Contact.tsx"
-import Card from "./Card.tsx"
 import Login from "./Login.tsx"
-import SignUp from "./SignUp.tsx";
-import Temp from "./Temp.tsx";
+import SignUp from "./SignUp.tsx"
+import StandardPage from "./StandardPage.tsx"
+import Account from "./Account.tsx"
+import Profil from "./Profil.tsx"
+import Order from "./Order.tsx"
+import Address from "./Address.tsx"
+import OrderDone from "./OrderDone.tsx"
+import AddAddress from "./AddAddress.tsx"
+import Basket from "./Basket.tsx";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'food',
-          element: <Card/>
+          element: <StandardPage/>
         },
         {
           path: 'house',
@@ -43,8 +49,32 @@ const router = createBrowserRouter([
           element: <SignUp history={""}/>
         },
         {
-          path: 'test',
-          element: <Temp category={'1'}></Temp>
+          path: 'basket',
+          element: <Basket/>
+        },
+        {
+          path: 'account',
+          element: <Account/>
+        },
+        {
+          path: 'profil',
+          element: <Profil/>
+        },
+        {
+          path: 'order',
+          element: <Order/>
+        },
+        {
+          path: 'address',
+          element: <Address/>
+        },
+        {
+          path: 'done',
+          element: <OrderDone/>
+        },
+        {
+          path: 'add',
+          element: <AddAddress/>
         }
       ]
     }

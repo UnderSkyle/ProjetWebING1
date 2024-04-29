@@ -1,17 +1,7 @@
 import './Card.css'
 import image from '../assets/nourriture1.png'
-import {useState} from "react";
 
-function Card({name, id, price, stock}){
-    const [count, setCount] = useState(0);
-    const increment = () => {
-        setCount(count+1);
-    }
-
-    const decrement = () => {
-        setCount(count-1);
-    }
-
+function CardOrder({numOrder,numArticles,date,status,price}){
     return(
         <>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -23,24 +13,21 @@ function Card({name, id, price, stock}){
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
 
         <div className="card">
-            <h2 className="produit">{name}</h2>
-            <h4 className="ref">N° ref {id}</h4>
-            <img className="card-image" src={image}/>
             <div className="grid">
-                <div className="compteur-div">
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanr" onClick={decrement}>remove</span>
-                    <p className="compt">{count}</p>
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanl" onClick={increment}>add</span>
+                <img className="card-image" src={image}/>
+                <div>
+                    <h2 className="produit">Commande n° {numOrder}</h2>
+                    <h3 className="produit">{numArticles} articles</h3>
                 </div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon" onClick={increment}>shopping_bag</span>
-                <h2 className="price">{price} &euro;</h2>
+                <div>
+                    <h3 className="produit">{date}</h3>
+                    <h3 className="produit">{status}</h3>
+                    <h3 className="produit">{price} &euro;</h3>
+                </div>   
             </div>
-            <br/>
-            <h4 className="stock">Stock : {stock}</h4>
-
         </div>
         </>
     )
 }
 
-export default Card
+export default CardOrder

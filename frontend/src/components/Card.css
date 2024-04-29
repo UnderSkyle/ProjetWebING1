@@ -1,23 +1,93 @@
 .card{
     border: 1px solid hsl(0,0%,80%);
     border-radius:10px;
-    box-shadow: 5px 5px 5px hls(0, 0%, 0%, 0.1);
-    padding: 20px;
-    margin: 10px;
-    margin-top: 5%;
+    box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    padding: 1%;
+    margin:2%;
+
     text-align:justify;
     max-width: 250px;
-    display: inline-block;
 }
 
 .card-image{
-    max-width:60%;
-    height:auto;
-    margin-bottom: 10px;
+    max-width:90%;
+    margin:auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: block;
 }
 
+
 .produit{
-    font-family:arial;
+    font-family: "Paytone One";
     margin:0;
-    color: hsl(0, 0%, 20%);
+    color: rgb(73,106,45);
+    padding-bottom: 2%;
+}
+
+.ref{
+    color: rgb(73,106,45);
+    padding-left: 5%;
+    font-family: "Paytone One";
+}
+
+.price{
+    color: rgb(73,106,45);
+    margin:auto !important;
+    font-family: "Paytone One";
+}
+
+.stock{
+    color: rgb(73,106,45);
+    font-family: "Paytone One";
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items:normal;
+    vertical-align: middle;
+}
+
+.compteur-div{
+    width:100px;
+    display:grid;
+    border:solid 1px grey;
+    border-radius: 10px;
+    grid-template-columns: repeat(3,1fr);
+    margin:auto !important;
+    padding: auto;
+    align-items: center;
+}
+
+.material-symbols-outlined-card {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    color:rgb(166,170,83);
+    font-size: 25px !important;
+    padding:2%!important;
+    vertical-align: middle;
+}
+
+.icon{
+    vertical-align: middle;
+    border:solid 1px grey;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.compt{
+    font-family: "Paytone One";
+    color:rgb(166,170,83);
+}
+
+.spanl{
+    border-left:solid 1px grey !important;
+}
+
+.spanr{
+    border-right:solid 1px grey !important;
 }
