@@ -20,8 +20,7 @@ function Header() {
                     <a href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
                 </div>
                 <div className='icons-container'>
-                    <span id="icon-favorite" className="material-symbols-outlined">favorite</span>
-                    <a href="/login"><span id="icon-person" className="material-symbols-outlined">person</span></a>
+                    <a href="/login"><span id="icon-person" className="material-symbols-outlined">{icon_person}</span></a>
                     <a href="/basket"><span id="icon-cart" className="material-symbols-outlined">shopping_cart</span></a>
 
                 </div>
@@ -36,8 +35,7 @@ function Header() {
                         <li><ButtonNavbar text="Contact" link="/contact" /></li>
                         <li className='li-icons'><a href="/login"><span id="icon-nav-bar-person" className="material-symbols-outlined">person</span><span className='text-icon-nav-bar'>Mon compte</span></a></li>
                         <li className='li-icons'><a href="/basket"><span id="icon-nav-bar-cart" className="material-symbols-outlined">shopping_cart</span ><span className='text-icon-nav-bar'>Mon panier</span></a></li>
-                        <li className='li-icons'><span id="icon-nav-bar-favorite" className="material-symbols-outlined">favorite</span><span className='text-icon-nav-bar'>Mes favoris</span></li>
-
+                        
                     </ul>
                 </div>
             </header>

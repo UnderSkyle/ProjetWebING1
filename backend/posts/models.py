@@ -1,14 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    body = models.TextField()
-
-    def __str__(self):
-        return f"Post :{self.title}"
-
 class ProductCategory(models.Model):
     name = models.CharField(max_length=50)
     def __str__(self):
@@ -31,7 +23,7 @@ class Cart(models.Model):
     def __str__(self):
         return f"Cart :Created by {self.created_by}"
 
-class CardItem(models.Model):
+class CartItem(models.Model):
     quantity = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
