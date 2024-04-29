@@ -19,6 +19,56 @@ function Card({name, id, price, stock, img}){
         }
     }
 
+    const addToCart = () => {
+        var user = localStorage.getItem("user");
+        if (user!=null){
+            const data = {
+                id_user: user,
+                quantity: count,
+                ref_product: id
+            };
+            const apiUrl = 'http://127.0.0.1:8000/posts/addToCart/';
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            };
+            
+            fetch(apiUrl, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        //afficher une erreur sur la page
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Success");
+                })
+                .catch(err => {
+                console.log(err.message);
+                });
+        }else{
+            var cartJson = localStorage.getItem("cart");
+            if (cartJson!=null){
+                var cart = JSON.parse(cartJson);
+                console.log(cart);
+                if (cart[id]==undefined){
+                    cart[id]=count;
+                }else{
+                    cart[id]=cart[id]+count;                                 
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }else{
+                cart = {};
+                cart[id]=count;
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+        }
+    }
+
     return(
         <>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -37,7 +87,7 @@ function Card({name, id, price, stock, img}){
                     <p className="compt">{count}</p>
                     <span className="material-symbols-outlined-card material-symbols-outlined spanl" onClick={increment}>add</span>
                 </div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon" onClick={increment}>shopping_bag</span>
+                <span className="material-symbols-outlined-card material-symbols-outlined icon" onClick={addToCart}>shopping_bag</span>
                 <h2 className="price">{price} &euro;</h2>
             </div>
             <br/>

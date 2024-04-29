@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Address(models.Model):
+    user = models.ForeignKey(User,  on_delete=models.CASCADE)
+    street = models.CharField(max_length=200)
+    postal_code = models.CharField(max_length=10)
+    city = models.CharField(max_length=200)
+    complementary_info = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Address :{self.street}, {self.postal_code}, {self.city}"
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=50)
     def __str__(self):
@@ -34,6 +44,7 @@ class CartItem(models.Model):
 class Order(models.Model):
     placed_at = models.DateTimeField()
     placed_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
         
     def __str__(self):
         return f"Order : Placed by {self.placed_by} at {self.placed_at}"

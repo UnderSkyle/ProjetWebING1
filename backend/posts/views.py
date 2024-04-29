@@ -85,27 +85,34 @@ def add_to_cart(request):
     """request={
             id_user
             quantity
-            id_product
+            ref_product
         }"""
     if (request.method == "POST"):
         data = request.data
         id_user = data.get("id_user")
         quantity = data.get("quantity")
-        id_product = data.get("id_product")
+        ref_product = data.get("ref_product")
         try:
             user = User.objects.get(id=id_user)
         except User.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         try:
-            product = Product.objects.get(id=id_product)
+            product = Product.objects.get(ref=ref_product)
         except Product.DoesNotExist:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         
         try:
             user_cart = Cart.objects.get(created_by=user)
         except Cart.DoesNotExist:
             user_cart = Cart(created_by=user)
-        user_cart.cartitem_set.create(quantity=quantity, product=product)
+        user_cart.save()
+        try:
+            cartitem=user_cart.cartitem_set.get(product=product)
+            cartitem.quantity+=quantity
+            cartitem.save()
+        except CartItem.DoesNotExist:
+            user_cart.cartitem_set.create(quantity=quantity, product=product)
+        user_cart.save()
         return Response(user.id,status=status.HTTP_200_OK)
 
 
