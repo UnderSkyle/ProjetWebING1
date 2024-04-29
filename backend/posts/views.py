@@ -92,6 +92,7 @@ def get_products(request):
               {'name': product.name, 'price': product.price, 'stock': product.stock, 'image': product.image, 'ref': product.ref}
                for product in products
          ]
+         print(product_data)
          return Response(product_data)
      except ProductCategory.DoesNotExist:
          return Response(status=404)
