@@ -1,7 +1,8 @@
 import './Card.css'
-import image from '../assets/n01.png'
 
-function CardBasket({name,id,quantity,price}){
+function CardBasket({name,id,quantity,price, img}){
+    const imagePath = "src/assets/" + img
+
     return(
         <>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -12,7 +13,7 @@ function CardBasket({name,id,quantity,price}){
 
         <div className="card">
             <div className="grid">
-                <img className="card-image" src={image}/>
+                <img className="card-image" src={imagePath}/>
                 <div>
                     <h2 className="produit">{name}</h2>
                     <h3 className="produit">N° ref {id}</h3>

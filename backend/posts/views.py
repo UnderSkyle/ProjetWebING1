@@ -147,3 +147,20 @@ def get_user(request):
      except ProductCategory.DoesNotExist:
          return Response(status=404)
 
+@csrf_exempt
+@api_view(['GET'])
+def get_cart(request):
+     try:
+          user_id = request.GET.get('userID')
+          print(user_id)
+          if user_id is None or user_id == "null":
+             return Response({'name': 'test', 'quantity':'5', 'price': '10', 'image': 'c01.png', 'ref': "test"})
+          cart = Cart.objects.get(created_by_id=user_id)
+          cart_items = CartItem.objects.filter(cart=cart)
+          product_data = [
+                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
+                        for cart_item in cart_items
+                  ]
+          return Response(product_data)
+     except Cart.DoesNotExist:
+          return Response(status=404)
