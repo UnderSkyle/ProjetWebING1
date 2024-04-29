@@ -1,5 +1,5 @@
 import './Card.css'
-import image from '../assets/nourriture1.png'
+import image from '../assets/n01.png'
 
 function CardBasket({name,id,quantity,price}){
     return(

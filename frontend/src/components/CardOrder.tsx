@@ -1,5 +1,5 @@
 import './Card.css'
-import image from '../assets/nourriture1.png'
+import image from '../assets/n01.png'
 
 function CardOrder({numOrder,numArticles,date,status,price}){
     return(
