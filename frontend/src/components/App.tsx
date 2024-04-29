@@ -15,8 +15,6 @@ import OrderDone from "./OrderDone.tsx"
 import AddAddress from "./AddAddress.tsx"
 import Basket from "./Basket.tsx";
 
-
-
 const router = createBrowserRouter([
     {
       path: '/',
@@ -44,11 +42,11 @@ const router = createBrowserRouter([
         },
         {
           path: 'login',
-          element: <Login/>
+          element: <Login history={""}/>
         },
         {
           path: 'signup',
-          element: <SignUp/>
+          element: <SignUp history={""}/>
         },
         {
           path: 'basket',

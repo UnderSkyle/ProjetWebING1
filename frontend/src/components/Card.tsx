@@ -37,6 +37,7 @@ function Card({name, id, price, stock}){
             </div>
             <br/>
             <h4 className="stock">Stock : {stock}</h4>
+
         </div>
         </>
     )

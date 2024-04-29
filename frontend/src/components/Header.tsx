@@ -3,10 +3,13 @@ import './Header.css'
 import ButtonNavbar from "./ButtonNavbar.tsx";
 function Header() {
 
+    var user = localStorage.getItem("user");
+    var icon_person="person";
+    if (user!=null){
+        icon_person="person_check";
+    }
     return(
         <>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"/>
@@ -20,6 +23,7 @@ function Header() {
                     <span id="icon-favorite" className="material-symbols-outlined">favorite</span>
                     <a href="/login"><span id="icon-person" className="material-symbols-outlined">person</span></a>
                     <a href="/basket"><span id="icon-cart" className="material-symbols-outlined">shopping_cart</span></a>
+
                 </div>
                 <i onClick={openNavBar} className="fas fa-bars" id="ham-menu"></i>
                 <div onClick={closeNavBar} id="overlay-nav-bar"></div>
@@ -33,6 +37,7 @@ function Header() {
                         <li className='li-icons'><a href="/login"><span id="icon-nav-bar-person" className="material-symbols-outlined">person</span><span className='text-icon-nav-bar'>Mon compte</span></a></li>
                         <li className='li-icons'><a href="/basket"><span id="icon-nav-bar-cart" className="material-symbols-outlined">shopping_cart</span ><span className='text-icon-nav-bar'>Mon panier</span></a></li>
                         <li className='li-icons'><span id="icon-nav-bar-favorite" className="material-symbols-outlined">favorite</span><span className='text-icon-nav-bar'>Mes favoris</span></li>
+
                     </ul>
                 </div>
             </header>
