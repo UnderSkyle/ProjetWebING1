@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from posts.models import Product, Cart, CartItem
+from posts.models import Product, Cart, CartItem, Address
 from posts.models import ProductCategory
 from rest_framework.response import Response
 from rest_framework import status
@@ -114,6 +114,58 @@ def add_to_cart(request):
             user_cart.cartitem_set.create(quantity=quantity, product=product)
         user_cart.save()
         return Response(user.id,status=status.HTTP_200_OK)
+
+@csrf_exempt
+@api_view(['POST'])
+def create_address(request):
+    """request={
+            id_user
+            street
+            postal_code
+            city
+            complementary_info
+        }"""
+    if (request.method=="POST"):
+        data=request.data
+        user=User.objects.get(id=data.get("id_user"))
+        user.address_set.create(street=data.get("street"), postal_code=data.det("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
+        user.save()
+        return Response(status=status.HTTP_200_OK)
+
+@csrf_exempt
+@api_view(['PUT'])
+def update_address(request):
+    """request={
+            id_user
+            id_address
+            street
+            postal_code
+            city
+            complementary_info
+        }"""
+    if (request.method=="PUT"):
+        data=request.data
+        address = Address.objects.get(id=data.get("id_address"))
+        address.street = data.get("street")
+        address.postal_code = data.get("postal_code")
+        address.city = data.get("city")
+        address.complementary_info = data.get("complementary_info")
+        address.save()
+        return Response(status=status.HTTP_200_OK)
+
+@csrf_exempt
+@api_view(['GET'])
+def get_addresses(request):
+     try:
+         user_id = request.GET.get('user_id')
+         if user_id is None:
+             return Response(status=400)
+         user = User.objects.get(id=user_id)
+         addresses = Address.objects.get(user=user)
+         return Response(addresses)
+     except ProductCategory.DoesNotExist:
+         return Response(status=404)
+
 
 
 @csrf_exempt

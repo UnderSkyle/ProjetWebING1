@@ -39,7 +39,7 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"CardItem :{self.quantity} times {self.product} from {self.category} in {self.cart}"
+        return f"CardItem :{self.quantity} times {self.product} in {self.cart}"
 
 class Order(models.Model):
     placed_at = models.DateTimeField()
