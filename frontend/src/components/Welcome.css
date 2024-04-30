@@ -16,7 +16,7 @@
     margin-top: 6em;
 }
 
-.Title{
+.Title-welcome{
     color:rgb(70,48,24);
     padding-left:4%;
     padding-top:3%;
@@ -26,7 +26,7 @@
 }
 
 @media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
-  .Title{
+  .Title-welcome{
     font-size: 30px;
   }
   .Himage{
@@ -36,7 +36,7 @@
     background-position-y: center;
     margin-top: 4em;
   }
-  .LinkButton {
+  .LinkButton-welcome {
     font-size: 18px !important;
     height: 30px !important;
     padding: 20px 30px !important;
@@ -55,18 +55,18 @@
     margin-left: 5% !important;
     margin-right: 5% !important;
   }
-  .material-symbols-rounded {
+  .material-symbols-rounded-welcome-advantages {
     font-size: 110px !important;
   }
 }
 @media only screen and (min-width: 750px){ /*not a phone*/
-  .material-symbols-rounded {
+  .material-symbols-rounded-welcome-advantages {
     font-size: 20vh !important;
   }
 }
 
 @media only screen and (max-width: 750px) and (orientation:landscape){ /*phone landscape mode*/
-  .Title{
+  .Title-welcome{
     font-size: 35px;
     padding-top: 2%;
   }
@@ -77,7 +77,7 @@
     background-position-y: center;
     margin-top: 4em;
   }
-  .LinkButton {
+  .LinkButton-welcome {
     font-size: 20px !important;
     height: 15% !important;
     padding: 1% 3% !important;
@@ -91,7 +91,7 @@
   #blocks-know-more a{
     font-size: 20px !important;
   }
-  .material-symbols-rounded {
+  .material-symbols-rounded-welcome-advantages {
     font-size: 100px !important;
   }
   .icons-advantages{
@@ -126,12 +126,12 @@
     margin-right: 5% !important;
     margin-left: 5% !important;
   }
-  .material-symbols-rounded {
+  .material-symbols-rounded-welcome-advantages {
     font-size: 10vh !important;
   }
 }
 
-.LinkButton {
+.LinkButton-welcome {
   align-items: center;
   appearance: none;
   background-color: rgb(70,48,24);
@@ -158,11 +158,11 @@
   margin-top: 10px;
 }
 
-.LinkButton:hover {
+.LinkButton-welcome:hover {
   background: rgb(244,238,180);
   color: rgb(70,48,24);
 }
-.material-symbols-rounded {
+.material-symbols-rounded-welcome-advantages {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,

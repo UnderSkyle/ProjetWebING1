@@ -5,6 +5,7 @@ function Basket() {
 
     return(
         <>
+        <div className='card-pages'>
             <h1>Votre panier</h1>
             <CardBasket
                 name={'mnom'}
@@ -29,6 +30,7 @@ function Basket() {
                 <h3>Total : &euro;</h3>
                 <a href="#blocks-know-more"><button className="LinkButton" role="button">Passer la commande</button></a>
             </div>
+        </div>
         </>
     )
 }

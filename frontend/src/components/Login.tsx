@@ -77,8 +77,8 @@ class Login extends React.Component<Props, State> {
     render(){
         return(
             <>
-            <div className="big_container_login">
-                <div className="container">
+            <div className="big-container-login">
+                <div className="container-form">
                     <h1 className="text">Connexion</h1>
                     <form onSubmit = {this.handleSubmit}>
                         <div className="form_row">

@@ -1,4 +1,4 @@
-h1{
+.profil-page h1{
     color:rgb(70,48,24);
     padding-left:4%;
     padding-top:3%;
@@ -7,14 +7,14 @@ h1{
     letter-spacing: .25px;
 }
 
-h3{
+.profil-page h3{
     font-family: Paytone One;
     letter-spacing: .25px;
     color:rgb(70,48,24);
     padding-top: 2%;
 }
 
-p{
+.profil-page p{
     text-align:left !important;
     letter-spacing: .25px;
     color:#496A2D;
@@ -22,21 +22,21 @@ p{
 
 }
 
-.grid{
+.profil-page .grid{
     display: grid;
     grid-template-columns: repeat(1,1fr);
     align-items:left;
     vertical-align: left !important;
 }
 
-.bigcontainer{
+.profil-page .bigcontainer{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items:normal;
     vertical-align: middle;
 }
 
-.LinkButton {
+.profil-page .LinkButton {
     align-items: center;
     appearance: none;
     background-color: #496A2D;
@@ -62,12 +62,12 @@ p{
     vertical-align: center;
   }
   
-  .LinkButton:hover {
+  .profil-page .LinkButton:hover {
     background: rgb(244,238,180);
     color: rgb(70,48,24);
   }
 
-  .icon {
+  .profil-page .icon {
     font-variation-settings:
     'FILL' 100,
     'wght' 400,
@@ -80,7 +80,7 @@ p{
     border:none;
   }
 
-  .bordure{
+  .profil-page .bordure{
     border-bottom:1px solid rgb(166,170,83);
     width:60%;
     margin:auto;

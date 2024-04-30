@@ -27,13 +27,13 @@ function Contact() {
 
     return(
         <>
-        <div className="big_container_contact">
+        <div className="big-container-contact">
             <br/><br/><br/>
-            <div className="first_container">
+            <div className="first-container-form">
                 <h1 className="text">Contactez nous !</h1>
                 <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
             </div>
-            <div className="container">
+            <div className="container-form">
                     
                 <form onSubmit = {handleSubmit}>
                     <div className="form_row">
