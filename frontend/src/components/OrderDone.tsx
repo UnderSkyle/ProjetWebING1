@@ -16,8 +16,6 @@ function OrderDone() {
     return(
         <>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <div className="Himage">
             <h1 className="Title">Commande validée </h1>
             <h3 className="Title">Votre commande a été validée !<br/>Vous pouvez la suivre sur la page<br/>de vos commandes</h3>

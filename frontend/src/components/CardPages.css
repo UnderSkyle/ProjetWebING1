@@ -1,4 +1,4 @@
-h1{
+.card-pages h1{
     color:rgb(70,48,24);
     padding-left:4%;
     padding-top:3%;
@@ -7,7 +7,7 @@ h1{
     letter-spacing: .25px;
 }
 
-h6{
+.card-pages h6{
     font-family: Paytone One;
     letter-spacing: .25px;
     color:rgb(70,48,24);
@@ -15,7 +15,7 @@ h6{
     font-size:x-large;
 }
 
-p{
+.card-pages p{
     text-align:left !important;
     letter-spacing: .25px;
     color:#496A2D;

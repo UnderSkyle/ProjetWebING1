@@ -19,6 +19,7 @@ function Account() {
                 <a href="#blocks-know-more" className="two"><button className="LinkButton-account" role="button">Se déconnecter</button></a>
             </div>
 
+
            <div className="bigcontainer-account">
                 <div className="container-account one">
                     <div className="grid1-account">
@@ -52,7 +53,7 @@ function Account() {
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
            </div>
-
+        </div>
         </>
     )
 }

@@ -9,7 +9,7 @@ function MyComponent(props: { category: string;}) {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/posts/getData?category_id='+props.category);
+                const response = await fetch('http://127.0.0.1:8000/posts/getProducts?category_id='+props.category);
                 if (!response.ok) {
                     throw new Error('Failed to fetch');
                 }

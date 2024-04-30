@@ -16,30 +16,28 @@ function Welcome() {
     return(
         <>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
             <div className="Himage">
-            <h1 className="Title">Tout pour votre <br/>hérisson !</h1>
+            <h1 className="Title-welcome">Tout pour votre <br/>hérisson !</h1>
             
-            <a href="#blocks-know-more"><button className="LinkButton" role="button">En savoir plus</button></a>
+            <a href="#blocks-know-more"><button className="LinkButton-welcome" role="button">En savoir plus</button></a>
 
 
             </div>
             <div className='icons-advantages'>
                 <div>
-                    <span className="material-symbols-rounded">
+                    <span className="material-symbols-rounded material-symbols-rounded-welcome-advantages">
                         package_2
                     </span>
                     <span className='text-advantages'>Livraison gratuite</span>
                 </div>
                 <div>
-                    <span className="material-symbols-rounded" >
+                    <span className="material-symbols-rounded material-symbols-rounded-welcome-advantages" >
                         support_agent
                     </span>
                     <span className='text-advantages'>Service client</span>
                 </div>
                 <div>
-                    <span className="material-symbols-rounded">
+                    <span className="material-symbols-rounded material-symbols-rounded-welcome-advantages">
                         credit_score
                     </span>
                     <span className='text-advantages'>Paiement sécurisé</span>

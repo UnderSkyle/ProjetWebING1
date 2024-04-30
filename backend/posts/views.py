@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from posts.models import Product
+from posts.models import Product, Cart, CartItem, Address
 from posts.models import ProductCategory
 from rest_framework.response import Response
 from rest_framework import status
@@ -78,10 +78,99 @@ def create_account(request):
             user = User.objects.create_user(username=email,email=email,password=pwd,first_name=name,last_name=surname)
 
             return Response(user.id,status=status.HTTP_200_OK)
-          
+
+@csrf_exempt
+@api_view(['POST'])
+def add_to_cart(request):
+    """request={
+            id_user
+            quantity
+            ref_product
+        }"""
+    if (request.method == "POST"):
+        data = request.data
+        id_user = data.get("id_user")
+        quantity = data.get("quantity")
+        ref_product = data.get("ref_product")
+        try:
+            user = User.objects.get(id=id_user)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            product = Product.objects.get(ref=ref_product)
+        except Product.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        
+        try:
+            user_cart = Cart.objects.get(created_by=user)
+        except Cart.DoesNotExist:
+            user_cart = Cart(created_by=user)
+        user_cart.save()
+        try:
+            cartitem=user_cart.cartitem_set.get(product=product)
+            cartitem.quantity+=quantity
+            cartitem.save()
+        except CartItem.DoesNotExist:
+            user_cart.cartitem_set.create(quantity=quantity, product=product)
+        user_cart.save()
+        return Response(user.id,status=status.HTTP_200_OK)
+
+@csrf_exempt
+@api_view(['POST'])
+def create_address(request):
+    """request={
+            id_user
+            street
+            postal_code
+            city
+            complementary_info
+        }"""
+    if (request.method=="POST"):
+        data=request.data
+        user=User.objects.get(id=data.get("id_user"))
+        user.address_set.create(street=data.get("street"), postal_code=data.det("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
+        user.save()
+        return Response(status=status.HTTP_200_OK)
+
+@csrf_exempt
+@api_view(['PUT'])
+def update_address(request):
+    """request={
+            id_user
+            id_address
+            street
+            postal_code
+            city
+            complementary_info
+        }"""
+    if (request.method=="PUT"):
+        data=request.data
+        address = Address.objects.get(id=data.get("id_address"))
+        address.street = data.get("street")
+        address.postal_code = data.get("postal_code")
+        address.city = data.get("city")
+        address.complementary_info = data.get("complementary_info")
+        address.save()
+        return Response(status=status.HTTP_200_OK)
+
 @csrf_exempt
 @api_view(['GET'])
-def get_data(request):
+def get_addresses(request):
+     try:
+         user_id = request.GET.get('user_id')
+         if user_id is None:
+             return Response(status=400)
+         user = User.objects.get(id=user_id)
+         addresses = Address.objects.get(user=user)
+         return Response(addresses)
+     except ProductCategory.DoesNotExist:
+         return Response(status=404)
+
+
+
+@csrf_exempt
+@api_view(['GET'])
+def get_products(request):
      try:
          category_id = request.GET.get('category_id')
          if category_id is None:
@@ -97,3 +186,33 @@ def get_data(request):
      except ProductCategory.DoesNotExist:
          return Response(status=404)
 
+@csrf_exempt
+@api_view(['GET'])
+def get_user(request):
+     try:
+         user_id = request.GET.get('userID')
+         if user_id is None:
+             return Response(status=400)
+         user = User.objects.get(pk=user_id)
+         user_data ={'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}
+         return Response(user_data)
+     except ProductCategory.DoesNotExist:
+         return Response(status=404)
+
+@csrf_exempt
+@api_view(['GET'])
+def get_cart(request):
+     try:
+          user_id = request.GET.get('userID')
+          print(user_id)
+          if user_id is None or user_id == "null":
+             return Response({'name': 'test', 'quantity':'5', 'price': '10', 'image': 'c01.png', 'ref': "test"})
+          cart = Cart.objects.get(created_by_id=user_id)
+          cart_items = CartItem.objects.filter(cart=cart)
+          product_data = [
+                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
+                        for cart_item in cart_items
+                  ]
+          return Response(product_data)
+     except Cart.DoesNotExist:
+          return Response(status=404)
