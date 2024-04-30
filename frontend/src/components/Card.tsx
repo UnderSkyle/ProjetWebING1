@@ -78,21 +78,21 @@ function Card({name, id, price, stock, img}){
         <link rel="presonnect" href="https://fonts.googleapis.com"/>
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
 
-        <div className="card">
-            <h2 className="produit">{name}</h2>
-            <h4 className="ref">N° ref {id}</h4>
-            <img className="card-image" src={imagePath}/>
-            <div className="grid">
-                <div className="compteur-div">
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanr" onClick={decrement}>remove</span>
-                    <p className="compt">{count}</p>
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanl" onClick={increment}>add</span>
+        <div className="card-card">
+            <h2 className="produit-card">{name}</h2>
+            <h4 className="ref-card">N° ref {id}</h4>
+            <img className="card-image" src={image}/>
+            <div className="grid-card">
+                <div className="compteur-div-card">
+                    <span className="material-symbols-outlined-card material-symbols-outlined spanr-card" onClick={decrement}>remove</span>
+                    <p className="compt-card">{count}</p>
+                    <span className="material-symbols-outlined-card material-symbols-outlined spanl-card" onClick={increment}>add</span>
                 </div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon" onClick={addToCart}>shopping_bag</span>
-                <h2 className="price">{price} &euro;</h2>
+                <span className="material-symbols-outlined-card material-symbols-outlined icon-card" onClick={increment}>shopping_bag</span>
+                <h2 className="price-card">{price} &euro;</h2>
             </div>
             <br/>
-            <h4 className="stock">Stock : {stock}</h4>
+            <h4 className="stock-card">Stock : {stock}</h4>
 
         </div>
         </>

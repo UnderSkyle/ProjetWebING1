@@ -27,13 +27,13 @@ function Contact() {
 
     return(
         <>
-        <div className="big-container-contact">
-            <br/><br/><br/>
-            <div className="first-container-form">
+        <div className="big_container_contact">
+            <div className="first_container">
+            <br/>
                 <h1 className="text">Contactez nous !</h1>
                 <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
-            </div>
-            <div className="container-form">
+            </div><br/><br/><br/>
+            <div className="container">
                     
                 <form onSubmit = {handleSubmit}>
                     <div className="form_row">
@@ -74,7 +74,7 @@ function Contact() {
                         <div className="radio">
                             Genre<br/><br/>
                             <label>
-                            <input type="radio" className="input_radio"
+                            <input type="radio" className="input_radio-form"
                                 name="genre"
                                 value="Femme"
                                 checked = {inputs.genre == "Femme"}
@@ -83,7 +83,7 @@ function Contact() {
                                 Femme</label>
 
                             <label>
-                            <input type="radio" className="input_radio"
+                            <input type="radio" className="input_radio-form"
                                 name="genre"
                                 value="Homme"
                                 checked = {inputs.genre == "Homme"}
@@ -91,7 +91,7 @@ function Contact() {
                                 Homme</label>    
 
                             <label> 
-                            <input type="radio" className="input_radio"
+                            <input type="radio" className="input_radio-form"
                                 name="genre"
                                 value="Autre"
                                 checked = {inputs.genre == "Autre"}
