@@ -10,4 +10,5 @@ urlpatterns = [
     path('createAddress/',views.create_address),
     path('updateAddress/',views.update_address),
     path('getAdresses/',views.get_addresses),
-]
+    path('getProducts/', views.get_products),
+    path('getUser/', views.get_user)
