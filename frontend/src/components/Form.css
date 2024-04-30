@@ -1,8 +1,8 @@
 p{
-  font-family: Arial;
-  letter-spacing: .25px;
-  font-size: medium;
-  text-align: center;
+  font-family: Arial !important;
+  letter-spacing: .25px !important;
+  font-size: medium !important;
+  text-align: center !important;
 }
 
 .Text{
@@ -10,16 +10,16 @@ p{
 }
 
 *{
-  margin: 0;
+  margin: 0 ;
   padding: 0;
   outline: none;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex ;
+  align-items: center ;
+  justify-content: center; 
   min-height: 100vh;
   padding: 10px;
   font-family: 'Poppins', sans-serif;

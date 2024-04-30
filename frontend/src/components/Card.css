@@ -1,4 +1,4 @@
-.card{
+.card-card{
     border: 1px solid hsl(0,0%,80%);
     border-radius:10px;
     box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
@@ -18,38 +18,38 @@
 }
 
 
-.produit{
+.produit-card{
     font-family: "Paytone One";
     margin:0;
     color: rgb(73,106,45);
     padding-bottom: 2%;
 }
 
-.ref{
+.ref-card{
     color: rgb(73,106,45);
     padding-left: 5%;
     font-family: "Paytone One";
 }
 
-.price{
+.price-card{
     color: rgb(73,106,45);
     margin:auto !important;
     font-family: "Paytone One";
 }
 
-.stock{
+.stock-card{
     color: rgb(73,106,45);
     font-family: "Paytone One";
 }
 
-.grid{
+.grid-card{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items:normal;
     vertical-align: middle;
 }
 
-.compteur-div{
+.compteur-div-card{
     width:100px;
     display:grid;
     border:solid 1px grey;
@@ -72,22 +72,22 @@
     vertical-align: middle;
 }
 
-.icon{
+.icon-card{
     vertical-align: middle;
     border:solid 1px grey;
     border-radius: 10px;
     margin: auto;
 }
 
-.compt{
+.compt-card{
     font-family: "Paytone One";
     color:rgb(166,170,83);
 }
 
-.spanl{
+.spanl-card{
     border-left:solid 1px grey !important;
 }
 
-.spanr{
+.spanr-card{
     border-right:solid 1px grey !important;
 }

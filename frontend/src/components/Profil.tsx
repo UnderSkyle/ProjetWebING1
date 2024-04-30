@@ -17,28 +17,28 @@ function Profil() {
         <br/><br/><br/><br/>
         <h1>Votre profil</h1>
         <br/><br/><br/>
-        <div className="bordure"><p></p></div>
-        <div className="bigcontainer">
-            <span className="material-symbols-outlined-card material-symbols-outlined icon">person</span>
-            <div className="grid">
+        <div className="bordure-profil"><p></p></div>
+        <div className="bigcontainer-profil">
+            <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">person</span>
+            <div className="grid-profil">
                 <h3>Nom</h3>
                 <p>test</p>
             </div>
         </div>
 
-        <div className="bordure"><p></p></div>
+        <div className="bordure-profil"><p></p></div>
 
-        <div className="bigcontainer">
-            <span className="material-symbols-outlined-card material-symbols-outlined icon">mail</span>
-            <div className="grid">
+        <div className="bigcontainer-profil">
+            <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">mail</span>
+            <div className="grid-profil">
                 <h3>Adresse e-mail</h3>
                 <p>test</p>
                 
             </div>    
         </div>
-        <div className="bordure"><p></p></div>
+        <div className="bordure-profil"><p></p></div>
         <br/><br/>
-        <a href="#blocks-know-more"><button className="LinkButton" role="button">Modifier</button></a>
+        <a href="#blocks-know-more"><button className="LinkButton-profil" role="button">Modifier</button></a>
         <br/><br/>
         </>
     )
