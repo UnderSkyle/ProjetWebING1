@@ -2,31 +2,40 @@ import './CardPages.css';
 import CardBasket from './CardBasket.tsx'
 import {useEffect, useState} from "react";
 function Basket() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any | null>([]);
     const userID = localStorage.getItem("user");
+    const cart = localStorage.getItem("cart")
 
+    if (userID!=null){
+        useEffect(() => {
 
-    useEffect(() => {
-
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/posts/getCart?userID='+userID);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch');
+            const fetchData = async () => {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/posts/getCart?userID='+userID);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch');
+                    }
+                    const jsonData = await response.json();
+                    console.log(jsonData); // You can handle the response data as needed
+                    setData(jsonData);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
                 }
-                const jsonData = await response.json();
-                console.log(jsonData); // You can handle the response data as needed
-                setData(jsonData);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+            };
 
-        fetchData();
-    }, []);
+            fetchData();
+        }, []);
+    }else if (cart != null && data.length==0){
+        var cartParsed = JSON.parse(cart);
+        console.log(cartParsed);
+        var cartitems = Object.values(cartParsed);
+        console.log(cartitems);
+        setData(cartitems);
+    }
 
     return(
         <>
+        <div className='card-pages'>
             <h1>Votre panier</h1>
             {Array.isArray(data) ? (
                 data.map(item => (
@@ -53,6 +62,7 @@ function Basket() {
                 <h3>Total : &euro;</h3>
                 <a href="#blocks-know-more"><button className="LinkButton" role="button">Passer la commande</button></a>
             </div>
+        </div>
         </>
     )
 }

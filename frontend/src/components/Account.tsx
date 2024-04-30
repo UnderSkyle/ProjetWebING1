@@ -14,6 +14,7 @@ function Account() {
         <link rel="presonnect" href="https://fonts.googleapis.com"/>
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
         <br/><br/><br/>
+        <div className='card-pages'>
             <div>
                 <h1>Votre compte</h1>
                 <a href="#blocks-know-more"><button className="LinkButton" role="button">Se déconnecter</button></a>
@@ -42,7 +43,7 @@ function Account() {
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
            </div>
-
+        </div>
         </>
     )
 }

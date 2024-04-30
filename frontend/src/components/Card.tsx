@@ -52,18 +52,19 @@ function Card({name, id, price, stock, img}){
                 });
         }else{
             var cartJson = localStorage.getItem("cart");
+            var cartitem = {name:name, ref:id, price:price, quantity:count, image:img}
             if (cartJson!=null){
                 var cart = JSON.parse(cartJson);
                 console.log(cart);
                 if (cart[id]==undefined){
-                    cart[id]=count;
+                    cart[id]=cartitem;
                 }else{
-                    cart[id]=cart[id]+count;                                 
+                    cart[id].quantity=cart[id].quantity+count;                                 
                 }
                 localStorage.setItem("cart", JSON.stringify(cart));
             }else{
                 cart = {};
-                cart[id]=count;
+                cart[id]=cartitem;
                 localStorage.setItem("cart", JSON.stringify(cart));
             }
         }

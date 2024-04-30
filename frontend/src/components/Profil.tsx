@@ -40,10 +40,9 @@ function Profil() {
                 <h3>Nom</h3>
                 <p>{data.first_name} {data.last_name}</p>
             </div>
+
+            <div className="bordure"><p></p></div>
         </div>
-
-        <div className="bordure"><p></p></div>
-
         <div className="bigcontainer">
             <span className="material-symbols-outlined-card material-symbols-outlined icon">mail</span>
             <div className="grid">
@@ -52,10 +51,6 @@ function Profil() {
                 
             </div>    
         </div>
-        <div className="bordure"><p></p></div>
-        <br/><br/>
-        <a href="#blocks-know-more"><button className="LinkButton" role="button">Modifier</button></a>
-        <br/><br/>
         </>
     )
 }

@@ -5,8 +5,10 @@ function Header() {
 
     var user = localStorage.getItem("user");
     var icon_person="person";
+    var link_account="/login"
     if (user!=null){
         icon_person="person_check";
+        link_account="/account"
     }
     return(
         <>
@@ -20,7 +22,7 @@ function Header() {
                     <a href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo" /></a>
                 </div>
                 <div className='icons-container'>
-                    <a href="/login"><span id="icon-person" className="material-symbols-outlined">{icon_person}</span></a>
+                    <a href={link_account}><span id="icon-person" className="material-symbols-outlined">{icon_person}</span></a>
                     <a href="/basket"><span id="icon-cart" className="material-symbols-outlined">shopping_cart</span></a>
 
                 </div>
