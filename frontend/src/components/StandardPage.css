@@ -1,5 +1,4 @@
-.CardDiv{
-    padding-top: 10%;
+.card-div{
     display: flex;
-
+    margin-top: 6em;
 }

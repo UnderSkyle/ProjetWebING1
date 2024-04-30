@@ -1,4 +1,4 @@
-p{
+.div-form p{
   font-family: Arial !important;
   letter-spacing: .25px !important;
   font-size: medium !important;
@@ -30,7 +30,6 @@ body{
   background-image: url("../assets/Hedgehog_leaf.jpg") ;
   background-repeat: no-repeat;
   background-size: cover;
-  height:130%;
   width:100%;
   align-content: center;
   margin-top: 6em;
@@ -60,10 +59,8 @@ body{
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   margin:auto;
   border-radius: 24px;
-}
-
-.big-container-login .container-form{
   margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .container-form .text{

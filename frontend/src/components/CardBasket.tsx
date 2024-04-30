@@ -11,18 +11,18 @@ function CardBasket({name,id,quantity,price, img}){
         <link rel="presonnect" href="https://fonts.googleapis.com"/>
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
 
-        <div className="card">
-            <div className="grid">
+        <div className="card-card">
+            <div className="grid-card">
                 <img className="card-image" src={imagePath}/>
                 <div>
-                    <h2 className="produit">{name}</h2>
-                    <h3 className="produit">N° ref {id}</h3>
+                    <h2 className="produit-card">{name}</h2>
+                    <h3 className="produit-card">N° ref {id}</h3>
                     <span className="material-symbols-outlined-card material-symbols-outlined icon">close</span>
 
                 </div>
                 <div>
-                    <h3 className="produit">{quantity}</h3>
-                    <h3 className="produit">{price} &euro;</h3>
+                    <h3 className="produit-card">{quantity}</h3>
+                    <h3 className="produit-card">{price} &euro;</h3>
                 </div>   
             </div>
         </div>

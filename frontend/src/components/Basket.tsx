@@ -60,7 +60,7 @@ function Basket() {
             )}
             <div>
                 <h3>Total : &euro;</h3>
-                <a href="#blocks-know-more"><button className="LinkButton" role="button">Passer la commande</button></a>
+                <a href=""><button className="LinkButton-card" role="button">Passer la commande</button></a>
             </div>
         </div>
         </>
