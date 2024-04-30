@@ -13,3 +13,4 @@ urlpatterns = [
     path('getCart/', views.get_cart),
     path('getProducts/', views.get_products),
     path('getUser/', views.get_user)
+]
