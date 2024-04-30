@@ -81,14 +81,14 @@ function Card({name, id, price, stock, img}){
         <div className="card-card">
             <h2 className="produit-card">{name}</h2>
             <h4 className="ref-card">N° ref {id}</h4>
-            <img className="card-image" src={image}/>
+            <img className="card-image" src={imagePath}/>
             <div className="grid-card">
                 <div className="compteur-div-card">
                     <span className="material-symbols-outlined-card material-symbols-outlined spanr-card" onClick={decrement}>remove</span>
                     <p className="compt-card">{count}</p>
                     <span className="material-symbols-outlined-card material-symbols-outlined spanl-card" onClick={increment}>add</span>
                 </div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon-card" onClick={increment}>shopping_bag</span>
+                <span className="material-symbols-outlined-card material-symbols-outlined icon-card" onClick={addToCart}>shopping_bag</span>
                 <h2 className="price-card">{price} &euro;</h2>
             </div>
             <br/>

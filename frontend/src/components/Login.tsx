@@ -77,7 +77,7 @@ class Login extends React.Component<Props, State> {
     render(){
         return(
             <>
-            <div className="big-container-login">
+            <div className="big-container-login div-form">
                 <div className="container-form">
                     <h1 className="text">Connexion</h1>
                     <form onSubmit = {this.handleSubmit}>
@@ -115,7 +115,6 @@ class Login extends React.Component<Props, State> {
                         </div>
                     </form>
                     </div>
-                    <br/><br/>
                 </div>
                 
             </>

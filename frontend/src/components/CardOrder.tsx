@@ -10,17 +10,17 @@ function CardOrder({numOrder,numArticles,date,status,price}){
         <link rel="presonnect" href="https://fonts.googleapis.com"/>
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
 
-        <div className="card">
-            <div className="grid">
+        <div className="card-card">
+            <div className="grid-card">
                 <img className="card-image" src={image}/>
                 <div>
-                    <h2 className="produit">Commande n° {numOrder}</h2>
-                    <h3 className="produit">{numArticles} articles</h3>
+                    <h2 className="produit-card">Commande n° {numOrder}</h2>
+                    <h3 className="produit-card">{numArticles} articles</h3>
                 </div>
                 <div>
-                    <h3 className="produit">{date}</h3>
-                    <h3 className="produit">{status}</h3>
-                    <h3 className="produit">{price} &euro;</h3>
+                    <h3 className="produit-card">{date}</h3>
+                    <h3 className="produit-card">{status}</h3>
+                    <h3 className="produit-card">{price} &euro;</h3>
                 </div>   
             </div>
         </div>

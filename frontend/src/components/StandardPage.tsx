@@ -29,7 +29,7 @@ function Standard(props: { category: string;}) {
 
     return(
         <>
-        <div className="CardDiv">
+        <div className="card-div">
             {data.map(item => (
                 <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
             ))}

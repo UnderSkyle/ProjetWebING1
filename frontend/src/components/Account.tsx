@@ -16,7 +16,7 @@ function Account() {
         <br/><br/><br/>
             <div className="mediumcontainer-account">
                 <h1 className="one">Votre compte</h1>
-                <a href="#blocks-know-more" className="two"><button className="LinkButton-account" role="button">Se déconnecter</button></a>
+                <button className="LinkButton-account" role="button">Se déconnecter</button>
             </div>
 
 
@@ -31,7 +31,6 @@ function Account() {
                         
                     
                 </div>
-
                 <div className="container-account two">
                     <div className="grid1-account">
                         <span className="material-symbols-outlined-card material-symbols-outlined icon-account">home</span>
@@ -41,7 +40,6 @@ function Account() {
                     <div className="grid3-account"><p>Voir vos adresses de livraison et les modifier</p></div>
                     
                 </div>
-
                 <div className="container-account three">
                     <div className="grid1-account">
                         <span className="material-symbols-outlined-card material-symbols-outlined icon-account">package_2</span>
@@ -53,7 +51,6 @@ function Account() {
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
            </div>
-        </div>
         </>
     )
 }
