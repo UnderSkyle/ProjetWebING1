@@ -1,5 +1,6 @@
 import CardOrder from "./CardOrder.tsx"
 import {useEffect, useState} from "react";
+import CardBasket from "./CardBasket.tsx";
 
 function Order() {
     const [data, setData] = useState<any | null>([]);
