@@ -66,16 +66,33 @@ const router = createBrowserRouter([
         },
         {
           path: 'address',
-          element: <Address/>
+          element: <Address choice={false}/>
         },
         {
-          path: 'done',
+          path: 'order/choose_address',
+          element: <Address choice={true}/>
+        },
+        {
+          path: 'order/done',
           element: <OrderDone/>
         },
         {
-          path: 'add',
-          element: <AddAddress/>
+          path: 'address/add',
+          element: <AddAddress order={false}/>
+        },
+        {
+          path: 'address/modify/:idAddress',
+          element: <AddAddress order={false}/>
+        },
+        {
+          path: 'order/address/add',
+          element: <AddAddress order={true}/>
+        },
+        {
+          path: 'order/address/modify/:idAddress',
+          element: <AddAddress order={true}/>
         }
+
       ]
     }
 ])
