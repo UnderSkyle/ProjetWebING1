@@ -20,52 +20,55 @@ function Card({name, id, price, stock, img}){
     }
 
     const addToCart = () => {
-        var user = localStorage.getItem("user");
-        if (user!=null){
-            const data = {
-                id_user: user,
-                quantity: count,
-                ref_product: id
-            };
-            const apiUrl = 'http://127.0.0.1:8000/posts/addToCart/';
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            };
-            
-            fetch(apiUrl, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                        //afficher une erreur sur la page
+        if (count > 0) {
+            const user = localStorage.getItem("user");
+            if (user != null) {
+                const data = {
+                    id_user: user,
+                    quantity: count,
+                    ref_product: id
+                };
+                console.log(data);
+                const apiUrl = 'http://127.0.0.1:8000/posts/addToCart/';
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                };
+
+                fetch(apiUrl, requestOptions)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                            //afficher une erreur sur la page
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Success");
+                    })
+                    .catch(err => {
+                        console.log(err.message);
+                    });
+            } else {
+                var cartJson = localStorage.getItem("cart");
+                var cartitem = {name: name, ref: id, price: price, quantity: count, image: img}
+                if (cartJson != null) {
+                    var cart = JSON.parse(cartJson);
+                    console.log(cart);
+                    if (cart[id] == undefined) {
+                        cart[id] = cartitem;
+                    } else {
+                        cart[id].quantity = cart[id].quantity + count;
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Success");
-                })
-                .catch(err => {
-                console.log(err.message);
-                });
-        }else{
-            var cartJson = localStorage.getItem("cart");
-            var cartitem = {name:name, ref:id, price:price, quantity:count, image:img}
-            if (cartJson!=null){
-                var cart = JSON.parse(cartJson);
-                console.log(cart);
-                if (cart[id]==undefined){
-                    cart[id]=cartitem;
-                }else{
-                    cart[id].quantity=cart[id].quantity+count;                                 
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                } else {
+                    cart = {};
+                    cart[id] = cartitem;
+                    localStorage.setItem("cart", JSON.stringify(cart));
                 }
-                localStorage.setItem("cart", JSON.stringify(cart));
-            }else{
-                cart = {};
-                cart[id]=cartitem;
-                localStorage.setItem("cart", JSON.stringify(cart));
             }
         }
     }
