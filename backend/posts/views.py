@@ -120,6 +120,8 @@ def add_to_cart(request):
 def create_address(request):
     """request={
             id_user
+            first_name
+            last_name
             street
             postal_code
             city
@@ -128,7 +130,7 @@ def create_address(request):
     if (request.method=="POST"):
         data=request.data
         user=User.objects.get(id=data.get("id_user"))
-        user.address_set.create(street=data.get("street"), postal_code=data.det("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
+        user.address_set.create(first_name=data.get("first_name"),last_name=data.get("last_name"),street=data.get("street"), postal_code=data.get("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
         user.save()
         return Response(status=status.HTTP_200_OK)
 
@@ -138,6 +140,8 @@ def update_address(request):
     """request={
             id_user
             id_address
+            first_name
+            last_name
             street
             postal_code
             city
@@ -146,27 +150,75 @@ def update_address(request):
     if (request.method=="PUT"):
         data=request.data
         address = Address.objects.get(id=data.get("id_address"))
+        address.first_name = data.get("first_name")
+        address.last_name = data.get("last_name")
         address.street = data.get("street")
         address.postal_code = data.get("postal_code")
         address.city = data.get("city")
         address.complementary_info = data.get("complementary_info")
         address.save()
         return Response(status=status.HTTP_200_OK)
+    
+@csrf_exempt
+@api_view(['DELETE'])
+def delete_address(request):
+    """request={
+            id_user
+            id_address
+        }"""
+    if (request.method=="DELETE"):
+        data=request.data
+        user = User.objects.get(id=data.get("id_user"))
+        address = Address.objects.get(id=data.get("id_address"))
+        if (address.user!=user):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        address.delete()
+        return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['GET'])
 def get_addresses(request):
+     """id_user
+            first_name
+            last_name
+            street
+            postal_code
+            city
+            complementary_info"""
      try:
-         user_id = request.GET.get('user_id')
+         user_id = request.GET.get('userID')
          if user_id is None:
              return Response(status=400)
          user = User.objects.get(id=user_id)
-         addresses = Address.objects.get(user=user)
-         return Response(addresses)
-     except ProductCategory.DoesNotExist:
+         addresses = Address.objects.filter(user=user)
+         addresses_data = [
+              {'id':address.id,'first_name': address.first_name, 'last_name': address.last_name, 'street': address.street, 'postal_code': address.postal_code, 'city': address.city, "complementary_info": address.complementary_info}
+               for address in addresses
+         ]
+         return Response(addresses_data, status=status.HTTP_200_OK)
+     except Address.DoesNotExist:
          return Response(status=404)
 
-
+@csrf_exempt
+@api_view(['GET'])
+def get_address(request):
+     try:
+         id_address = request.GET.get('idAddress')
+         if  id_address is None:
+             return Response(status=400)
+         address = Address.objects.get(id=id_address)
+         """id: "",
+        prenom:"",
+        nom:"",
+        codePostal:"",
+        ville:"",
+        adresse:"",
+        complement:"""""
+         address_data = {'id':address.id,'prenom': address.first_name, 'nom': address.last_name, 'adresse': address.street, 'codePostal': address.postal_code, 'ville': address.city, "complement": address.complementary_info}
+         print(address_data)
+         return Response(address_data, status=status.HTTP_200_OK)
+     except Address.DoesNotExist:
+         return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['GET'])

@@ -60,7 +60,7 @@ function Basket() {
             )}
             <div>
                 <h3>Total : &euro;</h3>
-                <a href=""><button className="LinkButton-card" role="button">Passer la commande</button></a>
+                <a href="/order/choose_address"><button className="LinkButton-card" role="button">Passer la commande</button></a>
             </div>
         </div>
         </>

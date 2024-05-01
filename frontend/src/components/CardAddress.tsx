@@ -1,22 +1,49 @@
 import './CardPages.css'
 
 
-function CardAddress({name,surname,address,postalCodeTown}) {
+function CardAddress({id,name,surname,address,postalCodeTown,complementary_info,choice, onClick,refer}) {
+    var divId = "address_"+id;
+
+    const deleteAddress = () => {
+        var user_id = localStorage.getItem("user");
+        const data = {
+            id_user:user_id,
+            id_address:id
+        };
+        const apiUrl = 'http://127.0.0.1:8000/posts/deleteAddress/';
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+        
+        fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok !');
+                    //afficher une erreur sur la page
+                }
+                window.location.reload();
+            })
+            .catch(err => {
+            console.log(err.message);
+            });
+        
+    };
+
     return(
         <>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"/>
-        <link rel="presonnect" href="https://fonts.googleapis.com"/>
-        <link rel="presonnect" href="https://fonts.gstatic.com"/>
-            <div className="container-card">
-                <h3 className="produit">{name} {surname}</h3>
-                <h4 className="produit">{address}</h4>
-                <h4 className="produit">{postalCodeTown}</h4>
+            <div onClick={onClick} ref={refer} id={divId} className="container-card container-card-address">
+                <h3 className="address-name">{name} {surname}</h3>
+                <h4 className="address-info">{address}</h4>
+                <h4 className="address-info">{postalCodeTown}</h4>
+                <h4 className="address-info">{complementary_info}</h4>
                 <br/>
-                <div className="grid-card">
-                    <a href="#blocks-know-more"><button className="LinkButton-card" role="button">Modifier</button></a>
-                    <span className="material-symbols-outlined-card material-symbols-outlined icon">delete</span>
+                <div className="grid-card-address">
+                    <a href={choice ? "http://localhost:5173/order/address/modify/"+id : "http://localhost:5173/address/modify/"+id}><button className="LinkButton-card" role="button">Modifier</button></a>
+                    <span onClick={deleteAddress} className="icon-delete-address material-symbols-outlined">delete</span>
                 </div>
             </div>
             <br/>
