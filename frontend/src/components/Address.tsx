@@ -1,3 +1,4 @@
+import './CardPages.css';
 import CardAddress from "./CardAddress.tsx"
 function Address() {
 
@@ -12,6 +13,7 @@ function Address() {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"/>
         <link rel="presonnect" href="https://fonts.googleapis.com"/>
         <link rel="presonnect" href="https://fonts.gstatic.com"/>
+        <div className="address-page">
             <h1>Vos adresses</h1>
             <CardAddress
                 name={'Pavot'}
@@ -19,7 +21,7 @@ function Address() {
                 address={'Chez Fiona'}
                 postalCodeTown={'60230 Chambly'}
             />
-
+        </div>
         </>
     )
 }

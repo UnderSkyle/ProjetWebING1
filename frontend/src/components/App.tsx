@@ -69,11 +69,11 @@ const router = createBrowserRouter([
           element: <Address/>
         },
         {
-          path: 'done',
+          path: 'order/done',
           element: <OrderDone/>
         },
         {
-          path: 'add',
+          path: 'address/add',
           element: <AddAddress/>
         }
       ]
