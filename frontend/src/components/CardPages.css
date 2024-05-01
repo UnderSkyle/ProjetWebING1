@@ -215,3 +215,29 @@
     color: #7E664A;
     font-family: Paytone One;
 }
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+    .card-pages, .address-page{
+        margin-top: 4em;
+    }
+    .container-card{
+        padding:5%;
+    }
+    .card-pages h1, .address-page h1{
+        margin:0%;
+        text-align: center;
+        font-size:2em;
+    }
+}
+
+@media only screen and (max-width: 750px) and (orientation: landscape) {
+    .card-pages, .address-page{
+        margin-top: 4em;
+    }
+    .container-card{
+        padding:2%;
+    }
+    .card-pages h1, .address-page h1{
+        font-size:2em;
+    }
+}

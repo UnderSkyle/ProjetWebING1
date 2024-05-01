@@ -33,6 +33,38 @@ function Basket() {
         setData(cartitems);
     }
 
+    /*const createOrder = () => {
+        const newOrder = {
+            id_user: userID,
+            basketData: data,
+        };
+
+        const apiUrl = 'http://127.0.0.1:8000/posts/createOrder/';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newOrder),
+        };
+
+        fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                    //afficher une erreur sur la page
+                }
+                return response.json();
+            })
+            .then( () => {
+                console.log("Success");
+            })
+            .catch(err => {
+                console.log(err.message);
+            });
+    }*/
+
+
     return(
         <>
         <div className='card-pages'>
@@ -60,7 +92,9 @@ function Basket() {
             )}
             <div>
                 <h3>Total : &euro;</h3>
-                <a href="/order/choose_address"><button className="LinkButton-card" role="button">Passer la commande</button></a>
+                <a href="/order/choose_address">
+                    <button className="LinkButton-card" role="button">Passer la commande</button>
+                </a>
             </div>
         </div>
         </>

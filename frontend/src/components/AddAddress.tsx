@@ -133,7 +133,7 @@ function AddAddress({order}) {
         <div className="big_container_contact div-form">
             <br/><br/><br/>
             <div className="container-form">
-                <h1 className="text">Ajouter une adresse</h1>
+                <h1 className="text">{idAddress==null?"Ajouter une adresse":"Modifier l'adresse"}</h1>
                 <form onSubmit = {handleSubmit}>
                     <div className="form_row">
                         <div className="input_data">

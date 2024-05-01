@@ -8,10 +8,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from posts.models import Product, Cart, CartItem, Address
+from posts.models import Product, Cart, CartItem, Address, Order, OrderItem
 from posts.models import ProductCategory
 from rest_framework.response import Response
 from rest_framework import status
+from django.utils import timezone
 
 # Create your views here.
 
@@ -116,6 +117,24 @@ def add_to_cart(request):
         return Response(user.id,status=status.HTTP_200_OK)
 
 @csrf_exempt
+@api_view(['DELETE'])
+def delete_address(request):
+    """request={
+            id_user
+            id_address
+        }"""
+    if (request.method=="DELETE"):
+        data=request.data
+        user = User.objects.get(id=data.get("id_user"))
+        address = Address.objects.get(id=data.get("id_address"))
+        if (address.user!=user):
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        address.delete()
+        return Response(status=status.HTTP_200_OK)
+
+
+
+@csrf_exempt
 @api_view(['POST'])
 def create_address(request):
     """request={
@@ -158,22 +177,6 @@ def update_address(request):
         address.complementary_info = data.get("complementary_info")
         address.save()
         return Response(status=status.HTTP_200_OK)
-    
-@csrf_exempt
-@api_view(['DELETE'])
-def delete_address(request):
-    """request={
-            id_user
-            id_address
-        }"""
-    if (request.method=="DELETE"):
-        data=request.data
-        user = User.objects.get(id=data.get("id_user"))
-        address = Address.objects.get(id=data.get("id_address"))
-        if (address.user!=user):
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        address.delete()
-        return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['GET'])
@@ -186,7 +189,7 @@ def get_addresses(request):
             city
             complementary_info"""
      try:
-         user_id = request.GET.get('userID')
+         user_id = request.GET.get('user_id')
          if user_id is None:
              return Response(status=400)
          user = User.objects.get(id=user_id)
@@ -207,18 +210,46 @@ def get_address(request):
          if  id_address is None:
              return Response(status=400)
          address = Address.objects.get(id=id_address)
-         """id: "",
-        prenom:"",
-        nom:"",
-        codePostal:"",
-        ville:"",
-        adresse:"",
-        complement:"""""
          address_data = {'id':address.id,'prenom': address.first_name, 'nom': address.last_name, 'adresse': address.street, 'codePostal': address.postal_code, 'ville': address.city, "complement": address.complementary_info}
          print(address_data)
          return Response(address_data, status=status.HTTP_200_OK)
      except Address.DoesNotExist:
          return Response(status=status.HTTP_200_OK)
+
+
+
+@csrf_exempt
+@api_view(['POST'])
+def remove_item(request):
+    print(request.data)
+    if request.method == 'POST':
+        try:
+            user_id = request.data.get('user_id')
+            product_ref = request.data.get('product_ref')
+                # Retrieve the user's cart
+            cart = Cart.objects.get(created_by_id=user_id)
+                # Retrieve the product to remove
+            product = Product.objects.get(ref=product_ref)
+
+                # Remove the product from the cart
+            cart_item = CartItem.objects.get(cart=cart, product=product)
+            cart_item.delete()
+
+            return Response(status=200)
+
+        except Cart.DoesNotExist:
+            print('noCart')
+            return Response(status=404)
+
+        except Product.DoesNotExist:
+            print('noproduct')
+            return Response(status=404)
+
+        except CartItem.DoesNotExist:
+            print('nocartItem')
+            return Response(status=404)
+    return Response(status=405)
+
 
 @csrf_exempt
 @api_view(['GET'])
@@ -255,7 +286,6 @@ def get_user(request):
 def get_cart(request):
      try:
           user_id = request.GET.get('userID')
-          print(user_id)
           if user_id is None or user_id == "null":
              return Response({'name': 'test', 'quantity':'5', 'price': '10', 'image': 'c01.png', 'ref': "test"})
           cart = Cart.objects.get(created_by_id=user_id)
@@ -267,3 +297,78 @@ def get_cart(request):
           return Response(product_data)
      except Cart.DoesNotExist:
           return Response(status=404)
+
+@csrf_exempt
+@api_view(['GET'])
+def get_orders(request):
+     try:
+          user_id = request.GET.get('userID')
+          orders = orders = Order.objects.filter(placed_by_id=user_id)
+
+          orders_data = []
+          for order in orders:
+              order_data = {
+                'id': order.id,
+                'placed_at': order.placed_at.strftime('%Y-%m-%d %H:%M:%S'),  # Format the datetime as string
+                'address': order.address.__str__() if order.address else None,  # Address as string or None if not provided
+                'order_items': [{
+                    'quantity': order_item.quantity,
+                    'product_name': order_item.product.name,
+                    'product_price': order_item.product.price,
+                    'product_image': order_item.product.image,
+                    'product_ref': order_item.product.ref
+                } for order_item in order.orderitem_set.all()]  # Fetch order items for the order
+              }
+              orders_data.append(order_data)
+
+          return Response(orders_data)
+     except Cart.DoesNotExist:
+          return Response(status=404)
+
+@csrf_exempt
+@api_view(['POST'])
+def create_order(request):
+    if request.method == 'POST':
+        try:
+            user_id = request.data.get('user_id')
+            address_id = request.data.get('address_id')
+            print(user_id)
+            # Retrieve the cart and associated cart items
+            cart = Cart.objects.get(created_by_id=user_id)
+            print(cart)
+            cart_items = CartItem.objects.filter(cart=cart)
+
+            # Create the order
+            order = Order.objects.create(
+                placed_at=timezone.now(),
+                placed_by=cart.created_by,
+                address=Address.objects.get(id=address_id)
+            )
+
+            # Create order items from the cart items
+            for cart_item in cart_items:
+                OrderItem.objects.create(
+                    quantity=cart_item.quantity,
+                    product=cart_item.product,
+                    order=order
+                )
+
+            cart_items.delete()
+
+            return Response(status=200)
+
+        except Cart.DoesNotExist:
+            print('noCart')
+            return Response(status=404)
+
+        except Address.DoesNotExist:
+            return Response(status=404)
+
+        except Exception as e:
+            print(e)
+            return Response(status=500)
+    return Response(status=405)
+
+
+
+

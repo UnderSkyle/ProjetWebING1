@@ -9,7 +9,7 @@
     z-index:2;
     display: grid;
     grid-template-columns: repeat(50, 2%);
-    grid-template-rows: repeat(20,20px);
+    grid-template-rows: repeat(20,15px);
     align-items: center;
 }
 
@@ -88,7 +88,7 @@
     text-decoration: none;
     color:#496A2D;
     font-family: Paytone One;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .social-medias-footer{
@@ -110,7 +110,7 @@
     margin-bottom: 10px;
 }
 .social-medias-footer img{
-    height: 2.5em;
+    height: 2.2em;
 }
 
 @media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
