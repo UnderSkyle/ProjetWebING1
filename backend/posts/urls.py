@@ -9,7 +9,9 @@ urlpatterns = [
     path('addToCart/', views.add_to_cart),
     path('createAddress/',views.create_address),
     path('updateAddress/',views.update_address),
-    path('getAdresses/',views.get_addresses),
+    path('deleteAddress/',views.delete_address),
+    path('getAddresses/',views.get_addresses),
+    path('getAddress/',views.get_address),
     path('getCart/', views.get_cart),
     path('getProducts/', views.get_products),
     path('getUser/', views.get_user)
