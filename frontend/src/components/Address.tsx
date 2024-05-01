@@ -30,7 +30,7 @@ function Address({choice}) {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/posts/getAddresses?userID='+userID);
+            const response = await fetch('http://127.0.0.1:8000/posts/getAddresses?user_id='+userID);
             if (!response.ok) {
                 throw new Error('Failed to fetch');
             }
@@ -60,7 +60,7 @@ function Address({choice}) {
         }
     }
 
-    const getCart = async () => {
+    /*const getCart = async () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/posts/getCart?userID='+userID);
             if (!response.ok) {
@@ -71,13 +71,42 @@ function Address({choice}) {
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-    };
+    };*/
 
     const finishOrder = async () => {
-        if (Object.keys(chosenAddress).length>0){
-            var cart = await getCart();
-            //appel api pour enregistrer commmande
-            //window.location.href = '../done';
+        if (Object.keys(chosenAddress).length>0) {
+            console.log(chosenAddress)
+            //var cart = await getCart();
+            //console.log(cart);
+            const OrderData = {
+                user_id:userID,
+                address_id:chosenAddress.id,
+            };
+
+            const apiUrl = 'http://127.0.0.1:8000/posts/createOrder/';
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(OrderData),
+            };
+
+            fetch(apiUrl, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        //afficher une erreur sur la page
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    console.log("Success");
+                })
+                .catch(err => {
+                    console.log(err.message);
+                });
+            window.location.href = '/order/done';
         }
     }
 
