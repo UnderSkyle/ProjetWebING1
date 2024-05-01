@@ -139,6 +139,8 @@ def delete_address(request):
 def create_address(request):
     """request={
             id_user
+            first_name
+            last_name
             street
             postal_code
             city
@@ -147,7 +149,7 @@ def create_address(request):
     if (request.method=="POST"):
         data=request.data
         user=User.objects.get(id=data.get("id_user"))
-        user.address_set.create(street=data.get("street"), postal_code=data.get("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
+        user.address_set.create(first_name=data.get("first_name"),last_name=data.get("last_name"),street=data.get("street"), postal_code=data.get("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
         user.save()
         return Response(status=status.HTTP_200_OK)
 
@@ -157,6 +159,8 @@ def update_address(request):
     """request={
             id_user
             id_address
+            first_name
+            last_name
             street
             postal_code
             city
@@ -165,6 +169,8 @@ def update_address(request):
     if (request.method=="PUT"):
         data=request.data
         address = Address.objects.get(id=data.get("id_address"))
+        address.first_name = data.get("first_name")
+        address.last_name = data.get("last_name")
         address.street = data.get("street")
         address.postal_code = data.get("postal_code")
         address.city = data.get("city")
@@ -204,13 +210,6 @@ def get_address(request):
          if  id_address is None:
              return Response(status=400)
          address = Address.objects.get(id=id_address)
-         """id: "",
-        prenom:"",
-        nom:"",
-        codePostal:"",
-        ville:"",
-        adresse:"",
-        complement:"""""
          address_data = {'id':address.id,'prenom': address.first_name, 'nom': address.last_name, 'adresse': address.street, 'codePostal': address.postal_code, 'ville': address.city, "complement": address.complementary_info}
          print(address_data)
          return Response(address_data, status=status.HTTP_200_OK)
