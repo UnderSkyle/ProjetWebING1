@@ -3,13 +3,14 @@ import './Card.css'
 function CardBasket({name,id,quantity,price, img}){
     const imagePath = "src/assets/" + img
 
+
     const removeFromBasket = () => {
         const data = {
             user_id: localStorage.getItem("user"),
             product_ref: id,
         }
 
-        const apiUrl = 'http://127.0.0.1:8000/posts/removeItem/';
+        const apiUrl = 'http://127.0.0.1:8000/posts/deleteItem/';
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -32,6 +33,7 @@ function CardBasket({name,id,quantity,price, img}){
             .catch(err => {
                 console.log(err.message);
             });
+        window.location.reload();
     }
 
     return(
