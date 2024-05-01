@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from posts.models import Product, Cart, CartItem, Address
+from posts.models import Product, Cart, CartItem, Address, Order, OrderItem
 from posts.models import ProductCategory
 from rest_framework.response import Response
 from rest_framework import status
@@ -120,8 +120,6 @@ def add_to_cart(request):
 def create_address(request):
     """request={
             id_user
-            first_name
-            last_name
             street
             postal_code
             city
@@ -130,7 +128,7 @@ def create_address(request):
     if (request.method=="POST"):
         data=request.data
         user=User.objects.get(id=data.get("id_user"))
-        user.address_set.create(first_name=data.get("first_name"),last_name=data.get("last_name"),street=data.get("street"), postal_code=data.get("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
+        user.address_set.create(street=data.get("street"), postal_code=data.get("postal_code"), city=data.get("city"), complementary_info=data.get("complementary_info"))
         user.save()
         return Response(status=status.HTTP_200_OK)
 
@@ -140,8 +138,6 @@ def update_address(request):
     """request={
             id_user
             id_address
-            first_name
-            last_name
             street
             postal_code
             city
@@ -150,75 +146,27 @@ def update_address(request):
     if (request.method=="PUT"):
         data=request.data
         address = Address.objects.get(id=data.get("id_address"))
-        address.first_name = data.get("first_name")
-        address.last_name = data.get("last_name")
         address.street = data.get("street")
         address.postal_code = data.get("postal_code")
         address.city = data.get("city")
         address.complementary_info = data.get("complementary_info")
         address.save()
         return Response(status=status.HTTP_200_OK)
-    
-@csrf_exempt
-@api_view(['DELETE'])
-def delete_address(request):
-    """request={
-            id_user
-            id_address
-        }"""
-    if (request.method=="DELETE"):
-        data=request.data
-        user = User.objects.get(id=data.get("id_user"))
-        address = Address.objects.get(id=data.get("id_address"))
-        if (address.user!=user):
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        address.delete()
-        return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['GET'])
 def get_addresses(request):
-     """id_user
-            first_name
-            last_name
-            street
-            postal_code
-            city
-            complementary_info"""
      try:
-         user_id = request.GET.get('userID')
+         user_id = request.GET.get('user_id')
          if user_id is None:
              return Response(status=400)
          user = User.objects.get(id=user_id)
-         addresses = Address.objects.filter(user=user)
-         addresses_data = [
-              {'id':address.id,'first_name': address.first_name, 'last_name': address.last_name, 'street': address.street, 'postal_code': address.postal_code, 'city': address.city, "complementary_info": address.complementary_info}
-               for address in addresses
-         ]
-         return Response(addresses_data, status=status.HTTP_200_OK)
-     except Address.DoesNotExist:
+         addresses = Address.objects.get(user=user)
+         return Response(addresses)
+     except ProductCategory.DoesNotExist:
          return Response(status=404)
 
-@csrf_exempt
-@api_view(['GET'])
-def get_address(request):
-     try:
-         id_address = request.GET.get('idAddress')
-         if  id_address is None:
-             return Response(status=400)
-         address = Address.objects.get(id=id_address)
-         """id: "",
-        prenom:"",
-        nom:"",
-        codePostal:"",
-        ville:"",
-        adresse:"",
-        complement:"""""
-         address_data = {'id':address.id,'prenom': address.first_name, 'nom': address.last_name, 'adresse': address.street, 'codePostal': address.postal_code, 'ville': address.city, "complement": address.complementary_info}
-         print(address_data)
-         return Response(address_data, status=status.HTTP_200_OK)
-     except Address.DoesNotExist:
-         return Response(status=status.HTTP_200_OK)
+
 
 @csrf_exempt
 @api_view(['GET'])
@@ -267,3 +215,64 @@ def get_cart(request):
           return Response(product_data)
      except Cart.DoesNotExist:
           return Response(status=404)
+
+@csrf_exempt
+@api_view(['GET'])
+def get_orders(request):
+     try:
+          user_id = request.GET.get('userID')
+          orders = orders = Order.objects.filter(placed_by_id=user_id)
+
+          orders_data = []
+                      for order in orders:
+                          order_data = {
+                              'id': order.id,
+                              'placed_at': order.placed_at.strftime('%Y-%m-%d %H:%M:%S'),  # Format the datetime as string
+                              'address': order.address.__str__() if order.address else None,  # Address as string or None if not provided
+                              'order_items': [{
+                                  'quantity': order_item.quantity,
+                                  'product_name': order_item.product.name,
+                                  'product_price': order_item.product.price,
+                                  'product_image': order_item.product.image,
+                                  'product_ref': order_item.product.ref
+                              } for order_item in order.orderitem_set.all()]  # Fetch order items for the order
+                          }
+                          orders_data.append(order_data)
+
+          return Response(product_data)
+     except Cart.DoesNotExist:
+          return Response(status=404)
+
+
+
+@csrf_exempt
+@api_view(['POST'])
+def remove_basket_item(request):
+    print(request)
+    if request.method == 'POST':
+        try:
+            user_id = request.POST.get('user_id')
+            product_ref = request.POST.get('product_ref')
+
+                # Retrieve the user's cart
+            cart = Cart.objects.get(created_by=user_id)
+
+                # Retrieve the product to remove
+            product = Product.objects.get(ref=product_ref)
+
+                # Remove the product from the cart
+            cart_item = CartItem.objects.get(cart=cart, product=product)
+            cart_item.delete()
+
+            return Response(status=200)
+
+        except Cart.DoesNotExist:
+            return Response(status=404)
+
+        except Product.DoesNotExist:
+            return Response(status=404)
+
+        except CartItem.DoesNotExist:
+            return Response(status=404)
+
+    return Response(tatus=405)

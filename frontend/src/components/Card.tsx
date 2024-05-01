@@ -20,13 +20,14 @@ function Card({name, id, price, stock, img}){
     }
 
     const addToCart = () => {
-        var user = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
         if (user!=null){
             const data = {
                 id_user: user,
                 quantity: count,
                 ref_product: id
             };
+            console.log(data);
             const apiUrl = 'http://127.0.0.1:8000/posts/addToCart/';
             const requestOptions = {
                 method: 'POST',
