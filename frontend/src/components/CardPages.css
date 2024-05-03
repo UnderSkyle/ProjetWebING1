@@ -1,4 +1,4 @@
-.card-pages, .address-page{
+.card-pages, .address-page, .order-page{
     margin-top: 6em;
 }
 .div-address-cards{
@@ -7,14 +7,6 @@
     box-sizing: border-box;
     justify-content: center;
 }
-.card-pages h1, .address-page h1{
-    color:rgb(70,48,24);
-    margin-left: 1%;
-    font-size:xxx-large;
-    font-family: Paytone One;
-    letter-spacing: .25px;
-}
-
 .card-pages h6{
     font-family: Paytone One;
     letter-spacing: .25px;
@@ -52,9 +44,9 @@
     text-align: center;
     text-transform: none;
     width: auto;
-    margin:auto;
     display:flex;
     vertical-align: center;
+    margin-right: 1%;
 }
   
 .LinkButton-account:hover {
@@ -78,7 +70,7 @@
     justify-content: center;
     letter-spacing: .25px;
     max-width: 100%;
-    padding: 15px 60px;
+    padding: 15px 40px;
     text-align: center;
     text-transform: none;
     width: auto;
@@ -100,12 +92,10 @@
     padding: 1%;
     margin:2%;
     text-align:justify;
-    max-width: 60%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2,1fr);
-    grid-gap: 10%;
-    grid-auto-rows: minmax(100px, auto);
+    width: 350px;
+    display: flex;
+    align-items: center;
+    
 }
 
 .container-card{
@@ -134,7 +124,7 @@
 
 .grid-card{
     display:grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: 70% 30%;
 }
 
 .grid-card-address{
@@ -144,27 +134,20 @@
     margin: auto;
 }
 
-.grid1-account { grid-area: 1 / 1 / 3 / 2; }
-.grid2-account { grid-area: 1 / 2 / 2 / 3; }
-.grid3-account { grid-area: 2 / 2 / 3 / 3; }
 
 .bigcontainer-account{
-    display: grid;
-    grid-template-rows: repeat(3,1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    align-items:normal;
-    vertical-align: middle;
-    margin:auto;
+    margin: 0% 1%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
 }
 
 .mediumcontainer-account{
-    display: grid;
-    grid-template-rows: repeat(2,1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    align-items:normal;
-    vertical-align: middle;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .icon-account {
@@ -173,13 +156,15 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 24;
-    color:#496A2D;
-    font-size: 75px !important;
-    padding:2%!important;
+    color:rgb(244,238,180);
+    font-size: 60px !important;
+    padding:3%!important;
     vertical-align: middle;
     border:none;
-    grid-column: 1;
     max-width: fit-content;
+    height: fit-content;
+    background-color: #496A2D  ;
+    border-radius: 50px;
   }
 .one{grid-column: 1;}
 
@@ -217,27 +202,140 @@
 }
 
 @media only screen and (max-width: 750px) and (orientation: portrait) {
-    .card-pages, .address-page{
+    .card-pages, .address-page, .order-page{
         margin-top: 4em;
     }
     .container-card{
         padding:5%;
     }
-    .card-pages h1, .address-page h1{
+    .card-pages h1, .address-page h1, .account-page h1, .order-page h1{
         margin:0%;
         text-align: center;
-        font-size:2em;
+        font-size:2.5em;
+    }
+    .LinkButton-account{
+        display: none;
+    }
+    .mediumcontainer-account{
+        justify-content: center;
+    }
+    .icon-account{
+        font-size: 50px !important;
     }
 }
 
-@media only screen and (max-width: 750px) and (orientation: landscape) {
-    .card-pages, .address-page{
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation: landscape) {
+    .card-pages, .address-page, .order-page{
         margin-top: 4em;
     }
     .container-card{
         padding:2%;
     }
-    .card-pages h1, .address-page h1{
-        font-size:2em;
+    .card-pages h1, .address-page h1, .account-page h1, .order-page h1{
+        font-size:2.5em;
     }
+}
+
+.text-container-account{
+    margin-left: 5%;
+    color: rgb(70,48,24);
+}
+
+.content-basket-page{
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.basket-cards{
+    display: inline;
+    grid-column: 1/1;
+}
+
+.card-basket{
+    border: 1px solid hsl(0,0%,80%);
+    border-radius:10px;
+    box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    margin:1em 0.5em 1em 1em;
+    text-align:justify;
+    height: 150px;
+    width: calc(100%-1.5em);
+    display: flex;
+}
+
+.card-basket-div-image{
+    width: 150px;
+    min-width: 150px;
+    background-color:#C1C1C1;
+    align-content: center;
+    text-align: center;
+    border-radius:10px 0px 0px 10px;
+}
+
+.card-basket-image{
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.basket-total-order{
+    border: 1px solid hsl(0,0%,80%);
+    border-radius:10px;
+    box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    padding: 2%;
+    height: 150px;
+    grid-column: 2/2;
+    width: calc(100%-1.5em);
+    margin:1em 1em 1em 0.5em;
+    position: relative;
+}
+
+.basket-total-order a{
+    position: absolute;
+    bottom: 0.5em;
+    right: 0;
+    left: 0;
+}
+.card-basket-info-product{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(10,10%);
+    padding: 5px 10px;
+}
+
+.card-basket-info-product span{
+    text-align: end;
+    color:rgb(70,48,24);
+    font-size: 30px !important;
+}
+
+.card-basket-name-product{
+    grid-column: 1/1;
+    grid-row: 1/1;
+}
+
+.card-basket-name-quantity{
+    grid-column: 1/1;
+    grid-row: 9/10;
+}
+
+.card-basket-name-price{
+    text-align: end;
+    grid-row: 9/10;
+}
+
+.card-order-info{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: rgb(70,48,24);
+    padding: 5px 15px;
+}
+
+
+.card-order-info-right{
+    text-align: end;
+}
+
+.card-order{
+    margin: 1.5em 5em;
 }

@@ -1,4 +1,11 @@
-.card-div{
-    display: flex;
-    margin-top: 6em;
+.standard-page{
+   margin-top: 6em;
+}
+
+.standard-page h1{
+   color:rgb(70,48,24);
+   margin-left: 1%;
+   font-size:xxx-large;
+   font-family: Paytone One;
+   letter-spacing: .25px;
 }

@@ -1,0 +1,24 @@
+.image-order-done{
+   background-image: url("../assets/hedgehog_order_done.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:80%;
+    width:100%;
+    background-position: left;
+    margin-top: 6em;
+}
+
+.title-order-done{
+   color:rgb(70,48,24);
+    margin-left:4%;
+    padding-top:2%;
+    font-size:xxx-large;
+    font-family: Paytone One;
+    letter-spacing: .25px;
+}
+
+.subtitle-order-done{
+   color:rgb(70,48,24);
+    margin-left:4%;
+    font-family: Paytone One;
+}

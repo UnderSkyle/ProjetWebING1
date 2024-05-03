@@ -1,6 +1,5 @@
 import CardOrder from "./CardOrder.tsx"
-import {useEffect, useState} from "react";
-import CardBasket from "./CardBasket.tsx";
+import {Key, useEffect, useState} from "react";
 
 function Order() {
     const [data, setData] = useState<any | null>([]);
@@ -28,28 +27,20 @@ function Order() {
 
     return(
         <>
+        <div className="standard-page">
             <h1>Vos commandes</h1>
-            {Array.isArray(data) ? (
-                data.map(item => (
+            {data.map((item: { id: Key | null | undefined; order_items: any[]; placed_at: any; }) => (
                     <CardOrder
                         key={item.id}
+                        image={item.order_items[0].product_image}
                         numOrder={item.id}
                         numArticles={item.order_items.reduce((total, item) => total + item.quantity, 0)}
                         date={item.placed_at}
                         status={'En route'}
                         price={item.order_items.reduce((total, item) => total + (item.quantity * item.product_price), 0)}
                     />
-                ))
-            ) : (
-                <CardOrder
-                    key={data.id}
-                    numOrder={data.id}
-                    numArticles={data.order_items.reduce((total, item) => total + item.quantity, 0)}
-                    date={data.placed_at}
-                    status={'En route'}
-                    price={data.order_items.reduce((total, item) => total + (item.quantity * item.product_price), 0)}
-                />
-            )}
+                ))}
+        </div>
         </>
     )
 }

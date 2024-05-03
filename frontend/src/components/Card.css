@@ -2,19 +2,27 @@
     border: 1px solid hsl(0,0%,80%);
     border-radius:10px;
     box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-    padding: 1%;
+    padding: 0.3em 1em;
     margin:2%;
-
+    height: 400px;
     text-align:justify;
-    max-width: 250px;
+    width: 300px;
+    position: relative;
+}
+
+.card-div-image{
+    width: 90%;
+    height: 230px;
+    margin:auto;
+    display: flex;
+
 }
 
 .card-image{
-    max-width:90%;
+    max-width:100%;
+    max-height: 230px;
     margin:auto;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    display: block;
+    vertical-align: middle;
 }
 
 
@@ -35,6 +43,8 @@
     color: rgb(73,106,45);
     margin:auto !important;
     font-family: "Paytone One";
+    width: 100%;
+    text-align: end;
 }
 
 .stock-card{
@@ -52,20 +62,20 @@
 .compteur-div-card{
     width:100px;
     display:grid;
+    grid-template-columns: repeat(3,1fr);
     border:solid 1px grey;
     border-radius: 10px;
-    grid-template-columns: repeat(3,1fr);
     margin:auto !important;
     padding: auto;
     align-items: center;
 }
 
+.compteur-cart{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
 .material-symbols-outlined-card {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
     color:rgb(166,170,83);
     font-size: 25px !important;
     padding:2%!important;
@@ -77,17 +87,27 @@
     border:solid 1px grey;
     border-radius: 10px;
     margin: auto;
+    margin-left: 2px;
 }
 
 .compt-card{
     font-family: "Paytone One";
     color:rgb(166,170,83);
+    text-align: center;
 }
 
 .spanl-card{
     border-left:solid 1px grey !important;
+    text-align: center;
 }
 
 .spanr-card{
     border-right:solid 1px grey !important;
+    text-align: center;
+}
+
+.card-products-info{
+    position: absolute;
+    bottom: 2%;
+    padding-right: 1em;
 }

@@ -1,7 +1,6 @@
-import './Profil.css';
 import {useEffect, useState} from "react";
 function Profil() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({first_name:"", last_name:"", email:""});
     const userID = localStorage.getItem("user");
 
     useEffect(() => {
@@ -25,10 +24,8 @@ function Profil() {
 
     return(
         <>
-        <br/><br/><br/><br/>
-        <div className='profil-page'>
+        <div className='standard-page'>
             <h1>Votre profil</h1>
-            <br/><br/><br/>
             <div className="bordure-profil"><p></p></div>
             <div className="bigcontainer-profil">
                 <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">person</span>
@@ -50,9 +47,7 @@ function Profil() {
                 </div>    
             </div>
             <div className="bordure-profil"><p></p></div>
-            <br/><br/>
             <a><button className="LinkButton-profil" role="button">Modifier</button></a>
-            <br/><br/>
         </div>
         </>
     )

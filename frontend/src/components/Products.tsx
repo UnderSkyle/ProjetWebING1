@@ -1,10 +1,13 @@
 import Card from "./Card.tsx"
-import './StandardPage.css'
 import  {useEffect, useState} from "react";
 
 function Standard(props: { category: string;}) {
     const [data, setData] = useState([]);
-    const category = props.category;
+    const category : string = props.category;
+    const mapCategory = new Map();
+    mapCategory.set("1", "Nourriture");
+    mapCategory.set("2", "Cabanes");
+    mapCategory.set("3", "Jouets");
 
 
     useEffect(() => {
@@ -29,10 +32,13 @@ function Standard(props: { category: string;}) {
 
     return(
         <>
-        <div className="card-div">
-            {data.map(item => (
-                <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
-            ))}
+        <div className="standard-page">
+            <h1>{mapCategory.get(category)} <span style={{fontSize:"0.6em"}}>{" - " + data.length + " résultats trouvés"}</span></h1>
+            <div className="card-div">
+                {data.map((item : { name: any; ref: any; price:any; stock: any; image: any }) => (
+                    <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
+                ))}
+            </div>
         </div>
         </>
     )

@@ -34,9 +34,12 @@
     text-align: start;
 }
 
-.slogan-footer{
+.footer-text-under-logo{
     grid-column: 2 / 15;
-    grid-row: 10 / 12;
+    grid-row: 12 / 12;
+}
+
+.slogan-footer{
     font-family: Pacifico;
     color: #496A2D;
     font-size: 2.7vh;
@@ -45,8 +48,6 @@
 }
 
 .contact-button-footer{
-    grid-column: 2 / 12;
-    grid-row: 12 / 15;
     background-color: #496A2D;
     border: none;
     padding-top: 1vh;
@@ -179,7 +180,7 @@
     }
     
 }
-@media only screen and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
     .footer{
         grid-template-rows: repeat(20,12px);
     }

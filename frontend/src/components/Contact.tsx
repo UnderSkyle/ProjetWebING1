@@ -1,4 +1,3 @@
-import './Form.css'
 import {useState} from "react";
 
 function Contact() {
@@ -10,9 +9,46 @@ function Contact() {
         metier:"Enseignant",
         obj:"",
         mess:"",
-        date:""
+        date:"15122003"
 
     });
+
+    const sendMail = () => {
+        const data = {
+            surname:inputs.prenom,
+            name:inputs.nom,
+            email:inputs.email,
+            gender:inputs.genre,
+            job:inputs.metier,
+            birthdate:inputs.date,
+            subject:inputs.obj,
+            message:inputs.mess
+        };
+        var csrftoken = getCookie('csrftoken');
+        if (csrftoken!=null){
+            var c :string = csrftoken?.valueOf();
+            console.log(c);
+            const apiUrl = 'http://127.0.0.1:8000/posts/send_mail/';
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            };
+            
+            fetch(apiUrl, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok !');
+                        //afficher une erreur sur la page
+                    }
+                })
+                .catch(err => {
+                console.log(err.message);
+                });
+        }
+    }
 
     const handleChange = (event : any) => {
         const name = event.target.name;
@@ -22,7 +58,21 @@ function Contact() {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        alert(`Votre formulaire a été envoyé ${inputs.prenom}`)
+        sendMail();
+    }
+    function getCookie(name: string) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 
     return(
@@ -36,6 +86,7 @@ function Contact() {
             <div className="container-form">
                     
                 <form onSubmit = {handleSubmit}>
+                    
                     <div className="form_row">
                         <div className="input_data">
                             <input required type="text" 
@@ -108,13 +159,7 @@ function Contact() {
                                 <option value="cadre">Cadre</option>
                             </select>
                         </div>
-                        <div className="date">
-                            Date<label><br/><br/>
-                                <input required type = "date"
-                                                name = "date"
-                                                value = {inputs.date}/>
-                            </label>
-                        </div>
+                        
                     </div>
 
 

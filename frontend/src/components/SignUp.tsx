@@ -1,5 +1,4 @@
 import React from 'react';
-import './Form.css'
 
 /*function SignUp() {
     const [inputs, setInputs] = useState({
@@ -79,7 +78,6 @@ import './Form.css'
                     </div>
                 </form>
                 </div>
-                <br/><br/>
             </div>
             
         </>
@@ -198,7 +196,7 @@ class SignUp extends React.Component<Props, State> {
     render(){
         return(
             <>
-            <div className="big-container-login div-form">
+            <div className="standard-page big-container-login div-form">
                 <div className="container-form">
                     <h1 className="text">Connexion</h1>
                     <form onSubmit = {this.handleSubmit}>

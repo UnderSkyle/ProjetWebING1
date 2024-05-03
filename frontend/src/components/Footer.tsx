@@ -1,4 +1,3 @@
-import './Footer.css'
 function Footer() {
 
 
@@ -7,8 +6,10 @@ function Footer() {
             <footer className="footer">
                 <img className='logo-footer-circle' src='/src/assets/logo_rond.png'></img>
                 <img className='logo-footer-text' src='/src/assets/logo_vert.png'></img>
-                <p className='slogan-footer'>Tous pour votre hérisson</p>
-                <button className="contact-button-footer" role="button"><a href="/contact">Contactez-nous !</a></button>
+                <div className='footer-text-under-logo'>
+                    <p className='slogan-footer'>Tous pour votre hérisson</p>
+                    <button className="contact-button-footer" role="button"><a href="/contact">Contactez-nous !</a></button>
+                </div>
                 <div className='links-pages-footer'>
                     <ul>
                         <li><a href="/">Accueil</a></li>

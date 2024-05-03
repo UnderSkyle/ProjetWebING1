@@ -6,7 +6,7 @@ import Footer from './Footer.tsx'
 import Contact from "./Contact.tsx"
 import Login from "./Login.tsx"
 import SignUp from "./SignUp.tsx"
-import StandardPage from "./StandardPage.tsx"
+import Products from "./Products.tsx"
 import Account from "./Account.tsx"
 import Profil from "./Profil.tsx"
 import Order from "./Order.tsx"
@@ -14,6 +14,18 @@ import Address from "./Address.tsx"
 import OrderDone from "./OrderDone.tsx"
 import AddAddress from "./AddAddress.tsx"
 import Basket from "./Basket.tsx";
+
+import './Account.css';
+import './Card.css';
+import './CardPages.css';
+import './Footer.css';
+import './Form.css';
+import './Header.css';
+import './OrderDone.css';
+import './Products.css';
+import './Profil.css';
+import './StandardPage.css';
+import './Welcome.css';
 
 const router = createBrowserRouter([
     {
@@ -26,15 +38,15 @@ const router = createBrowserRouter([
         },
         {
           path: 'food',
-          element: <StandardPage category={"1"}/>
+          element: <Products category={"1"}/>
         },
         {
           path: 'house',
-          element: <StandardPage category={"2"}/>
+          element: <Products category={"2"}/>
         },
         {
           path: 'toys',
-          element: <StandardPage category={"3"}/>
+          element: <Products category={"3"}/>
         },
         {
           path: 'contact',

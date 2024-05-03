@@ -1,4 +1,3 @@
-import './Form.css'
 import React from 'react';
 
 interface RouterProps {
@@ -67,6 +66,7 @@ class Login extends React.Component<Props, State> {
             })
             .then(data => {
                 localStorage.setItem("user", JSON.stringify(data));
+                
                 window.location.href = '/';
               })
             .catch(err => {
@@ -77,7 +77,7 @@ class Login extends React.Component<Props, State> {
     render(){
         return(
             <>
-            <div className="big-container-login div-form">
+            <div className="standard-page big-container-login div-form">
                 <div className="container-form">
                     <h1 className="text">Connexion</h1>
                     <form onSubmit = {this.handleSubmit}>

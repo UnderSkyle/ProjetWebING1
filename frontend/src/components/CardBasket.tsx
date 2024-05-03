@@ -1,13 +1,11 @@
-import './Card.css'
-
-function CardBasket({name,id,quantity,price, img}){
-    const imagePath = "src/assets/" + img
+function CardBasket(props:{name:string,id:any,quantity:number,price:string, img:string}){
+    const imagePath = "src/assets/" + props.img
 
 
     const removeFromBasket = () => {
         const data = {
             user_id: localStorage.getItem("user"),
-            product_ref: id,
+            product_ref: props.id,
         }
 
         const apiUrl = 'http://127.0.0.1:8000/posts/deleteItem/';
@@ -39,20 +37,19 @@ function CardBasket({name,id,quantity,price, img}){
     return(
         <>
 
-        <div className="card-card">
-            <div className="grid-card">
-                <img className="card-image" src={imagePath}/>
-                <div>
-                    <h2 className="produit-card">{name}</h2>
-                    <h3 className="produit-card">N° ref {id}</h3>
-                    <span className="material-symbols-outlined-card material-symbols-outlined icon" onClick={removeFromBasket}>close</span>
-
-                </div>
-                <div>
-                    <h3 className="produit-card">{quantity}</h3>
-                    <h3 className="produit-card">{price} &euro;</h3>
-                </div>   
+        <div className="card-basket">
+            <div className='card-basket-div-image'>
+                <img className="card-basket-image" src={imagePath}/>
             </div>
+            <div className='card-basket-info-product'>
+                <div className='card-basket-name-product'>
+                    <h2>{props.name}</h2>
+                    <h3>N° ref {props.id}</h3>
+                </div>
+                <span className="material-symbols-outlined" onClick={removeFromBasket}>close</span>
+                <h3 className='card-basket-name-quantity'>Quantité : {props.quantity}</h3>
+                <h3 className='card-basket-name-price'>{props.price} &euro;</h3>
+            </div> 
         </div>
         </>
     )

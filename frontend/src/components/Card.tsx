@@ -1,14 +1,12 @@
-import './Card.css'
 import {useState} from "react";
-import React from "react";
 
 
-function Card({name, id, price, stock, img}){
+function Card(props:{name:string, id: any, price: string, stock: number, img: string}){
     const [count, setCount] = useState(0);
-    const imagePath = "src/assets/" + img
-    console.log(img)
+    const imagePath = "src/assets/" + props.img
+    console.log(props.img)
     const increment = () => {
-        if (count < stock) {
+        if (count < props.stock) {
             setCount(count + 1);
         }
     }
@@ -26,7 +24,7 @@ function Card({name, id, price, stock, img}){
                 const data = {
                     id_user: user,
                     quantity: count,
-                    ref_product: id
+                    ref_product: props.id
                 };
                 console.log(data);
                 const apiUrl = 'http://127.0.0.1:8000/posts/addToCart/';
@@ -54,19 +52,19 @@ function Card({name, id, price, stock, img}){
                     });
             } else {
                 var cartJson = localStorage.getItem("cart");
-                var cartitem = {name: name, ref: id, price: price, quantity: count, image: img}
+                var cartitem = {name: props.name, ref: props.id, price: props.price, quantity: count, image: props.img}
                 if (cartJson != null) {
                     var cart = JSON.parse(cartJson);
                     console.log(cart);
-                    if (cart[id] == undefined) {
-                        cart[id] = cartitem;
+                    if (cart[props.id] == undefined) {
+                        cart[props.id] = cartitem;
                     } else {
-                        cart[id].quantity = cart[id].quantity + count;
+                        cart[props.id].quantity = cart[props.id].quantity + count;
                     }
                     localStorage.setItem("cart", JSON.stringify(cart));
                 } else {
                     cart = {};
-                    cart[id] = cartitem;
+                    cart[props.id] = cartitem;
                     localStorage.setItem("cart", JSON.stringify(cart));
                 }
             }
@@ -77,21 +75,25 @@ function Card({name, id, price, stock, img}){
         <>
 
         <div className="card-card">
-            <h2 className="produit-card">{name}</h2>
-            <h4 className="ref-card">N° ref {id}</h4>
-            <img className="card-image" src={imagePath}/>
-            <div className="grid-card">
-                <div className="compteur-div-card">
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanr-card" onClick={decrement}>remove</span>
-                    <p className="compt-card">{count}</p>
-                    <span className="material-symbols-outlined-card material-symbols-outlined spanl-card" onClick={increment}>add</span>
-                </div>
-                <span className="material-symbols-outlined-card material-symbols-outlined icon-card" onClick={addToCart}>shopping_bag</span>
-                <h2 className="price-card">{price} &euro;</h2>
+            <h2 className="produit-card">{props.name}</h2>
+            <h4 className="ref-card">N° ref {props.id}</h4>
+            <div className='card-div-image'>
+                <img className="card-image" src={imagePath}/>
             </div>
-            <br/>
-            <h4 className="stock-card">Stock : {stock}</h4>
-
+            <div className='card-products-info'>
+                <div className="grid-card">
+                    <div className='compteur-cart'>
+                        <div className="compteur-div-card">
+                            <span className="material-symbols-outlined-card material-symbols-outlined spanr-card" onClick={decrement}>remove</span>
+                            <span className="compt-card">{count}</span>
+                            <span className="material-symbols-outlined-card material-symbols-outlined spanl-card" onClick={increment}>add</span>
+                        </div>
+                        <span className="material-symbols-outlined-card material-symbols-outlined icon-card" aria-disabled={count==0} onClick={addToCart}>shopping_bag</span>
+                    </div>
+                    <h2 className="price-card">{props.price} &euro;</h2>
+                </div>
+                <h4 className="stock-card">Stock : {props.stock}</h4>
+            </div>
         </div>
         </>
     )

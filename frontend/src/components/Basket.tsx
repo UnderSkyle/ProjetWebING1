@@ -1,6 +1,5 @@
-import './CardPages.css';
 import CardBasket from './CardBasket.tsx'
-import {useEffect, useState} from "react";
+import {Key, useEffect, useState} from "react";
 function Basket() {
     const [data, setData] = useState<any | null>([]);
     const userID = localStorage.getItem("user");
@@ -63,38 +62,41 @@ function Basket() {
                 console.log(err.message);
             });
     }*/
+    var total=0;
+    Array.isArray(data) ? (
+        data.map(item => (
+            total+=item.price * item.quantity
+        ))
+    ) : (
+        total+=data.price * data.quantity
+    )
 
 
     return(
         <>
-        <div className='card-pages'>
+        <div className='standard-page'>
             <h1>Votre panier</h1>
-            {Array.isArray(data) ? (
-                data.map(item => (
-                    <CardBasket
-                        name={item.name}
-                        quantity={item.quantity}
-                        id={item.ref}
-                        price={item.price}
-                        img={item.image}
-                        key={item.ref}
-                    />
-                ))
-            ) : (
-                <CardBasket
-                    name={data.name}
-                    quantity={data.quantity}
-                    id={data.ref}
-                    price={data.price}
-                    img={data.image}
-                    key={data.ref}
-                />
-            )}
-            <div>
-                <h3>Total : &euro;</h3>
-                <a href="/order/choose_address">
-                    <button className="LinkButton-card" role="button">Passer la commande</button>
-                </a>
+            <div className='content-basket-page'>
+                <div className='basket-cards'>
+                {
+                    data.map((item: { name: any; quantity: any; ref: Key | null | undefined; price: any; image: any; }) => (
+                        <CardBasket
+                            name={item.name}
+                            quantity={item.quantity}
+                            id={item.ref}
+                            price={item.price}
+                            img={item.image}
+                            key={item.ref}
+                        />
+                    ))
+                }
+                </div>
+                <div className='basket-total-order'>
+                    <h3>Total : {total} &euro;</h3>
+                    <a href="/order/choose_address">
+                        <button className="LinkButton-card" disabled={total==0} role="button">Passer la commande</button>
+                    </a>
+                </div>
             </div>
         </div>
         </>

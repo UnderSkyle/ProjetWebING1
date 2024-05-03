@@ -1,8 +1,7 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import './Form.css'
+import { useParams } from 'react-router-dom';
 import {useEffect, useState} from "react";
 
-function AddAddress({order}) {
+function AddAddress(props:{order:boolean}) {
     const { idAddress } = useParams();
     const [inputs, setInputs] = useState({
         prenom:"",
@@ -76,7 +75,7 @@ function AddAddress({order}) {
                     throw new Error('Network response was not ok !');
                     //afficher une erreur sur la page
                 }
-                if (order){
+                if (props.order){
                     window.location.href='../../choose_address'
                 }else{
                     window.location.href = '../';
@@ -115,7 +114,7 @@ function AddAddress({order}) {
                     throw new Error('Network response was not ok !');
                     //afficher une erreur sur la page
                 }
-                if (order){
+                if (props.order){
                     window.location.href='../../choose_address'
                 }else{
                     window.location.href = '../';
@@ -130,8 +129,7 @@ function AddAddress({order}) {
 
     return(
         <>
-        <div className="big_container_contact div-form">
-            <br/><br/><br/>
+        <div className="standard-page big_container_contact div-form">
             <div className="container-form">
                 <h1 className="text">{idAddress==null?"Ajouter une adresse":"Modifier l'adresse"}</h1>
                 <form onSubmit = {handleSubmit}>
@@ -204,7 +202,6 @@ function AddAddress({order}) {
                 </form>
                 
             </div>
-            <br/><br/><br/><br/><br/><br/>
         </div>
         </>
     )
