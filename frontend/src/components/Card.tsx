@@ -3,8 +3,7 @@ import {useState} from "react";
 
 function Card(props:{name:string, id: any, price: string, stock: number, img: string}){
     const [count, setCount] = useState(0);
-    const imagePath = "src/assets/" + props.img
-    console.log(props.img)
+    const imagePath = "src/assets/" + props.img;
     const increment = () => {
         if (count < props.stock) {
             setCount(count + 1);
@@ -92,7 +91,7 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                     </div>
                     <h2 className="price-card">{props.price} &euro;</h2>
                 </div>
-                <h4 className="stock-card">Stock : {props.stock}</h4>
+                <h4 className="stock-card" style={{display:"none"}}>Stock : {props.stock}</h4>
             </div>
         </div>
         </>

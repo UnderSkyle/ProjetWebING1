@@ -47,13 +47,13 @@ function Address(props:{choice:boolean}) {
         if (props.choice){
             data.forEach((item: { id: any; }) => {
                 var itemId = "address_"+item.id;
-                document.getElementById(itemId)?.style.setProperty('background-color', "#ffffff");
+                document.getElementById(itemId)?.style.removeProperty('outline');
                 if (item.id==id){
                     chosenAddress=item;
                 }
             })
             var divId = "address_"+id;
-            document.getElementById(divId)?.style.setProperty('background-color', "#F4EEB4");
+            document.getElementById(divId)?.style.setProperty('outline', "5px solid #A6AA53");
             document.getElementById("bt-validation-choice-address")?.style.setProperty('visibility','visible');
         }
     }
@@ -93,7 +93,7 @@ function Address(props:{choice:boolean}) {
         }
     }
 
-    const button_validate_commande=props.choice ? <button id="bt-validation-choice-address" style={{visibility: 'hidden'}} onClick={finishOrder}>Valider</button> : <></>;
+    const button_validate_commande=props.choice ? <button className="standard-button button-address-validate" id="bt-validation-choice-address" style={{visibility: 'hidden'}} onClick={finishOrder}>Valider</button> : <></>;
 
     return(
         <>
@@ -115,13 +115,13 @@ function Address(props:{choice:boolean}) {
                         onClick={()=>selectAddress(item.id)}
                     />
                 ))}
-                <a href={props.choice?'address/add/':'../../address/add/'} style={{width: width, height: height}} className="standard-card container-card-add-address">
+                <div style={{width: width, height: height}} className="standard-card container-card-add-address">
                     <div className='content-container-card-add-address'>
                         <span className="material-symbols-outlined icon-add-address">add</span>
                         <p className='address-name'>Ajouter une adresse</p>
                     </div>
                     
-                </a>
+                </div>
             </div>
             {button_validate_commande}
         </div>

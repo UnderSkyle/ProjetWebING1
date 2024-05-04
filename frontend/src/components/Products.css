@@ -3,3 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.top-products-page{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#button-print-stock{
+    margin-right: 10px;
+}

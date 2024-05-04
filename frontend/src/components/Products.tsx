@@ -3,11 +3,13 @@ import  {useEffect, useState} from "react";
 
 function Standard(props: { category: string;}) {
     const [data, setData] = useState([]);
+    const [text_button, setTextButton] = useState("Afficher le stock");
     const category : string = props.category;
     const mapCategory = new Map();
     mapCategory.set("1", "Nourriture");
     mapCategory.set("2", "Cabanes");
     mapCategory.set("3", "Jouets");
+    const [stockPrinted, setStockPrinted] = useState(false);
 
 
     useEffect(() => {
@@ -29,11 +31,31 @@ function Standard(props: { category: string;}) {
         fetchData();
     }, [category]);
 
+    const printStock=()=>{
+        setStockPrinted(!stockPrinted);
+        if (!stockPrinted){
+            var textsStock = document.getElementsByClassName("stock-card");
+            for (var i=0;i<textsStock.length;i++){
+                (textsStock[i] as HTMLElement).style.setProperty("display","block")
+            }
+            setTextButton("Ne pas afficher le stock");
+        }else{
+            var textsStock = document.getElementsByClassName("stock-card");
+            for (var i=0;i<textsStock.length;i++){
+                (textsStock[i] as HTMLElement).style.setProperty("display","none")
+            }
+            setTextButton("Afficher le stock");
+        }
+    }
 
     return(
         <>
         <div className="standard-page">
-            <h1>{mapCategory.get(category)} <span style={{fontSize:"0.6em"}}>{" - " + data.length + " résultats trouvés"}</span></h1>
+            <div className="top-products-page">
+                <h1>{mapCategory.get(category)} <span style={{fontSize:"0.6em"}}>{" - " + data.length + " résultats trouvés"}</span></h1>
+                
+                <button className="standard-button" id="button-print-stock" onClick={printStock}>{text_button}</button>
+            </div>
             <div className="card-div">
                 {data.map((item : { name: any; ref: any; price:any; stock: any; image: any }) => (
                     <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
