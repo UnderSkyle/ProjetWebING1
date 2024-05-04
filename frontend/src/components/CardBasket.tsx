@@ -44,7 +44,7 @@ function CardBasket(props:{name:string,id:any,quantity:number,price:string, img:
             <div className='card-basket-info-product'>
                 <div className='card-basket-name-product'>
                     <h2>{props.name}</h2>
-                    <h3>N° ref {props.id}</h3>
+                    <h3>Référence : {props.id}</h3>
                 </div>
                 <span className="material-symbols-outlined" onClick={removeFromBasket}>close</span>
                 <h3 className='card-basket-name-quantity'>Quantité : {props.quantity}</h3>

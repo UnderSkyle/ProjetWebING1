@@ -49,10 +49,10 @@
 
 @media only screen and (max-width: 750px) and (orientation: portrait) {
     .button-account-logout {
-        margin-right: 1% !important;
+        margin: auto !important;
     }
     .mediumcontainer-account{
-        justify-content: center;
+        flex-direction: column;
     }
     .icon-account{
         font-size: 50px !important;

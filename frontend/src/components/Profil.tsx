@@ -26,27 +26,29 @@ function Profil() {
         <>
         <div className='standard-page'>
             <h1>Votre profil</h1>
-            <div className="bordure-profil"><p></p></div>
-            <div className="bigcontainer-profil">
-                <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">person</span>
-                <div className="grid-profil">
-                    <h3>Nom</h3>
-                    <p>{data.first_name} {data.last_name}</p>
+            <div className="container-infos-profil">
+                <div className="bordure-profil"><p></p></div>
+                <div className="bigcontainer-profil">
+                    <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">person</span>
+                    <div className="grid-profil">
+                        <h3>Nom</h3>
+                        <p>{data.first_name} {data.last_name}</p>
+                    </div>
                 </div>
+
+                <div className="bordure-profil"><p></p></div>
+
+                <div className="bigcontainer-profil">
+                    <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">mail</span>
+                    <div className="grid-profil">
+
+                        <h3>Adresse e-mail</h3>
+                        <p>{data.email}</p>
+                        
+                    </div>    
+                </div>
+                <div className="bordure-profil"><p></p></div>
             </div>
-
-            <div className="bordure-profil"><p></p></div>
-
-            <div className="bigcontainer-profil">
-                <span className="material-symbols-outlined-card material-symbols-outlined icon-profil">mail</span>
-                <div className="grid-profil">
-
-                    <h3>Adresse e-mail</h3>
-                    <p>{data.email}</p>
-                    
-                </div>    
-            </div>
-            <div className="bordure-profil"><p></p></div>
             <a><button className="standard-button" role="button">Modifier</button></a>
         </div>
         </>

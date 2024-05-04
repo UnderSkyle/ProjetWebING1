@@ -41,25 +41,32 @@
 }
 
 .icon-profil {
-
-  font-variation-settings:
-  'FILL' 100,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24;
-  color:rgb(70,48,24);
-  font-size: 75px !important;
-  padding:2%!important;
-  vertical-align: middle;
-  border:none;
-  text-align: center;
+    color:rgb(70,48,24);
+    font-size: 75px !important;
+    padding:2%!important;
+    vertical-align: middle;
+    border:none;
+    text-align: center;
 }
 
 .bordure-profil{
-  border-bottom:1px solid rgb(166,170,83);
-  width:60%;
-  margin:auto;
+    border-bottom:1px solid rgb(166,170,83);
+    width:60%;
+    margin:auto;
 }
 
+.container-infos-profil{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+    .bordure-profil{
+        width:90%;
+    }
+    .bigcontainer-profil{
+        width: 90%;
+    }
+}
 
 

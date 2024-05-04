@@ -52,8 +52,10 @@ function Standard(props: { category: string;}) {
         <>
         <div className="standard-page">
             <div className="top-products-page">
-                <h1>{mapCategory.get(category)} <span style={{fontSize:"0.6em"}}>{" - " + data.length + " résultats trouvés"}</span></h1>
-                
+                <div>
+                    <h1>{mapCategory.get(category)}</h1>
+                    <h2>{data.length + " résultats trouvés"}</h2>
+                </div>
                 <button className="standard-button" id="button-print-stock" onClick={printStock}>{text_button}</button>
             </div>
             <div className="card-div">
