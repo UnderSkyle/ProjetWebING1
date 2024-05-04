@@ -16,11 +16,13 @@ import AddAddress from "./AddAddress.tsx"
 import Basket from "./Basket.tsx";
 
 import './Account.css';
+import './Address.css';
+import './Basket.css';
 import './Card.css';
-import './CardPages.css';
 import './Footer.css';
 import './Form.css';
 import './Header.css';
+import './Order.css';
 import './OrderDone.css';
 import './Products.css';
 import './Profil.css';
@@ -54,11 +56,11 @@ const router = createBrowserRouter([
         },
         {
           path: 'login',
-          element: <Login history={""}/>
+          element: <Login/>
         },
         {
           path: 'signup',
-          element: <SignUp history={""}/>
+          element: <SignUp/>
         },
         {
           path: 'basket',

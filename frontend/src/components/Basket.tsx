@@ -31,37 +31,6 @@ function Basket() {
         console.log(cartitems);
         setData(cartitems);
     }
-
-    /*const createOrder = () => {
-        const newOrder = {
-            id_user: userID,
-            basketData: data,
-        };
-
-        const apiUrl = 'http://127.0.0.1:8000/posts/createOrder/';
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newOrder),
-        };
-
-        fetch(apiUrl, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                    //afficher une erreur sur la page
-                }
-                return response.json();
-            })
-            .then( () => {
-                console.log("Success");
-            })
-            .catch(err => {
-                console.log(err.message);
-            });
-    }*/
     var total=0;
     Array.isArray(data) ? (
         data.map(item => (
@@ -91,10 +60,10 @@ function Basket() {
                     ))
                 }
                 </div>
-                <div className='basket-total-order'>
+                <div className='standard-card basket-total-order'>
                     <h3>Total : {total} &euro;</h3>
                     <a href="/order/choose_address">
-                        <button className="LinkButton-card" disabled={total==0} role="button">Passer la commande</button>
+                        <button className="standard-button" disabled={total==0} role="button">Passer la commande</button>
                     </a>
                 </div>
             </div>

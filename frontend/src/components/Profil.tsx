@@ -47,7 +47,7 @@ function Profil() {
                 </div>    
             </div>
             <div className="bordure-profil"><p></p></div>
-            <a><button className="LinkButton-profil" role="button">Modifier</button></a>
+            <a><button className="standard-button" role="button">Modifier</button></a>
         </div>
         </>
     )

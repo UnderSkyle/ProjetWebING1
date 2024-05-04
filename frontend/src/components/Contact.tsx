@@ -53,6 +53,17 @@ function Contact() {
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
+        if (event.target.name!="genre" && event.target.name!="metier"){
+            var label = document.getElementById("label-"+name);
+            var underline = document.getElementById("underline-"+name)
+            if (value.length>0){
+                label?.classList.add("label-input-filled");
+                underline?.classList.add("underline-input-filled")
+            }else{
+                label?.classList.remove("label-input-filled");
+                underline?.classList.remove("underline-input-filled")
+            }
+        }
         setInputs(values => ({...values, [name]:value}))
     }
 
@@ -77,7 +88,7 @@ function Contact() {
 
     return(
         <>
-        <div className="big-container-contact div-form">
+        <div className="standard-page big-container-contact div-form">
             <div className="first-container-form">
             <br/>
                 <h1 className="text">Contactez nous !</h1>
@@ -93,8 +104,8 @@ function Contact() {
                                 name="prenom"
                                 value={inputs.prenom || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Prénom</label>
+                            <div id="underline-prenom" className="underline"></div>
+                            <label id="label-prenom" htmlFor="">Prénom*</label>
                         </div>
 
 
@@ -103,8 +114,8 @@ function Contact() {
                                 name="nom"
                                 value={inputs.nom || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Nom</label>
+                                <div id="underline-nom" className="underline"></div>
+                                <label id="label-nom" htmlFor="">Nom*</label>
                         </div>
                     </div>
 
@@ -115,15 +126,15 @@ function Contact() {
                                 name="email"
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Email</label>
+                                <div id="underline-email" className="underline"></div>
+                                <label id="label-email" htmlFor="">Email*</label>
                         </div>
                     </div>
 
 
                     <div className="form_row">
                         <div className="radio">
-                            Genre<br/><br/>
+                            Genre*<br/><br/>
                             <label>
                             <input type="radio" className="input_radio-form"
                                 name="genre"
@@ -151,7 +162,7 @@ function Contact() {
                         </div> 
                     </div>      
                     <div className="form_row">
-                        <div className="select">Métier<br/><br/>
+                        <div className="select">Métier*<br/><br/>
                             <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                                 <option value="enseignant">Enseignant</option>
                                 <option value="agriculteur">Agriculteur</option>
@@ -169,8 +180,8 @@ function Contact() {
                                 value={inputs.obj || ""}
                                 onChange={handleChange}/>
                             <br/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Objet du message</label>
+                            <div id="underline-obj" className="underline"></div>
+                            <label id="label-obj" htmlFor="">Objet du message*</label>
                             <br/>
                         </div>
                     </div>
@@ -182,8 +193,8 @@ function Contact() {
                                         value={inputs.mess || ""}
                                         onChange={handleChange}/>
                             <br/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Contenu du message</label>
+                            <div id="underline-mess" className="underline"></div>
+                            <label id="label-mess" htmlFor="">Contenu du message*</label>
                             <br/>   
                         </div>
                 </div>

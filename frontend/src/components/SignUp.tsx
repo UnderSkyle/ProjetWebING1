@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-/*function SignUp() {
+function SignUp() {
     const [inputs, setInputs] = useState({
         surname:"",
         name:"",
@@ -11,17 +11,61 @@ import React from 'react';
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
+        var label = document.getElementById("label-"+name);
+        var underline = document.getElementById("underline-"+name)
+        if (value.length>0){
+            label?.classList.add("label-input-filled");
+            underline?.classList.add("underline-input-filled")
+        }else{
+            label?.classList.remove("label-input-filled");
+            underline?.classList.remove("underline-input-filled")
+        }
         setInputs(values => ({...values, [name]:value}))
     }
 
     const handleSubmit = (event: any) => {
-        signup(inputs.email,inputs.password,inputs.name,inputs.surname)
+        event.preventDefault();
+        create_account();
+    }
+
+    const create_account = ()=>{
+        const data = {
+            name: inputs.name,
+            surname: inputs.surname,
+            email: inputs.email,
+            password: inputs.password
+        };
+        const apiUrl = 'http://127.0.0.1:8000/posts/signup/';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        };
+        
+        fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                    //afficher une erreur sur la page
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Success");
+                localStorage.setItem("user", JSON.stringify(data));
+                window.location.href = '/';
+              })
+            .catch(err => {
+            console.log(err.message);
+            });
     }
 
     return(
         <>
-        <div className="big_container_login">
-            <div className="container">
+        <div className="standard-page big-container-login div-form">
+        <div className="container-form">
                 <h1 className="text">Création de compte</h1>
                 <form onSubmit = {handleSubmit}>
                 <div className="form_row">
@@ -30,8 +74,8 @@ import React from 'react';
                                 name="surname"
                                 value={inputs.surname || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Prénom</label>
+                            <div id="underline-surname" className="underline"></div>
+                            <label id="label-surname" htmlFor="">Prénom*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -40,8 +84,8 @@ import React from 'react';
                                 name="name"
                                 value={inputs.name || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Nom</label>
+                            <div id="underline-name" className="underline"></div>
+                            <label id="label-name" htmlFor="">Nom*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -50,8 +94,8 @@ import React from 'react';
                                 name="email"
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Email</label>
+                                <div id="underline-email" className="underline"></div>
+                                <label id="label-email" htmlFor="">Email*</label>
                         </div>
                     </div>
 
@@ -61,8 +105,8 @@ import React from 'react';
                                 name="password"
                                 value={inputs.password || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Mot de passe</label>
+                            <div id="underline-password" className="underline"></div>
+                            <label id="label-password" htmlFor="">Mot de passe*</label>
                         </div>
                     </div>
 
@@ -84,7 +128,7 @@ import React from 'react';
     )
 }
 
-function signup(email: string, password: string, name: string, surname: string){
+/*function signup(email: string, password: string, name: string, surname: string){
     const data = {
         email: email,
         password: password,
@@ -109,7 +153,7 @@ function signup(email: string, password: string, name: string, surname: string){
 
 export default SignUp*/
 
-interface RouterProps {
+/*interface RouterProps {
     history: string;
   }
   
@@ -126,10 +170,7 @@ class SignUp extends React.Component<Props, State> {
     inputs: { email: string; mdp: string; };
     //let inputs;
     constructor(props: Props){
-        /*const [inputs, setInputs] = useState({
-            email:"",
-            mdp:""
-        });*/
+       
         super(props)
         this.state = {
             name: "",
@@ -259,7 +300,7 @@ class SignUp extends React.Component<Props, State> {
             </>
         )
     }
-}
+}*/
 
 /*function LoginAccount(email: string, password: string){
     const navigate = useNavigate()

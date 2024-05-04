@@ -37,6 +37,15 @@ function AddAddress(props:{order:boolean}) {
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
+        var label = document.getElementById("label-"+name);
+        var underline = document.getElementById("underline-"+name)
+        if (value.length>0){
+            label?.classList.add("label-input-filled");
+            underline?.classList.add("underline-input-filled")
+        }else{
+            label?.classList.remove("label-input-filled");
+            underline?.classList.remove("underline-input-filled")
+        }
         setInputs(values => ({...values, [name]:value}))
     }
 
@@ -139,8 +148,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="prenom"
                                 value={inputs.prenom || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Prénom</label>
+                            <div id="underline-prenom" className="underline"></div>
+                            <label id="label-prenom" htmlFor="">Prénom*</label>
                         </div>
 
 
@@ -149,8 +158,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="nom"
                                 value={inputs.nom || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Nom</label>
+                                <div id="underline-nom" className="underline"></div>
+                                <label id="label-nom" htmlFor="">Nom*</label>
                         </div>
                     </div>
 
@@ -161,16 +170,16 @@ function AddAddress(props:{order:boolean}) {
                                 name="codePostal"
                                 value={inputs.codePostal || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Code Postal </label>
+                                <div id="underline-codePostal" className="underline"></div>
+                                <label id="label-codePostal" htmlFor="">Code Postal*</label>
                         </div>
                         <div className="input_data">
                             <input required type="text"
                                 name="ville"
                                 value={inputs.ville || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Ville </label>
+                                <div id="underline-ville" className="underline"></div>
+                                <label id="label-ville" htmlFor="">Ville*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -179,18 +188,18 @@ function AddAddress(props:{order:boolean}) {
                                 name="adresse"
                                 value={inputs.adresse || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Adresse (numéro et rue) </label>
+                                <div id="underline-adresse" className="underline"></div>
+                                <label id="label-adresse" htmlFor="">Adresse (numéro et rue)*</label>
                         </div>
                     </div>
                     <div className="form_row">
                         <div className="input_data">
-                            <input type="text" required
+                            <input type="text"
                                 name="complement"
                                 value={inputs.complement || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Complément d'adresse </label>
+                                <div id="underline-complement" className="underline"></div>
+                                <label id="label-complement" htmlFor="">Complément d'adresse </label>
                         </div>
                     </div>
                 <div className="form_row submit_btn">

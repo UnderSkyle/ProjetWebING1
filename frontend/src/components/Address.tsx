@@ -115,7 +115,7 @@ function Address(props:{choice:boolean}) {
                         onClick={()=>selectAddress(item.id)}
                     />
                 ))}
-                <a href={props.choice?'address/add/':'../../address/add/'} style={{width: width, height: height}} className="container-card-address container-card-add-address">
+                <a href={props.choice?'address/add/':'../../address/add/'} style={{width: width, height: height}} className="standard-card container-card-add-address">
                     <div className='content-container-card-add-address'>
                         <span className="material-symbols-outlined icon-add-address">add</span>
                         <p className='address-name'>Ajouter une adresse</p>

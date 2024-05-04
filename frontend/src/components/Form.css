@@ -49,6 +49,10 @@ body{
   background-color: rgba(0,0,0,.5);
 }
 
+.first-container-form h1{
+  color:#f3edb3 !important;
+}
+
 .container-form{
   max-width: 800px;
   background: #fff;
@@ -104,12 +108,18 @@ form .form_row .textarea{
   font-size: 17px;
   border-bottom: 2px solid rgba(0,0,0, 0.12);
 }
-.input_data input:focus ~ label, .textarea textarea:focus ~ label,
-.input_data input:valid ~ label, .textarea textarea:valid ~ label{
+.input_data input:focus ~ label, .textarea textarea:focus ~ label{
   transform: translateY(-20px);
   font-size: 14px;
   color: #A6AA53;
 }
+
+.label-input-filled{
+  transform: translateY(-20px);
+  font-size: 14px !important;
+  color: #A6AA53;
+}
+
 .textarea textarea{
   resize: none;
   padding-top: 10px;
@@ -143,11 +153,14 @@ form .form_row .textarea{
   transition: transform 0.3s ease;
 }
 .input_data input:focus ~ .underline:before,
-.input_data input:valid ~ .underline:before,
-.textarea textarea:focus ~ .underline:before,
-.textarea textarea:valid ~ .underline:before{
+.textarea textarea:focus ~ .underline:before{
   transform: scale(1);
 }
+
+.underline-input-filled:before{
+  transform: scale(1);
+}
+
 input[type=radio] {
   --s: 1em;     /* control the size */
   --c:  rgb(73,106,45); /* the active color */

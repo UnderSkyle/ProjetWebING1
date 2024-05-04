@@ -32,14 +32,14 @@ function CardAddress(props: {id:any,name: string,surname: string,address: string
 
     return(
         <>
-            <div onClick={props.onClick} ref={props.refer} id={divId} className="container-card container-card-address">
+            <div onClick={props.onClick} ref={props.refer} id={divId} className="standard-card container-card-address">
                 <h3 className="address-name">{props.name} {props.surname}</h3>
                 <h4 className="address-info">{props.address}</h4>
                 <h4 className="address-info">{props.postalCodeTown}</h4>
                 <h4 className="address-info">{props.complementary_info}</h4>
                 <br/>
                 <div className="grid-card-address">
-                    <a href={props.choice ? "http://localhost:5173/order/address/modify/"+props.id : "http://localhost:5173/address/modify/"+props.id}><button className="LinkButton-card" role="button">Modifier</button></a>
+                    <a href={props.choice ? "http://localhost:5173/order/address/modify/"+props.id : "http://localhost:5173/address/modify/"+props.id}><button className="standard-button" role="button">Modifier</button></a>
                     <span onClick={deleteAddress} className="icon-delete-address material-symbols-outlined">delete</span>
                 </div>
             </div>

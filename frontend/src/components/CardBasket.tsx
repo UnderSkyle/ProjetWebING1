@@ -37,7 +37,7 @@ function CardBasket(props:{name:string,id:any,quantity:number,price:string, img:
     return(
         <>
 
-        <div className="card-basket">
+        <div className="standard-card card-basket">
             <div className='card-basket-div-image'>
                 <img className="card-basket-image" src={imagePath}/>
             </div>

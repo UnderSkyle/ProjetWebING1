@@ -9,3 +9,60 @@
    font-family: Paytone One;
    letter-spacing: .25px;
 }
+
+.standard-card{
+   border: 1px solid hsl(0,0%,80%);
+    border-radius:10px;
+    box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+}
+
+.standard-button {
+   align-items: center;
+   appearance: none;
+   background-color: rgb(70,48,24);
+   border-radius: 24px;
+   border-style: none;
+   box-sizing: border-box;
+   color: rgb(244,238,180);
+   cursor: pointer;
+   font-family: Paytone One;
+   font-size: 15px;
+   font-weight: 500;
+   height: 48px;
+   justify-content: center;
+   letter-spacing: .25px;
+   max-width: 100%;
+   padding: 15px 60px;
+   text-align: center;
+   text-transform: none;
+   width: auto;
+   margin:auto;
+   display:flex;
+   vertical-align: middle;
+}
+
+.standard-button:hover {
+   background: rgb(244,238,180);
+   color: rgb(70,48,24);
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+   .standard-page{
+      margin-top: 4em;
+   }
+   .standard-page h1{
+      margin:0%;
+      text-align: center;
+      font-size:2.5em;
+   }
+}
+
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation: landscape) {
+   .standard-page{
+      margin-top: 4em;
+   }
+   .standard-page h1{
+      font-size:2.5em;
+   }
+   
+}
