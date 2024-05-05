@@ -40,15 +40,6 @@ function AddAddress(props:{order:boolean}) {
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
-        var label = document.getElementById("label-"+name);
-        var underline = document.getElementById("underline-"+name)
-        if (value.length>0){
-            label?.classList.add("label-input-filled");
-            underline?.classList.add("underline-input-filled")
-        }else{
-            label?.classList.remove("label-input-filled");
-            underline?.classList.remove("underline-input-filled")
-        }
         setInputs(values => ({...values, [name]:value}))
     }
 
@@ -150,8 +141,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="prenom"
                                 value={inputs.prenom || ""}
                                 onChange={handleChange}/>
-                            <div id="underline-prenom" className="underline"></div>
-                            <label id="label-prenom" htmlFor="">Prénom*</label>
+                            <div className={inputs.prenom.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.prenom.length==0?"":"label-input-filled"} htmlFor="">Prénom*</label>
                         </div>
 
 
@@ -160,8 +151,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="nom"
                                 value={inputs.nom || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-nom" className="underline"></div>
-                                <label id="label-nom" htmlFor="">Nom*</label>
+                                <div className={inputs.nom.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.nom.length==0?"":"label-input-filled"} htmlFor="">Nom*</label>
                         </div>
                     </div>
 
@@ -172,16 +163,16 @@ function AddAddress(props:{order:boolean}) {
                                 name="codePostal"
                                 value={inputs.codePostal || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-codePostal" className="underline"></div>
-                                <label id="label-codePostal" htmlFor="">Code Postal*</label>
+                                <div className={inputs.codePostal.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.codePostal.length==0?"":"label-input-filled"} htmlFor="">Code Postal*</label>
                         </div>
                         <div className="input_data">
                             <input required type="text"
                                 name="ville"
                                 value={inputs.ville || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-ville" className="underline"></div>
-                                <label id="label-ville" htmlFor="">Ville*</label>
+                                <div className={inputs.ville.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.ville.length==0?"":"label-input-filled"} htmlFor="">Ville*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -190,8 +181,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="adresse"
                                 value={inputs.adresse || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-adresse" className="underline"></div>
-                                <label id="label-adresse" htmlFor="">Adresse (numéro et rue)*</label>
+                                <div className={inputs.adresse.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.adresse.length==0?"":"label-input-filled"} htmlFor="">Adresse (numéro et rue)*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -200,8 +191,8 @@ function AddAddress(props:{order:boolean}) {
                                 name="complement"
                                 value={inputs.complement || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-complement" className="underline"></div>
-                                <label id="label-complement" htmlFor="">Complément d'adresse </label>
+                                <div className={inputs.complement.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.complement.length==0?"":"label-input-filled"} htmlFor="">Complément d'adresse </label>
                         </div>
                     </div>
                 <div className="form_row submit_btn">

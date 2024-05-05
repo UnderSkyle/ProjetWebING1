@@ -9,15 +9,6 @@ function Login(props:{order:boolean}) {
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
-        var label = document.getElementById("label-"+name);
-        var underline = document.getElementById("underline-"+name)
-        if (value.length>0){
-            label?.classList.add("label-input-filled");
-            underline?.classList.add("underline-input-filled")
-        }else{
-            label?.classList.remove("label-input-filled");
-            underline?.classList.remove("underline-input-filled")
-        }
         setInputs(values => ({...values, [name]:value}))
     }
 
@@ -103,8 +94,8 @@ function Login(props:{order:boolean}) {
                                 name="email"
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label id="label-email" htmlFor="">Email*</label>
+                                <div className={inputs.email.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.email.length==0?"":"label-input-filled"} htmlFor="">Email*</label>
                         </div>
                     </div>
 
@@ -114,8 +105,8 @@ function Login(props:{order:boolean}) {
                                 name="password"
                                 value={inputs.password || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label id="label-password" htmlFor="">Mot de passe*</label>
+                            <div className={inputs.password.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.password.length==0?"":"label-input-filled"} htmlFor="">Mot de passe*</label>
                         </div>
                     </div>
 
