@@ -51,7 +51,7 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                     });
             } else {
                 var cartJson = localStorage.getItem("cart");
-                var cartitem = {name: props.name, ref: props.id, price: props.price, quantity: count, image: props.img}
+                var cartitem = {name: props.name, ref: props.id, price: String(Number(props.price)*count), quantity: count, image: props.img}
                 if (cartJson != null) {
                     var cart = JSON.parse(cartJson);
                     console.log(cart);
@@ -87,7 +87,7 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                             <span className="compt-card">{count}</span>
                             <span className="material-symbols-outlined-card material-symbols-outlined spanl-card" onClick={increment}>add</span>
                         </div>
-                        <span className="material-symbols-outlined-card material-symbols-outlined icon-card" aria-disabled={count==0} onClick={addToCart}>shopping_bag</span>
+                        <span style={{visibility:count>0 ? "visible" : "hidden"}} className="material-symbols-outlined-card material-symbols-outlined icon-card" aria-disabled={count==0} onClick={addToCart}>shopping_bag</span>
                     </div>
                     <h2 className="price-card">{props.price} &euro;</h2>
                 </div>

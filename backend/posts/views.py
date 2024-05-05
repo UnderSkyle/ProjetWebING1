@@ -128,6 +128,40 @@ def add_to_cart(request):
             user_cart.cartitem_set.create(quantity=quantity, product=product)
         user_cart.save()
         return Response(user.id,status=status.HTTP_200_OK)
+    
+@csrf_exempt
+@api_view(['POST'])
+def complete_cart(request):
+    """request={
+            id_user
+            items
+        }"""
+    if (request.method == "POST"):
+        data = request.data
+        id_user = data.get("id_user")
+        items = data.get("items")
+        try:
+            user = User.objects.get(id=id_user)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user_cart = Cart.objects.get(created_by=user)
+        except Cart.DoesNotExist:
+            user_cart = Cart(created_by=user)
+        user_cart.save()
+        for item in items:
+            try:
+                product = Product.objects.get(ref=item['ref'])
+            except Product.DoesNotExist:
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
+            try:
+                cartitem=user_cart.cartitem_set.get(product=product)
+                cartitem.quantity+=quantity
+                cartitem.save()
+            except CartItem.DoesNotExist:
+                user_cart.cartitem_set.create(quantity=item["quantity"], product=product)
+        user_cart.save()
+        return Response(user.id,status=status.HTTP_200_OK)
 
 @csrf_exempt
 @api_view(['DELETE'])
@@ -304,7 +338,7 @@ def get_cart(request):
           cart = Cart.objects.get(created_by_id=user_id)
           cart_items = CartItem.objects.filter(cart=cart)
           product_data = [
-                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
+                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price * cart_item.quantity, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
                         for cart_item in cart_items
                   ]
           return Response(product_data)

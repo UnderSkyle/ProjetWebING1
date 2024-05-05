@@ -9,6 +9,8 @@ function Header() {
         icon_person="person_check";
         link_account="/account"
     }
+
+
     return(
         <>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -30,13 +32,13 @@ function Header() {
                 <div onClick={closeNavBar} id="overlay-nav-bar"></div>
                 <div className="navBarContainer">
                     <ul id="nav_bar">
-                        <li className='li-header-logo'><a className='logo-nav-bar' href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo-nav-bar" /></a> <i onClick={openNavBar} className="fas fa-times" id="close-menu"></i></li>
-                        <li><ButtonNavbar text="Nourriture" link="/food" /></li>
-                        <li><ButtonNavbar text="Cabane" link="/house" /></li>
-                        <li><ButtonNavbar text="Jouets" link="/toys" /></li>
-                        <li><ButtonNavbar text="Contact" link="/contact" /></li>
-                        <li className='li-header-icons'><a href="/login"><span id="icon-nav-bar-person" className="material-symbols-outlined material-symbols-outlined-header">person</span><span className='text-icon-nav-bar'>Mon compte</span></a></li>
-                        <li className='li-header-icons'><a href="/basket"><span id="icon-nav-bar-cart" className="material-symbols-outlined material-symbols-outlined-header">shopping_cart</span ><span className='text-icon-nav-bar'>Mon panier</span></a></li>
+                        <li className='li-header-logo'><a className='logo-nav-bar' href="/"><img src={hedgehog_img} alt="hedgehog img" className="logo-nav-bar" /></a> <i onClick={closeNavBar} className="fas fa-times" id="close-menu"></i></li>
+                        <li onClick={closeNavBar}><ButtonNavbar text="Nourriture" link="/food" /></li>
+                        <li onClick={closeNavBar}><ButtonNavbar text="Cabane" link="/house" /></li>
+                        <li onClick={closeNavBar}><ButtonNavbar text="Jouets" link="/toys" /></li>
+                        <li onClick={closeNavBar}><ButtonNavbar text="Contact" link="/contact" /></li>
+                        <li onClick={closeNavBar} className='li-header-icons'><a href={link_account}><span id="icon-nav-bar-person" className="material-symbols-outlined material-symbols-outlined-header">person</span><span className='text-icon-nav-bar'>Mon compte</span></a></li>
+                        <li onClick={closeNavBar} className='li-header-icons'><a href="/basket"><span id="icon-nav-bar-cart" className="material-symbols-outlined material-symbols-outlined-header">shopping_cart</span ><span className='text-icon-nav-bar'>Mon panier</span></a></li>
                         
                     </ul>
                 </div>

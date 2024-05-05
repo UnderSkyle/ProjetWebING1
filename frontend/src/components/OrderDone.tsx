@@ -1,14 +1,8 @@
 function OrderDone() {
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        autoplaySpeed: 200,
-      };
-      //<link rel="stylesheet" href="https://react-slick.neostack.com/assets/css/styles.6ce6876c.css"/>
+    var userId = localStorage.getItem("user");
+    if (userId==null){
+        window.location.href="/login";
+    }
 
     return(
         <>  

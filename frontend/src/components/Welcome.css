@@ -2,19 +2,16 @@
     background-image: url("../assets/hedgehog.png") ;
     background-repeat: no-repeat;
     background-size: cover;
-    height:80%;
+    height:80vh;
     width:100%;
     background-position: left;
-    margin-top: 6em;
 }
 
 .title-welcome{
-    color:rgb(70,48,24);
-    margin-left:4%;
-    padding-top:3%;
-    font-size:xxx-large;
-    font-family: Pacifico;
-    letter-spacing: .25px;
+  text-align: start !important;
+  margin-left:4% !important;
+  padding-top:3% !important;
+  font-family: Pacifico !important;
 }
 
 .button-welcome-know-more {
@@ -76,7 +73,6 @@
   display: grid;
   grid-template-columns: repeat(3,33.3%);
   height:250px;
-  margin-bottom: 10%;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -140,14 +136,13 @@
 
 @media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
   .title-welcome{
-    font-size: 30px;
+    font-size: 30px !important;
   }
   .background-welcome{
     background-image: url("../assets/hedgehog_phone.png") ;
-    height:35%;
+    height:35vh;
     width:100%;
     background-position-y: center;
-    margin-top: 4em;
   }
   .button-welcome-know-more {
     font-size: 18px !important;
@@ -164,7 +159,6 @@
     overflow-x: scroll;
     grid-template-columns: repeat(3, 90%) !important;
     height: 200px !important;
-    margin-bottom: 40% !important;
     margin-left: 5% !important;
     margin-right: 5% !important;
   }
@@ -179,12 +173,12 @@
 }
 @media only screen and (max-height: 750px) and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
   .title-welcome{
-    font-size: 35px;
-    padding-top: 2%;
+    font-size: 35px !important;
+    padding-top: 2% !important;
   }
   .background-welcome{
     background-image: url("../assets/hedgehog_phone.png") ;
-    height:70%;
+    height:70vh;
     width:100%;
     background-position-y: center;
     margin-top: 4em;
@@ -198,7 +192,6 @@
     margin-left: 5% !important;
     margin-right: 5% !important;
     height: 35% !important;
-    margin-bottom: 20% !important;
   }
   #container-blocks-know-more a{
     font-size: 20px !important;
@@ -217,7 +210,7 @@
 }
 @media only screen and (min-width: 750px) and (orientation: portrait){ /*tablet portrait mode*/
   .background-welcome{
-    height:35%;
+    height:35vh;
     background-position-y: center;
     margin-top: 6em;
   }
@@ -225,7 +218,6 @@
     margin-left: 5% !important;
     margin-right: 5% !important;
     height: 15% !important;
-    margin-bottom: 15% !important;
   }
   #container-blocks-know-more a{
     font-size: 25px !important;

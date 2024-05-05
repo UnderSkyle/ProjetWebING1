@@ -62,7 +62,7 @@ function Basket() {
                 </div>
                 <div className='standard-card basket-total-order'>
                     <h3>Total : {total} &euro;</h3>
-                    <a href="/order/choose_address">
+                    <a className={total==0?"disabled":""} href={userID!=null ? "/order/choose_address" : "/login/order"}>
                         <button className="standard-button" disabled={total==0} role="button">Passer la commande</button>
                     </a>
                 </div>

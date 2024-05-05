@@ -1,5 +1,8 @@
 function Account() {
-
+    var userId = localStorage.getItem("user");
+    if (userId==null){
+        window.location.href="/login";
+    }
 
     const deconnect = (event: any) => {
         localStorage.removeItem("user");

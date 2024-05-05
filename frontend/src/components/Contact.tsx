@@ -90,16 +90,15 @@ function Contact() {
         <>
         <div className="standard-page big-container-contact div-form">
             <div className="first-container-form">
-            <br/>
                 <h1 className="text">Contactez nous !</h1>
                 <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
             </div>
-            <div className="container-form">
+            <div className="container-form container-form-contact">
                     
                 <form onSubmit = {handleSubmit}>
                     
                     <div className="form_row">
-                        <div className="input_data">
+                        <div className="input_data input-inline">
                             <input required type="text" 
                                 name="prenom"
                                 value={inputs.prenom || ""}
@@ -134,7 +133,7 @@ function Contact() {
 
                     <div className="form_row">
                         <div className="radio">
-                            Genre*<br/><br/>
+                            <span className="label-input">Genre*</span><br/>
                             <label>
                             <input type="radio" className="input_radio-form"
                                 name="genre"
@@ -162,7 +161,7 @@ function Contact() {
                         </div> 
                     </div>      
                     <div className="form_row">
-                        <div className="select">Métier*<br/><br/>
+                        <div className="select"><span className="label-input">Métier*</span><br/>
                             <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                                 <option value="enseignant">Enseignant</option>
                                 <option value="agriculteur">Agriculteur</option>
@@ -170,7 +169,13 @@ function Contact() {
                                 <option value="cadre">Cadre</option>
                             </select>
                         </div>
-                        
+                        <div className="date">
+                        <span className="label-input">Date</span><br/><label>
+                                <input required type = "date"
+                                                name = "date"
+                                                value = {inputs.date}/>
+                            </label>
+                        </div>
                     </div>
 
 
@@ -200,8 +205,7 @@ function Contact() {
                 </div>
                 <div className="form_row submit_btn">
                         <div className="input_data">
-                            <div className="inner"></div>
-                            <input type="submit" value="submit"/>
+                            <input className="standard-button" type="submit" value="Envoyer"/>
                         </div>
                     </div>
                 </form>

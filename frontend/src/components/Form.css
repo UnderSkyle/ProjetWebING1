@@ -1,8 +1,22 @@
 .div-form p{
-  font-family: Arial !important;
   letter-spacing: .25px !important;
   font-size: medium !important;
   text-align: center !important;
+  color:rgb(70,48,24);
+   font-family: Paytone One;
+}
+
+.div-form label, .label-input, .div-form select, .div-form input:not([type=submit]){
+  color:rgb(70,48,24);
+   font-family: Paytone One;
+}
+.div-form a{
+  color:#A6AA53;
+   font-family: Paytone One;
+}
+
+.div-form{
+  margin-bottom: 0 !important;
 }
 
 .Text{
@@ -53,10 +67,14 @@ body{
   color:#f3edb3 !important;
 }
 
+.container-form-contact{
+  margin-top: 0 !important;
+}
+
 .container-form{
   max-width: 800px;
   background: #fff;
-  width: 800px;
+  width: 95%;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   margin:auto;
@@ -70,7 +88,7 @@ body{
   font-size: 41px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  background: -webkit-linear-gradient(right, rgb(73,106,45), rgb(166,170,83));
+  background: #496A2D;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -86,20 +104,23 @@ form .form_row .radio,
 form .form_row .select,
 form .form_row .date{
   width: 100%;
-  height: 50px;
   margin: 0 20px;
   position: relative;
 }
 
+form .form_row .input_data{
+  height: 50px;
+}
 
-form .form_row .select,
+
+/*form .form_row .select,
 form .form_row .date{
   height:100px
-}
+}*/
 form .form_row .textarea{
   height: 70px;
 }
-.input_data input,
+.input_data input:not([type=submit]),
 .textarea textarea{
   display: block;
   width: 100%;
@@ -196,16 +217,6 @@ input[type=radio]:checked {
   font-size: 17px;
 }
 
-
-@media print {
-  input[type=radio] {
-    -webkit-appearance: auto;
-    -moz-appearance: auto;
-    appearance: auto;
-    background: none;
-  }
-}
-
 .radio_label {
   display:inline-flex;
   align-items:center;
@@ -218,14 +229,13 @@ select {
   -webkit-appearance: none;
     -moz-appearance: none;
           appearance: none;
-  border: 0;
+  border: 1px solid #ccc;
   outline: 0;
   font: inherit;
   width: 17em;
   height: 3em;
   padding: 0 4em 0 1em;
   border-radius: 0.25em;
-  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   position: relative;
 }
@@ -250,50 +260,13 @@ input[type="date"] {
   font-size: 1em;
   width: 17em;
   height: 3em;
-
   display:block;
   outline:none;
-  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
 }
 input[type="date"]:focus {
   outline: none;
   border-color: rgb(166,170,83); 
   box-shadow:rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-}
-
-.submit_btn{
-  justify-content: center;
-}
-.submit_btn .input_data{
-  overflow: hidden;
-  height: 45px!important;
-  width: 25%!important;
-  border-radius: 24px;
-}
-.submit_btn .input_data .inner{
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(right, rgb(73,106,45), rgb(166,170,83));
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-  box-sizing: border-box;
-  transition: all 0.4s;
-}
-.submit_btn .input_data:hover .inner{
-  left: 0;
-}
-.submit_btn .input_data input{
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
 }
 @media (max-width: 700px) {
   .container-form .text{
@@ -302,32 +275,22 @@ input[type="date"]:focus {
   .container-form form{
     padding: 10px 0 0 0;
   }
+  form .form_row .input_data,
+  form .form_row .radio,
+  form .form_row .select,
+  form .form_row .date{
+    width: 100%;
+    margin: 0 0;
+    position: relative;
+  }
+
   .container-form form .form_row{
-    display: block;
+    flex-direction: column;
+    align-items: center;
   }
-  form .form_row .input_data{
-    margin: 35px 0!important;
-  }
-  .submit_btn .input_data{
-    width: 40%!important;
+
+  form .form_row .select, form .form_row .input-inline{
+    margin-bottom: 32px;
   }
   
-}
-
-@media print {
-  input[type=radio] {
-    -webkit-appearance: auto;
-    -moz-appearance: auto;
-    appearance: auto;
-    background: none;
-  }
-}
-@supports not selector(:has(*)) {
-  .radio_container:before {
-    display: none;
-  }
-  .radio_input:checked {
-    --_c: var(--c);
-    background: var(--c) content-box;
-  }
 }

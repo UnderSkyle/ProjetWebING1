@@ -56,11 +56,19 @@ const router = createBrowserRouter([
         },
         {
           path: 'login',
-          element: <Login/>
+          element: <Login order={false}/>
         },
         {
           path: 'signup',
-          element: <SignUp/>
+          element: <SignUp order={false}/>
+        },
+        {
+          path: 'login/order',
+          element: <Login order={true}/>
+        },
+        {
+          path: 'signup/order',
+          element: <SignUp order={true}/>
         },
         {
           path: 'basket',

@@ -1,6 +1,7 @@
 .standard-page{
    margin-top: 6em;
    margin-bottom: 2%;
+   flex: 1;
 }
 
 .standard-page h1{
@@ -47,6 +48,11 @@
    color: rgb(70,48,24);
 }
 
+.standard-button:disabled {
+   background: rgb(241, 239, 212);
+   color: #7E664A;
+}
+
 @media only screen and (max-width: 750px) and (orientation: portrait) {
    .standard-page{
       margin-top: 4em;
@@ -66,4 +72,8 @@
       font-size:2.5em;
    }
    
+}
+
+a.disabled {
+   pointer-events: none;
 }

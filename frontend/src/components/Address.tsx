@@ -5,7 +5,10 @@ function Address(props:{choice:boolean}) {
     const ref: any = useRef(null);
     const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-
+  var userId = localStorage.getItem("user");
+  if (userId==null){
+      window.location.href="/login";
+  }
   useEffect(() => {
     function handleWindowResize() {
         if (ref.current!=null){
@@ -23,13 +26,11 @@ function Address(props:{choice:boolean}) {
       
     };
   }, []);
-  
-  const userID = localStorage.getItem("user");
   useEffect(() => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/posts/getAddresses?user_id='+userID);
+            const response = await fetch('http://127.0.0.1:8000/posts/getAddresses?user_id='+userId);
             if (!response.ok) {
                 throw new Error('Failed to fetch');
             }
@@ -62,7 +63,7 @@ function Address(props:{choice:boolean}) {
         if (Object.keys(chosenAddress).length>0) {
             console.log(chosenAddress)
             const OrderData = {
-                user_id:userID,
+                user_id:userId,
                 address_id:chosenAddress.id,
             };
 
@@ -115,13 +116,13 @@ function Address(props:{choice:boolean}) {
                         onClick={()=>selectAddress(item.id)}
                     />
                 ))}
-                <div style={{width: width, height: height}} className="standard-card container-card-add-address">
+                <a href={props.choice?'address/add/':'../../address/add/'} style={{width: width, height: height}} className="standard-card container-card-add-address">
                     <div className='content-container-card-add-address'>
                         <span className="material-symbols-outlined icon-add-address">add</span>
                         <p className='address-name'>Ajouter une adresse</p>
                     </div>
                     
-                </div>
+                </a>
             </div>
             {button_validate_commande}
         </div>

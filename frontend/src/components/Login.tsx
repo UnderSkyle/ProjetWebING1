@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+function Login(props:{order:boolean}) {
     const [inputs, setInputs] = useState({
         email:"",
         password:""
@@ -48,14 +48,49 @@ function Login() {
                 return response.json();
             })
             .then(data => {
-                localStorage.setItem("user", JSON.stringify(data));
-                
-                window.location.href = '/';
+                var userId=JSON.stringify(data);
+                localStorage.setItem("user", userId);
+                completeCart(userId);
+                localStorage.removeItem("cart");
+                window.location.href = props.order ? '/basket' :'/';
               })
             .catch(err => {
             console.log(err.message);
             });
     }
+
+    const completeCart = (userId:string) => {
+        var cartJson = localStorage.getItem("cart");
+        if (cartJson!=null) {
+            var cartParsed = JSON.parse(cartJson.valueOf());
+            var cartitems = Object.values(cartParsed);
+            const data = {
+                id_user: userId,
+                items: cartitems
+            };
+            const apiUrl = 'http://127.0.0.1:8000/posts/completeCart/';
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            };
+
+            fetch(apiUrl, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                        //afficher une erreur sur la page
+                    }
+                    return response.json();
+                })
+                .catch(err => {
+                    console.log(err.message);
+                });
+        }
+    }
+
     return(
         <>
         <div className="standard-page big-container-login div-form">
@@ -86,12 +121,11 @@ function Login() {
 
 
                     
-                    <p>Vous n'avez pas de compte ? <a href="/signup">Créez-en un !</a></p>
+                    <p>Vous n'avez pas de compte ? <a href={props.order ? "/signup/order" :"/signup"}>Créez-en un !</a></p>
                 
                 <div className="form_row submit_btn">
                         <div className="input_data">
-                            <div className="inner"></div>
-                            <input type="submit" value="submit"/>
+                            <input className='standard-button' type="submit" value="Se connecter"/>
                         </div>
                     </div>
                 </form>

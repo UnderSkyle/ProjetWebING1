@@ -12,7 +12,10 @@ function AddAddress(props:{order:boolean}) {
         complement:""
 
     });
-
+    var userId = localStorage.getItem("user");
+    if (userId==null){
+        window.location.href="/login";
+    }
     if (idAddress!=null){
         useEffect(() => {
 
@@ -59,9 +62,8 @@ function AddAddress(props:{order:boolean}) {
     }
 
     const addAddress = () => {
-        var user = localStorage.getItem("user");
         const data = {
-            id_user: user,
+            id_user: userId,
             first_name: inputs.prenom,
             last_name: inputs.nom,
             street: inputs.adresse,
@@ -138,12 +140,12 @@ function AddAddress(props:{order:boolean}) {
 
     return(
         <>
-        <div className="standard-page big_container_contact div-form">
+        <div className="standard-page big-container-contact div-form">
             <div className="container-form">
                 <h1 className="text">{idAddress==null?"Ajouter une adresse":"Modifier l'adresse"}</h1>
                 <form onSubmit = {handleSubmit}>
                     <div className="form_row">
-                        <div className="input_data">
+                        <div className="input_data input-inline">
                             <input required type="text" 
                                 name="prenom"
                                 value={inputs.prenom || ""}
@@ -165,7 +167,7 @@ function AddAddress(props:{order:boolean}) {
 
 
                     <div className="form_row">
-                        <div className="input_data">
+                        <div className="input_data input-inline">
                             <input type="text" required
                                 name="codePostal"
                                 value={inputs.codePostal || ""}
@@ -204,8 +206,7 @@ function AddAddress(props:{order:boolean}) {
                     </div>
                 <div className="form_row submit_btn">
                         <div className="input_data">
-                            <div className="inner"></div>
-                            <input type="submit" value="Valider"/>
+                            <input className='standard-button' type="submit" value="Valider"/>
                         </div>
                 </div>
                 </form>

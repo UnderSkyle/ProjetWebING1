@@ -54,7 +54,7 @@
 
 .grid-card{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 70% 30%;
     align-items:normal;
     vertical-align: middle;
 }
