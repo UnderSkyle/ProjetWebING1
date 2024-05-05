@@ -1,12 +1,8 @@
 from smtplib import SMTPException
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from posts.models import Product, Cart, CartItem, Address, Order, OrderItem
