@@ -5,13 +5,29 @@ function SignUp(props:{order:boolean}) {
         surname:"",
         name:"",
         email:"",
-        password:""
+        password:"",
+        confirm_password:""
     });
 
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]:value}))
+        if (name=="confirm_password"){
+            var input_confirm_pwd = document.getElementById("input-confirm-pwd")
+            if (inputs.password!=value){
+                (input_confirm_pwd as HTMLInputElement).setCustomValidity("Les mots de passe ne sont pas identiques");
+            }else{
+                (input_confirm_pwd as HTMLInputElement).setCustomValidity("");
+            }
+        }else if (name=="password"){
+            var input_confirm_pwd = document.getElementById("input-confirm-pwd")
+            if (inputs.confirm_password!=value){
+                (input_confirm_pwd as HTMLInputElement).setCustomValidity("Les mots de passe ne sont pas identiques");
+            }else{
+                (input_confirm_pwd as HTMLInputElement).setCustomValidity("");
+            }
+        }
     }
 
     const handleSubmit = (event: any) => {
@@ -133,6 +149,16 @@ function SignUp(props:{order:boolean}) {
                                 onChange={handleChange}/>
                             <div className={inputs.password.length==0?"underline":"underline underline-input-filled"}></div>
                             <label className={inputs.password.length==0?"":"label-input-filled"} htmlFor="">Mot de passe*</label>
+                        </div>
+                    </div>
+                    <div className="form_row">
+                        <div className="input_data">
+                            <input required id="input-confirm-pwd" type="password" 
+                                name="confirm_password"
+                                value={inputs.confirm_password || ""}
+                                onChange={handleChange}/>
+                            <div className={inputs.confirm_password.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.confirm_password.length==0?"":"label-input-filled"} htmlFor="">Confirmer votre mot de passe*</label>
                         </div>
                     </div>
 

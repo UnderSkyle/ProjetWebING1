@@ -9,7 +9,7 @@ function Address(props:{choice:boolean}) {
   if (userId==null){
       window.location.href="/login";
   }
-  useEffect(() => {
+  /*useEffect(() => {
     function handleWindowResize() {
         if (ref.current!=null){
             setWidth(ref.current.offsetWidth);
@@ -25,7 +25,7 @@ function Address(props:{choice:boolean}) {
       window.removeEventListener('load', handleWindowResize);
       
     };
-  }, []);
+  }, []);*/
   useEffect(() => {
 
     const fetchData = async () => {
@@ -116,7 +116,7 @@ function Address(props:{choice:boolean}) {
                         onClick={()=>selectAddress(item.id)}
                     />
                 ))}
-                <a href={props.choice?'address/add/':'../../address/add/'} style={{width: width, height: height}} className="standard-card container-card-add-address">
+                <a href={props.choice?'address/add/':'../../address/add/'} className="standard-card container-card-add-address">
                     <div className='content-container-card-add-address'>
                         <span className="material-symbols-outlined icon-add-address">add</span>
                         <p className='address-name'>Ajouter une adresse</p>
