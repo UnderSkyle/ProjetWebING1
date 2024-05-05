@@ -6,9 +6,9 @@
    font-family: Paytone One;
 }
 
-.div-form label, .label-input, .div-form select, .div-form input:not([type=submit]){
+.div-form label, .label-input, .div-form select, .div-form select option, .div-form input:not([type=submit]), .div-form textarea{
   color:rgb(70,48,24);
-   font-family: Paytone One;
+   font-family: Paytone One !important;
 }
 .div-form a{
   color:#A6AA53;
@@ -226,9 +226,6 @@ input[type=radio]:checked {
 }
 
 select {
-  -webkit-appearance: none;
-    -moz-appearance: none;
-          appearance: none;
   border: 1px solid #ccc;
   outline: 0;
   font: inherit;
@@ -239,13 +236,10 @@ select {
   cursor: pointer;
   position: relative;
 }
-select option {
-  color: inherit;
-  background-color: rgba(0,0,0,0.2);
-}
 select:focus {
   outline: none;
 }
+
 select::-ms-expand {
   display: none;
 }

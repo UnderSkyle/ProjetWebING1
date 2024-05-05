@@ -11,15 +11,6 @@ function SignUp(props:{order:boolean}) {
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
-        var label = document.getElementById("label-"+name);
-        var underline = document.getElementById("underline-"+name)
-        if (value.length>0){
-            label?.classList.add("label-input-filled");
-            underline?.classList.add("underline-input-filled")
-        }else{
-            label?.classList.remove("label-input-filled");
-            underline?.classList.remove("underline-input-filled")
-        }
         setInputs(values => ({...values, [name]:value}))
     }
 
@@ -109,8 +100,8 @@ function SignUp(props:{order:boolean}) {
                                 name="surname"
                                 value={inputs.surname || ""}
                                 onChange={handleChange}/>
-                            <div id="underline-surname" className="underline"></div>
-                            <label id="label-surname" htmlFor="">Prénom*</label>
+                            <div className={inputs.surname.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.surname.length==0?"":"label-input-filled"} htmlFor="">Prénom*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -119,8 +110,8 @@ function SignUp(props:{order:boolean}) {
                                 name="name"
                                 value={inputs.name || ""}
                                 onChange={handleChange}/>
-                            <div id="underline-name" className="underline"></div>
-                            <label id="label-name" htmlFor="">Nom*</label>
+                            <div className={inputs.name.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.name.length==0?"":"label-input-filled"} htmlFor="">Nom*</label>
                         </div>
                     </div>
                     <div className="form_row">
@@ -129,8 +120,8 @@ function SignUp(props:{order:boolean}) {
                                 name="email"
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
-                                <div id="underline-email" className="underline"></div>
-                                <label id="label-email" htmlFor="">Email*</label>
+                                <div className={inputs.email.length==0?"underline":"underline underline-input-filled"}></div>
+                                <label className={inputs.email.length==0?"":"label-input-filled"} htmlFor="">Email*</label>
                         </div>
                     </div>
 
@@ -140,8 +131,8 @@ function SignUp(props:{order:boolean}) {
                                 name="password"
                                 value={inputs.password || ""}
                                 onChange={handleChange}/>
-                            <div id="underline-password" className="underline"></div>
-                            <label id="label-password" htmlFor="">Mot de passe*</label>
+                            <div className={inputs.password.length==0?"underline":"underline underline-input-filled"}></div>
+                            <label className={inputs.password.length==0?"":"label-input-filled"} htmlFor="">Mot de passe*</label>
                         </div>
                     </div>
 
