@@ -5,7 +5,7 @@
     height:80%;
     width:100%;
     background-position: left;
-    margin-top: 6em;
+    margin-bottom: 0 !important;
 }
 
 .title-order-done{
