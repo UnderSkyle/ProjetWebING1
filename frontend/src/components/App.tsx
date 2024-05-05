@@ -28,6 +28,7 @@ import './Products.css';
 import './Profil.css';
 import './StandardPage.css';
 import './Welcome.css';
+import UpdateProfile from "./UpdateProfile.tsx";
 
 const router = createBrowserRouter([
     {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
         {
           path: 'profil',
           element: <Profil/>
+        },
+        {
+          path: 'profil/modify',
+          element: <UpdateProfile/>
         },
         {
           path: 'order',

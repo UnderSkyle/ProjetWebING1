@@ -341,6 +341,30 @@ def get_user(request):
             return Response(status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+@csrf_exempt
+@api_view(['PUT'])
+def update_user(request):
+    """request={
+        user_id
+        email
+        first_name
+        last_name
+    }"""
+    if (request.method=="PUT"):
+        try:
+            data=request.data
+            user_id = data.get('user_id')
+            user = User.objects.get(pk=user_id)
+            user.email=data.get("email")
+            user.first_name=data.get("first_name")
+            user.last_name=data.get("last_name")
+            user.save()
+            return Response(status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 @api_view(['GET'])
