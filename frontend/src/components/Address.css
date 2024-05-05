@@ -1,0 +1,64 @@
+.div-address-cards{
+   display: flex;
+   flex-wrap: wrap;
+   box-sizing: border-box;
+   justify-content: center;
+}
+.grid-card-address{
+   display:grid;
+   grid-template-columns: 80% 20%;
+   width: fit-content;
+   margin: auto;
+}
+.icon-add-address{
+   background-color:rgb(70,48,24);
+   color: rgb(244,238,180);
+   font-size: 30px !important;
+   border-radius: 50px;
+   padding: 5px;
+}
+.container-card-add-address{
+   max-height: fit-content;
+   margin: 2% 1%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+.icon-delete-address{
+   background-color:rgb(70,48,24);
+   color: rgb(244,238,180);
+   border-radius: 24px;
+   font-size: 30px !important;
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+   padding: 0px 0.8em;
+}
+
+.icon-delete-address:hover{
+   background-color:rgb(244,238,180);
+   color: rgb(70,48,24) ;
+}
+
+.address-name{
+   color: rgb(70,48,24);
+   font-family: Paytone One;
+}
+
+.address-info{
+   color: #7E664A;
+   font-family: Paytone One;
+}
+
+.container-card-address{
+   padding: 1%;
+   margin:2% 1%;
+   text-align:justify;
+   max-height: fit-content;
+}
+
+.button-address-validate{
+   margin-right: 1% !important;
+}

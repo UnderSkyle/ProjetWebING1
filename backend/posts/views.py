@@ -1,3 +1,4 @@
+from smtplib import SMTPException
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -16,6 +17,8 @@ from django.utils import timezone
 
 # Create your views here.
 
+@csrf_exempt
+@api_view(['POST'])
 def send_mail_contact(request:dict):
     """request={
         surname:
@@ -27,15 +30,25 @@ def send_mail_contact(request:dict):
         subject:
         message:
     }"""
-    message = f"Mail de %s, %s %s (%s), %s, né(e) le %s :\n %s" % (request["email"], request["surname"],request["name"], request["gender"], request["job"], request["birthdate"], request["message"])
-    send_mail(
-        subject=request["subject"],
-        message=message,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=["abaivel@outlook.fr"],
-        fail_silently=False,
-    )
-    return Response(status=status.HTTP_200_OK)
+    if (request.method == "POST"):
+        data = request.data
+        message = f"Mail de %s, %s %s (%s), %s, né(e) le %s :\n %s" % (data.get("email"), data.get("surname"),data.get("name"), data.get("gender"), data.get("job"), data.get("birthdate"), data.get("message"))
+        print("ici")
+        try:
+            print("ici2")
+            send_mail(
+                subject="test",
+                message="bla bla",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=["abaivel@outlook.fr"],
+                fail_silently=False,
+            )
+            print("here")
+            return Response(status=status.HTTP_200_OK)
+        except SMTPException:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 @api_view(['POST'])
@@ -113,6 +126,40 @@ def add_to_cart(request):
             cartitem.save()
         except CartItem.DoesNotExist:
             user_cart.cartitem_set.create(quantity=quantity, product=product)
+        user_cart.save()
+        return Response(user.id,status=status.HTTP_200_OK)
+    
+@csrf_exempt
+@api_view(['POST'])
+def complete_cart(request):
+    """request={
+            id_user
+            items
+        }"""
+    if (request.method == "POST"):
+        data = request.data
+        id_user = data.get("id_user")
+        items = data.get("items")
+        try:
+            user = User.objects.get(id=id_user)
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user_cart = Cart.objects.get(created_by=user)
+        except Cart.DoesNotExist:
+            user_cart = Cart(created_by=user)
+        user_cart.save()
+        for item in items:
+            try:
+                product = Product.objects.get(ref=item['ref'])
+            except Product.DoesNotExist:
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
+            try:
+                cartitem=user_cart.cartitem_set.get(product=product)
+                cartitem.quantity+=quantity
+                cartitem.save()
+            except CartItem.DoesNotExist:
+                user_cart.cartitem_set.create(quantity=item["quantity"], product=product)
         user_cart.save()
         return Response(user.id,status=status.HTTP_200_OK)
 
@@ -291,7 +338,7 @@ def get_cart(request):
           cart = Cart.objects.get(created_by_id=user_id)
           cart_items = CartItem.objects.filter(cart=cart)
           product_data = [
-                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
+                       {'name': cart_item.product.name, 'quantity':cart_item.quantity, 'price': cart_item.product.price * cart_item.quantity, 'image': cart_item.product.image, 'ref': cart_item.product.ref}
                         for cart_item in cart_items
                   ]
           return Response(product_data)
@@ -345,13 +392,15 @@ def create_order(request):
                 address=Address.objects.get(id=address_id)
             )
 
-            # Create order items from the cart items
+            # Create order items from the cart items and reduce the stock of the products
             for cart_item in cart_items:
                 OrderItem.objects.create(
                     quantity=cart_item.quantity,
                     product=cart_item.product,
                     order=order
                 )
+                cart_item.product.stock-=cart_item.quantity
+                cart_item.product.save()
 
             cart_items.delete()
 

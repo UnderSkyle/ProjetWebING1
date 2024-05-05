@@ -1,0 +1,62 @@
+.card-order-info{
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   color: rgb(70,48,24);
+   padding: 5px 15px;
+}
+
+
+.card-order-info-right{
+   text-align: end;
+}
+
+.card-order{
+   margin: 1.5em 5em;
+   text-align:justify;
+   height: 150px;
+   width: calc(100%-1.5em);
+   display: flex;
+}
+
+.card-order-div-image{
+   width: 150px;
+   min-width: 150px;
+   background-color:#C1C1C1;
+   align-content: center;
+   text-align: center;
+   border-radius:10px 0px 0px 10px;
+}
+
+.card-order-image{
+   max-height: 150px;
+   max-width: 150px;
+}
+
+.card-order h3, .card-order h2{
+   color: rgb(70,48,24);
+   font-family: Paytone One;
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+   .card-order{
+      margin: 1.5em 1em;
+      height: 120px;
+   }
+   .card-order h3{
+      font-size: 15px;
+   }
+   .card-order h2{
+      font-size: 19px;
+   }
+   .card-order-div-image{
+      width: 120px;
+      min-width: 120px;
+   }
+   
+   .card-order-image{
+      max-height: 120px;
+      max-width: 120px;
+   }
+
+}

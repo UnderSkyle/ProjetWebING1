@@ -1,4 +1,3 @@
-import './Form.css'
 import {useState} from "react";
 
 function Contact() {
@@ -10,40 +9,102 @@ function Contact() {
         metier:"Enseignant",
         obj:"",
         mess:"",
-        date:""
+        date:"15122003"
 
     });
+
+    const sendMail = () => {
+        const data = {
+            surname:inputs.prenom,
+            name:inputs.nom,
+            email:inputs.email,
+            gender:inputs.genre,
+            job:inputs.metier,
+            birthdate:inputs.date,
+            subject:inputs.obj,
+            message:inputs.mess
+        };
+        var csrftoken = getCookie('csrftoken');
+        if (csrftoken!=null){
+            var c :string = csrftoken?.valueOf();
+            console.log(c);
+            const apiUrl = 'http://127.0.0.1:8000/posts/send_mail/';
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            };
+            
+            fetch(apiUrl, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok !');
+                        //afficher une erreur sur la page
+                    }
+                })
+                .catch(err => {
+                console.log(err.message);
+                });
+        }
+    }
 
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
+        if (event.target.name!="genre" && event.target.name!="metier"){
+            var label = document.getElementById("label-"+name);
+            var underline = document.getElementById("underline-"+name)
+            if (value.length>0){
+                label?.classList.add("label-input-filled");
+                underline?.classList.add("underline-input-filled")
+            }else{
+                label?.classList.remove("label-input-filled");
+                underline?.classList.remove("underline-input-filled")
+            }
+        }
         setInputs(values => ({...values, [name]:value}))
     }
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        alert(`Votre formulaire a été envoyé ${inputs.prenom}`)
+        sendMail();
+    }
+    function getCookie(name: string) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 
     return(
         <>
-        <div className="big-container-contact div-form">
+        <div className="standard-page big-container-contact div-form">
             <div className="first-container-form">
-            <br/>
                 <h1 className="text">Contactez nous !</h1>
                 <h2 className="text">Si vous avez une question, remplissez ce formulaire et nous vous répondrons en moins de 48h.</h2>
             </div>
-            <div className="container-form">
+            <div className="container-form container-form-contact">
                     
                 <form onSubmit = {handleSubmit}>
+                    
                     <div className="form_row">
-                        <div className="input_data">
+                        <div className="input_data input-inline">
                             <input required type="text" 
                                 name="prenom"
                                 value={inputs.prenom || ""}
                                 onChange={handleChange}/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Prénom</label>
+                            <div id="underline-prenom" className="underline"></div>
+                            <label id="label-prenom" htmlFor="">Prénom*</label>
                         </div>
 
 
@@ -52,8 +113,8 @@ function Contact() {
                                 name="nom"
                                 value={inputs.nom || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Nom</label>
+                                <div id="underline-nom" className="underline"></div>
+                                <label id="label-nom" htmlFor="">Nom*</label>
                         </div>
                     </div>
 
@@ -64,15 +125,15 @@ function Contact() {
                                 name="email"
                                 value={inputs.email || ""}
                                 onChange={handleChange}/>
-                                <div className="underline"></div>
-                                <label htmlFor="">Email</label>
+                                <div id="underline-email" className="underline"></div>
+                                <label id="label-email" htmlFor="">Email*</label>
                         </div>
                     </div>
 
 
                     <div className="form_row">
                         <div className="radio">
-                            Genre<br/><br/>
+                            <span className="label-input">Genre*</span><br/>
                             <label>
                             <input type="radio" className="input_radio-form"
                                 name="genre"
@@ -100,7 +161,7 @@ function Contact() {
                         </div> 
                     </div>      
                     <div className="form_row">
-                        <div className="select">Métier<br/><br/>
+                        <div className="select"><span className="label-input">Métier*</span><br/>
                             <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
                                 <option value="enseignant">Enseignant</option>
                                 <option value="agriculteur">Agriculteur</option>
@@ -109,7 +170,7 @@ function Contact() {
                             </select>
                         </div>
                         <div className="date">
-                            Date<label><br/><br/>
+                        <span className="label-input">Date</span><br/><label>
                                 <input required type = "date"
                                                 name = "date"
                                                 value = {inputs.date}/>
@@ -124,8 +185,8 @@ function Contact() {
                                 value={inputs.obj || ""}
                                 onChange={handleChange}/>
                             <br/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Objet du message</label>
+                            <div id="underline-obj" className="underline"></div>
+                            <label id="label-obj" htmlFor="">Objet du message*</label>
                             <br/>
                         </div>
                     </div>
@@ -137,15 +198,14 @@ function Contact() {
                                         value={inputs.mess || ""}
                                         onChange={handleChange}/>
                             <br/>
-                            <div className="underline"></div>
-                            <label htmlFor="">Contenu du message</label>
+                            <div id="underline-mess" className="underline"></div>
+                            <label id="label-mess" htmlFor="">Contenu du message*</label>
                             <br/>   
                         </div>
                 </div>
                 <div className="form_row submit_btn">
                         <div className="input_data">
-                            <div className="inner"></div>
-                            <input type="submit" value="submit"/>
+                            <input className="standard-button" type="submit" value="Envoyer"/>
                         </div>
                     </div>
                 </form>

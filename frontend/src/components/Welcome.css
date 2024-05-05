@@ -1,137 +1,20 @@
-@font-face {
-  font-family: 'Pacifico';
-  src: url('fonts/Pacifico/Pacifico-Regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Paytone One';
-  src: url('fonts/Paytone_One/PaytoneOne-Regular.ttf') format('truetype');
-}
-.Himage{
+.background-welcome{
     background-image: url("../assets/hedgehog.png") ;
     background-repeat: no-repeat;
     background-size: cover;
-    height:80%;
+    height:80vh;
     width:100%;
     background-position: left;
-    margin-top: 6em;
 }
 
-.Title-welcome{
-    color:rgb(70,48,24);
-    padding-left:4%;
-    padding-top:3%;
-    font-size:xxx-large;
-    font-family: Pacifico;
-    letter-spacing: .25px;
+.title-welcome{
+  text-align: start !important;
+  margin-left:4% !important;
+  padding-top:3% !important;
+  font-family: Pacifico !important;
 }
 
-@media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
-  .Title-welcome{
-    font-size: 30px;
-  }
-  .Himage{
-    background-image: url("../assets/hedgehog_phone.png") ;
-    height:35%;
-    width:100%;
-    background-position-y: center;
-    margin-top: 4em;
-  }
-  .LinkButton-welcome {
-    font-size: 18px !important;
-    height: 30px !important;
-    padding: 20px 30px !important;
-  }
-  .icons-advantages{
-    grid-template-rows: repeat(3,33.3%);
-    grid-template-columns: none !important;
-    margin-top: 8% !important;
-    margin-bottom: 8% !important;
-  }
-  #blocks-know-more{
-    overflow-x: scroll;
-    grid-template-columns: repeat(3, 90%) !important;
-    height: 200px !important;
-    margin-bottom: 40% !important;
-    margin-left: 5% !important;
-    margin-right: 5% !important;
-  }
-  .material-symbols-rounded-welcome-advantages {
-    font-size: 110px !important;
-  }
-}
-@media only screen and (min-width: 750px){ /*not a phone*/
-  .material-symbols-rounded-welcome-advantages {
-    font-size: 20vh !important;
-  }
-}
-
-@media only screen and (max-width: 750px) and (orientation:landscape){ /*phone landscape mode*/
-  .Title-welcome{
-    font-size: 35px;
-    padding-top: 2%;
-  }
-  .Himage{
-    background-image: url("../assets/hedgehog_phone.png") ;
-    height:70%;
-    width:100%;
-    background-position-y: center;
-    margin-top: 4em;
-  }
-  .LinkButton-welcome {
-    font-size: 20px !important;
-    height: 15% !important;
-    padding: 1% 3% !important;
-  }
-  #blocks-know-more{
-    margin-left: 5% !important;
-    margin-right: 5% !important;
-    height: 35% !important;
-    margin-bottom: 20% !important;
-  }
-  #blocks-know-more a{
-    font-size: 20px !important;
-  }
-  .material-symbols-rounded-welcome-advantages {
-    font-size: 100px !important;
-  }
-  .icons-advantages{
-    margin-right: 5% !important;
-    margin-left: 5% !important;
-  }
-  #blocks-know-more span{
-    font-size: 150% !important;
-  }
-  
-}
-
-@media only screen and (min-width: 750px) and (orientation: portrait){ /*tablet portrait mode*/
-  .Himage{
-    height:35%;
-    background-position-y: center;
-    margin-top: 6em;
-  }
-  #blocks-know-more{
-    margin-left: 5% !important;
-    margin-right: 5% !important;
-    height: 15% !important;
-    margin-bottom: 15% !important;
-  }
-  #blocks-know-more a{
-    font-size: 25px !important;
-  }
-  #blocks-know-more span{
-    font-size: 30px !important;
-  }
-  .icons-advantages{
-    margin-right: 5% !important;
-    margin-left: 5% !important;
-  }
-  .material-symbols-rounded-welcome-advantages {
-    font-size: 10vh !important;
-  }
-}
-
-.LinkButton-welcome {
+.button-welcome-know-more {
   align-items: center;
   appearance: none;
   background-color: rgb(70,48,24);
@@ -158,20 +41,15 @@
   margin-top: 10px;
 }
 
-.LinkButton-welcome:hover {
+.button-welcome-know-more:hover {
   background: rgb(244,238,180);
   color: rgb(70,48,24);
 }
-.material-symbols-rounded-welcome-advantages {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24;
+.icon-welcome-advantages {
   color: #496A2D;
 }
 
-.icons-advantages{
+.container-welcome-advantages{
   display: grid;
   grid-template-columns: repeat(3,33.3%);
   text-align: center;
@@ -181,26 +59,25 @@
   margin-bottom: 3%;
 }
 
-.icons-advantages div{
+.container-welcome-advantages div{
   display: grid;
 }
 
-.text-advantages{
+.container-welcome-advantages .text-advantages{
   color: #496A2D;
   font-family: Paytone One;
   font-size: 20px;
 }
 
-#blocks-know-more{
+#container-blocks-know-more{
   display: grid;
   grid-template-columns: repeat(3,33.3%);
   height:250px;
-  margin-bottom: 10%;
   margin-left: 10%;
   margin-right: 10%;
 }
 
-#blocks-know-more div{
+#container-blocks-know-more div{
   margin-left: 2%;
   margin-right: 2%;
   padding-left: 7%;
@@ -208,37 +85,13 @@
   position: relative;
 }
 
-#food-block{
-  background-color: #A6AA53;
-}
-
-#houses-block{
-  background-color: #F4EEB4;
-}
-
-#toys-block{
-  background-color: #7F674B;
-}
-
-#food-block a{
-  color: #A6AA53;
-}
-
-#houses-block a{
-  color: #F4EEB4;
-}
-
-#toys-block a{
-  color: #7F674B;
-}
-
-#blocks-know-more span{
+#container-blocks-know-more span{
   color: #463018;
   font-size: 200%;
   font-family: Paytone One;
 }
 
-#blocks-know-more button{
+#container-blocks-know-more button{
   background-color: #463018;
   border: none;
   padding-top: 2%;
@@ -250,8 +103,134 @@
   bottom: 10%;
 }
 
-#blocks-know-more a{
+#container-blocks-know-more a{
   text-decoration: none;
   font-size: 200%;
   font-family: Paytone One;
 }
+
+#container-blocks-know-more #food-block{
+  background-color: #A6AA53;
+}
+
+#container-blocks-know-more #houses-block{
+  background-color: #F4EEB4;
+}
+
+#container-blocks-know-more #toys-block{
+  background-color: #7F674B;
+}
+
+#container-blocks-know-more #food-block a{
+  color: #A6AA53;
+}
+
+#container-blocks-know-more #houses-block a{
+  color: #F4EEB4;
+}
+
+#container-blocks-know-more #toys-block a{
+  color: #7F674B;
+}
+
+
+@media only screen and (max-width: 750px) and (orientation:portrait){ /*phone portrait mode*/
+  .title-welcome{
+    font-size: 30px !important;
+  }
+  .background-welcome{
+    background-image: url("../assets/hedgehog_phone.png") ;
+    height:35vh;
+    width:100%;
+    background-position-y: center;
+  }
+  .button-welcome-know-more {
+    font-size: 18px !important;
+    height: 30px !important;
+    padding: 20px 30px !important;
+  }
+  .container-welcome-advantages{
+    grid-template-rows: repeat(3,33.3%);
+    grid-template-columns: none !important;
+    margin-top: 8% !important;
+    margin-bottom: 8% !important;
+  }
+  #container-blocks-know-more{
+    overflow-x: scroll;
+    grid-template-columns: repeat(3, 90%) !important;
+    height: 200px !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+  }
+  .icon-welcome-advantages {
+    font-size: 110px !important;
+  }
+}
+@media only screen and (min-width: 750px){ /*not a phone*/
+  .icon-welcome-advantages {
+    font-size: 20vh !important;
+  }
+}
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation:landscape){ /*phone landscape mode*/
+  .title-welcome{
+    font-size: 35px !important;
+    padding-top: 2% !important;
+  }
+  .background-welcome{
+    background-image: url("../assets/hedgehog_phone.png") ;
+    height:70vh;
+    width:100%;
+    background-position-y: center;
+    margin-top: 4em;
+  }
+  .button-welcome-know-more {
+    font-size: 20px !important;
+    height: 15% !important;
+    padding: 1% 3% !important;
+  }
+  #container-blocks-know-more{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    height: 35% !important;
+  }
+  #container-blocks-know-more a{
+    font-size: 20px !important;
+  }
+  .icon-welcome-advantages {
+    font-size: 100px !important;
+  }
+  .container-welcome-advantages{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+  }
+  #container-blocks-know-more span{
+    font-size: 150% !important;
+  }
+  
+}
+@media only screen and (min-width: 750px) and (orientation: portrait){ /*tablet portrait mode*/
+  .background-welcome{
+    height:35vh;
+    background-position-y: center;
+    margin-top: 6em;
+  }
+  #container-blocks-know-more{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    height: 15% !important;
+  }
+  #container-blocks-know-more a{
+    font-size: 25px !important;
+  }
+  #container-blocks-know-more span{
+    font-size: 30px !important;
+  }
+  .container-welcome-advantages{
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+  }
+  .icon-welcome-advantages {
+    font-size: 10vh !important;
+  }
+}
+

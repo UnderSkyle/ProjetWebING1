@@ -1,0 +1,36 @@
+.card-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.top-products-page{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#button-print-stock{
+    margin-right: 10px;
+}
+
+.top-products-page h2{
+    margin-left: 2vw;
+    color:rgb(70,48,24);
+    font-family: Paytone One;
+ }
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+    .top-products-page{
+        flex-direction: column;
+    }
+    #button-print-stock{
+        margin-top: 5px;
+        margin-right:auto;
+    }
+    
+    .top-products-page h2{
+    text-align: center;
+ }
+}

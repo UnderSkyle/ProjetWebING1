@@ -1,0 +1,123 @@
+.content-basket-page{
+   display: grid;
+   grid-template-columns: 75% 25%;
+}
+
+.basket-cards{
+   display: inline;
+   grid-column: 1/1;
+}
+
+.card-basket{
+   margin:1em 0.5em 1em 1em;
+   text-align:justify;
+   height: 150px;
+   width: calc(100%-1.5em);
+   display: flex;
+}
+
+.card-basket-div-image{
+   width: 150px;
+   min-width: 150px;
+   background-color:#C1C1C1;
+   align-content: center;
+   text-align: center;
+   border-radius:10px 0px 0px 10px;
+}
+
+.card-basket-image{
+   max-height: 150px;
+   max-width: 150px;
+}
+
+.basket-total-order{
+   padding: 2%;
+   height: 150px;
+   grid-column: 2/2;
+   width: calc(100%-1.5em);
+   margin:1em 1em 1em 0.5em;
+   position: relative;
+}
+
+.basket-total-order a{
+   position: absolute;
+   bottom: 0.5em;
+   right: 0;
+   left: 0;
+}
+.card-basket-info-product{
+   width: 100%;
+   display: grid;
+   grid-template-columns: 80% 20%;
+   grid-template-rows: repeat(10,10%);
+   padding: 5px 10px;
+}
+
+.card-basket-info-product span{
+   text-align: end;
+   color:rgb(70,48,24);
+   font-size: 30px !important;
+}
+
+.card-basket-name-product{
+   grid-column: 1/1;
+   grid-row: 1/1;
+}
+
+.card-basket-name-quantity{
+   grid-column: 1/1;
+   grid-row: 9/10;
+}
+
+.card-basket-name-price{
+   text-align: end;
+   grid-row: 9/10;
+}
+.card-basket h3, .card-basket h2{
+   color: rgb(70,48,24);
+   font-family: Paytone One;
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+   .content-basket-page{
+      display: inline;
+   }
+   .card-basket{
+      margin:1em 1em 1em 1em;
+   }
+   .basket-total-order{
+      margin:1em 1em 1em 1em;
+   }
+   .card-basket{
+      height: 120px;
+   }
+   .basket-total-order{
+      height: 120px;
+   }
+   .card-basket-div-image{
+      width: 120px;
+      min-width: 120px;
+   }
+   .card-basket-image{
+      max-height: 120px;
+      max-width: 120px;
+   }
+   .card-basket h3{
+      font-size: 15px;
+   }
+   .card-basket h2{
+      font-size: 19px;
+   }
+}
+
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation: landscape) {
+   .content-basket-page{
+      display: inline;
+   }
+   .card-basket{
+      margin:1em 1em 1em 1em;
+   }
+   .basket-total-order{
+      margin:1em 1em 1em 1em;
+   }
+}

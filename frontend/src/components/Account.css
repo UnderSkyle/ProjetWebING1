@@ -1,8 +1,63 @@
-.Title{
-    color:rgb(70,48,24);
-    padding-left:4%;
-    padding-top:3%;
-    font-size:xxx-large;
-    font-family: Pacifico;
-    letter-spacing: .25px;
+.mediumcontainer-account{
+    display: inline;
+}
+
+.container-account{
+    padding: 1%;
+    margin:2%;
+    text-align:justify;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.bigcontainer-account{
+    margin: 0% 1%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.mediumcontainer-account{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-container-account{
+    margin-left: 5%;
+    color: rgb(70,48,24);
+}
+
+.icon-account {
+    color:rgb(244,238,180);
+    font-size: 60px !important;
+    padding:3%!important;
+    vertical-align: middle;
+    border:none;
+    max-width: fit-content;
+    height: fit-content;
+    background-color: #496A2D  ;
+    border-radius: 50px;
+}
+.button-account-logout {
+    margin-right: 1% !important;
+}
+
+@media only screen and (max-width: 750px) and (orientation: portrait) {
+    .button-account-logout {
+        margin: auto !important;
+    }
+    .mediumcontainer-account{
+        flex-direction: column;
+    }
+    .icon-account{
+        font-size: 50px !important;
+    }
+}
+
+@media only screen and (max-height: 750px) and (max-width: 960px) and (orientation: landscape) {
 }
