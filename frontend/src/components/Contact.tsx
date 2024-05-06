@@ -9,7 +9,7 @@ function Contact() {
         metier:"Enseignant",
         obj:"",
         mess:"",
-        date:"15122003"
+        date:""
 
     });
 
@@ -24,30 +24,25 @@ function Contact() {
             subject:inputs.obj,
             message:inputs.mess
         };
-        var csrftoken = getCookie('csrftoken');
-        if (csrftoken!=null){
-            var c :string = csrftoken?.valueOf();
-            console.log(c);
-            const apiUrl = 'http://127.0.0.1:8000/posts/send_mail/';
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data),
-            };
-            
-            fetch(apiUrl, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok !');
-                        //afficher une erreur sur la page
-                    }
-                })
-                .catch(err => {
-                console.log(err.message);
-                });
-        }
+        const apiUrl = 'http://127.0.0.1:8000/posts/send_mail/';
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        };
+        
+        fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok !');
+                    //afficher une erreur sur la page
+                }
+            })
+            .catch(err => {
+            console.log(err.message);
+            });
     }
 
     const handleChange = (event : any) => {
@@ -59,20 +54,6 @@ function Contact() {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         sendMail();
-    }
-    function getCookie(name: string) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
     }
 
     return(
@@ -152,7 +133,7 @@ function Contact() {
                     <div className="form_row">
                         <div className="select"><span className="label-input">Métier*</span><br/>
                             <select name = "metier" value = {inputs.metier} onChange = {handleChange}>
-                                <option value="enseignant"><span className="span-option">Enseignant</span></option>
+                                <option value="enseignant">Enseignant</option>
                                 <option value="agriculteur">Agriculteur</option>
                                 <option value="medecin">Médecin</option>
                                 <option value="cadre">Cadre</option>
@@ -162,7 +143,7 @@ function Contact() {
                         <span className="label-input">Date</span><br/><label>
                                 <input required type = "date"
                                                 name = "date"
-                                                value = {inputs.date}/>
+                                                value = {inputs.date} onChange={handleChange}/>
                             </label>
                         </div>
                     </div>
