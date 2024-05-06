@@ -14,7 +14,7 @@ function CardAddress({name,surname,address,postalCodeTown}) {
                 <h4 className="produit">{address}</h4>
                 <h4 className="produit">{postalCodeTown}</h4>
                 <br/>
-                <div className="grid-card">
+                <div className="grid-card-address">
                     <a href="#blocks-know-more"><button className="LinkButton-card" role="button">Modifier</button></a>
                     <span className="material-symbols-outlined-card material-symbols-outlined icon">delete</span>
                 </div>

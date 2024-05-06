@@ -115,6 +115,7 @@
 .grid-card{
     display:grid;
     grid-template-columns: repeat(2,1fr);
+    vertical-align: middle !important;
 }
 
 .grid1-account { grid-area: 1 / 1 / 3 / 2; }
