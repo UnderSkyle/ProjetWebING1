@@ -13,7 +13,6 @@ from django.utils import timezone
 
 # Create your views here.
 
-@csrf_exempt
 @api_view(['POST'])
 def send_mail_contact(request):
     """request={
@@ -30,11 +29,9 @@ def send_mail_contact(request):
         try:
             data = request.data
             message = f"Mail de %s, %s %s (%s), %s, né(e) le %s :\n %s" % (data.get("email"), data.get("surname"),data.get("name"), data.get("gender"), data.get("job"), data.get("birthdate"), data.get("message"))
-            print("ici")
-            print("ici2")
             send_mail(
-                subject="test",
-                message="bla bla",
+                subject=data.get("subject"),
+                message=message,
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=["abaivel@outlook.fr"],
                 fail_silently=False,
@@ -151,7 +148,7 @@ def complete_cart(request):
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
             try:
                 cartitem=user_cart.cartitem_set.get(product=product)
-                cartitem.quantity+=quantity
+                cartitem.quantity+=item.quantity
                 cartitem.save()
             except CartItem.DoesNotExist:
                 user_cart.cartitem_set.create(quantity=item["quantity"], product=product)
