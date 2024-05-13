@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
+
 function Login(props:{order:boolean}) {
     const [inputs, setInputs] = useState({
         email:"",
         password:""
     });
+    const [errorConnection, setErrorConnection] = useState(false);
 
     const handleChange = (event : any) => {
         const name = event.target.name;
@@ -33,6 +35,7 @@ function Login(props:{order:boolean}) {
         fetch(apiUrl, requestOptions)
             .then(response => {
                 if (!response.ok) {
+                    setErrorConnection(true);
                     throw new Error('Network response was not ok');
                     //afficher une erreur sur la page
                 }
@@ -41,6 +44,7 @@ function Login(props:{order:boolean}) {
             .then(data => {
                 var userId=JSON.stringify(data);
                 localStorage.setItem("user", userId);
+                setErrorConnection(false);
                 completeCart(userId);
                 localStorage.removeItem("cart");
                 window.location.href = props.order ? '/basket' :'/';
@@ -88,6 +92,9 @@ function Login(props:{order:boolean}) {
             <div className="container-form">
                 <h1 className="text">Connexion</h1>
                 <form onSubmit = {handleSubmit}>
+                    <div style={{display:errorConnection?"block":"none"}} className='alert'>
+                        <p>L'adresse email ou le mot de passe est incorrect</p>
+                    </div>
                     <div className="form_row">
                         <div className="input_data">
                             <input required type="mail"

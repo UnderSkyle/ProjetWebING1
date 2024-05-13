@@ -9,6 +9,8 @@ function SignUp(props:{order:boolean}) {
         confirm_password:""
     });
 
+    const [emailAlreadyUsed, setEmailAlreadyUsed] = useState(false);
+
     const handleChange = (event : any) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -54,6 +56,7 @@ function SignUp(props:{order:boolean}) {
         fetch(apiUrl, requestOptions)
             .then(response => {
                 if (!response.ok) {
+                    setEmailAlreadyUsed(true);
                     throw new Error('Network response was not ok');
                     //afficher une erreur sur la page
                 }
@@ -63,6 +66,7 @@ function SignUp(props:{order:boolean}) {
                 console.log("Success");
                 var userId = JSON.stringify(data);
                 localStorage.setItem("user", userId);
+                setEmailAlreadyUsed(false);
                 completeCart(userId);
                 localStorage.removeItem("cart");
                 window.location.href = props.order ? '/basket' :'/';
@@ -110,6 +114,9 @@ function SignUp(props:{order:boolean}) {
         <div className="container-form">
                 <h1 className="text">Création de compte</h1>
                 <form onSubmit = {handleSubmit}>
+                <div style={{display:emailAlreadyUsed?"block":"none"}} className='alert'>
+                    <p>Il existe déjà un compte avec cette adresse mail</p>
+                </div>
                 <div className="form_row">
                         <div className="input_data">
                             <input required type="text" 
