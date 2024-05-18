@@ -1,6 +1,6 @@
 import CardBasket from './CardBasket.tsx'
 import {Key, useEffect, useState} from "react";
-function Basket() {
+function Basket(props:{nbObjectsCart : number,  setNbObjectsCart : React.Dispatch<React.SetStateAction<number>>}) {
     const [data, setData] = useState<any | null>([]);
     const userID = localStorage.getItem("user");
     const cart = localStorage.getItem("cart")
@@ -31,14 +31,15 @@ function Basket() {
         console.log(cartitems);
         setData(cartitems);
     }
-    var total=0;
+    var total: number=0;
     Array.isArray(data) ? (
         data.map(item => (
-            total+=item.price * item.quantity
+            total+=item.price
         ))
     ) : (
-        total+=data.price * data.quantity
+        total+=data.price
     )
+    //console.log(total)
 
 
     return(
@@ -50,6 +51,8 @@ function Basket() {
                 {
                     data.map((item: { name: any; quantity: any; ref: Key | null | undefined; price: any; image: any; }) => (
                         <CardBasket
+                            nbObjectsCart={props.nbObjectsCart}
+                            setNbObjectsCart={props.setNbObjectsCart}
                             name={item.name}
                             quantity={item.quantity}
                             id={item.ref}

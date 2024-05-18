@@ -1,6 +1,6 @@
 import hedgehog_img from '../assets/logo.png'
 import ButtonNavbar from "./ButtonNavbar.tsx";
-function Header() {
+function Header(props:{ nbObjectsCart:number}) {
 
     var user = localStorage.getItem("user");
     var icon_person="person";
@@ -25,8 +25,7 @@ function Header() {
                 </div>
                 <div className='icons-header-container'>
                     <a href={link_account}><span id="icon-header-person" className="material-symbols-outlined material-symbols-outlined-header">{icon_person}</span></a>
-                    <a href="/basket"><span id="icon-header-cart" className="material-symbols-outlined material-symbols-outlined-header">shopping_cart</span></a>
-
+                    <a href="/basket"><span id="icon-header-cart" className="material-symbols-outlined material-symbols-outlined-header"><span className='nb-objects-cart'>{props.nbObjectsCart}</span>shopping_cart</span></a>
                 </div>
                 <i onClick={openNavBar} className="fas fa-bars" id="ham-menu"></i>
                 <div onClick={closeNavBar} id="overlay-nav-bar"></div>

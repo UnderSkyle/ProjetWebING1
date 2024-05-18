@@ -115,11 +115,16 @@ def add_to_cart(request):
         try:
             cartitem=user_cart.cartitem_set.get(product=product)
             cartitem.quantity+=quantity
+            if (cartitem.quantity>product.stock):
+                cartitem.quantity=product.stock
             cartitem.save()
         except CartItem.DoesNotExist:
             user_cart.cartitem_set.create(quantity=quantity, product=product)
         user_cart.save()
-        return Response(user.id,status=status.HTTP_200_OK)
+        nb_object_cart=0
+        for i in user_cart.cartitem_set.all():
+            nb_object_cart+=i.quantity
+        return Response(nb_object_cart, status=status.HTTP_200_OK)
     
 @csrf_exempt
 @api_view(['POST'])
