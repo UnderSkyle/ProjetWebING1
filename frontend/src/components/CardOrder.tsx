@@ -8,7 +8,7 @@ function CardOrder(props: {image:string, numOrder:null | undefined | any,numArti
             </div>
             <div className='card-order-info'>
                 <div className='card-order-info-left'>
-                    <h2 className="">Commande n° {props.numOrder}</h2>
+                    <h2 className="">Commande<br/> N° {props.numOrder}</h2>
                     <h3 className="">{props.numArticles} {(props.numArticles)>1 ? "articles" : "article"}</h3>
                 </div>
                 <div className='card-order-info-right'>

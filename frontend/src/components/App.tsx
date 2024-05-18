@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, json, Outlet, RouterProvider} from "react-router-dom";
 import './App.css'
 import Welcome from './Welcome.tsx'
 import Header from './Header.tsx'
@@ -29,11 +29,66 @@ import './Profil.css';
 import './StandardPage.css';
 import './Welcome.css';
 import UpdateProfile from "./UpdateProfile.tsx";
+import { useEffect, useState } from "react";
+import Card from "./Card.tsx";
 
-const router = createBrowserRouter([
+
+
+function App() {
+
+  //var setNbObjectsCart : React.Dispatch<React.SetStateAction<number>>
+  const [nbObjectsCart, setNbObjectsCart] = useState(0);
+  /*try{
+    const [nbObjectsCart, setNbObjectsCart] = useState(0);
+  }catch{
+    console.log("error");
+  }*/
+
+  const userID = localStorage.getItem("user");
+  const cart = localStorage.getItem("cart")
+
+  if (userID!=null){
+    useEffect(() => {
+
+      const fetchData = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/posts/getCart?userID='+userID);
+            if (!response.ok) {
+                throw new Error('Failed to fetch');
+            }
+            const jsonData = await response.json();
+            console.log(jsonData); // You can handle the response data as needed
+            var nbObjectBasket=0
+            jsonData.map( (i: { quantity: number; })=> (
+              nbObjectBasket+=i.quantity
+            ))
+          
+            setNbObjectsCart(nbObjectBasket)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+      };
+
+        fetchData();
+    }, []);
+  }else if (cart != null){
+    var cartParsed = JSON.parse(cart);
+    console.log(cartParsed);
+    var cartitems:Map<String,any>[] = Object.values(cartParsed);
+    console.log("cartitems:",cartitems);
+    var nbObjectBasket=0
+    cartitems.map(i=>{
+      nbObjectBasket+=i["quantity"];
+    })
+    if (nbObjectsCart!=nbObjectBasket){
+      setNbObjectsCart(nbObjectBasket);
+    }
+  }
+
+  const router = createBrowserRouter([
     {
       path: '/',
-      element: <> <Header/> <Outlet/> <Footer/> </>,
+      element: <> <Header nbObjectsCart={nbObjectsCart}/> <Outlet/> <Footer/> </>,
       children: [
         {
           path: '',
@@ -41,15 +96,15 @@ const router = createBrowserRouter([
         },
         {
           path: 'food',
-          element: <Products category={"1"}/>
+          element: <Products nbObjectsCart={nbObjectsCart} setNbObjectsCart={setNbObjectsCart} category={"1"}/>
         },
         {
           path: 'house',
-          element: <Products category={"2"}/>
+          element: <Products nbObjectsCart={nbObjectsCart} setNbObjectsCart={setNbObjectsCart} category={"2"}/>
         },
         {
           path: 'toys',
-          element: <Products category={"3"}/>
+          element: <Products nbObjectsCart={nbObjectsCart} setNbObjectsCart={setNbObjectsCart} category={"3"}/>
         },
         {
           path: 'contact',
@@ -73,7 +128,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'basket',
-          element: <Basket/>
+          element: <Basket nbObjectsCart={nbObjectsCart} setNbObjectsCart={setNbObjectsCart}/>
         },
         {
           path: 'account',
@@ -122,11 +177,7 @@ const router = createBrowserRouter([
 
       ]
     }
-])
-
-
-function App() {
-
+  ])
 
 
   return (

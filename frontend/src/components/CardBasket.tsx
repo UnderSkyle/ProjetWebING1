@@ -1,8 +1,9 @@
-function CardBasket(props:{name:string,id:any,quantity:number,price:string, img:string}){
+function CardBasket(props:{nbObjectsCart : number,  setNbObjectsCart : React.Dispatch<React.SetStateAction<number>>, name:string,id:any,quantity:number,price:string, img:string}){
     const imagePath = "src/assets/" + props.img
 
 
     const removeFromBasket = () => {
+        props.setNbObjectsCart(props.nbObjectsCart-props.quantity)
         var userId=localStorage.getItem("user");
         if (userId!=null){
             const data = {

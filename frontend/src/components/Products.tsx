@@ -1,7 +1,7 @@
 import Card from "./Card.tsx"
 import  {useEffect, useState} from "react";
 
-function Standard(props: { category: string;}) {
+function Standard(props: {nbObjectsCart:number, setNbObjectsCart : React.Dispatch<React.SetStateAction<number>>, category: string;}) {
     const [data, setData] = useState([]);
     const [text_button, setTextButton] = useState("Afficher le stock");
     const category : string = props.category;
@@ -60,7 +60,7 @@ function Standard(props: { category: string;}) {
             </div>
             <div className="card-div">
                 {data.map((item : { name: any; ref: any; price:any; stock: any; image: any }) => (
-                    <Card name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
+                    <Card nbObjectsCart={props.nbObjectsCart} setNbObjectsCart={props.setNbObjectsCart} name={item.name} id={item.ref} price={item.price} stock={item.stock} img={item.image} key={item.ref}></Card>
                 ))}
             </div>
         </div>

@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-function Card(props:{name:string, id: any, price: string, stock: number, img: string}){
+function Card(props:{nbObjectsCart:number, setNbObjectsCart : React.Dispatch<React.SetStateAction<number>>,name:string, id: any, price: string, stock: number, img: string}){
     const [count, setCount] = useState(0);
     const imagePath = "src/assets/" + props.img;
     const increment = () => {
@@ -44,14 +44,15 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                         return response.json();
                     })
                     .then(data => {
-                        console.log("Success");
+                        props.setNbObjectsCart(data)
                     })
                     .catch(err => {
                         console.log(err.message);
                     });
             } else {
+                props.setNbObjectsCart(props.nbObjectsCart+count)
                 var cartJson = localStorage.getItem("cart");
-                var cartitem = {name: props.name, ref: props.id, price: String(Number(props.price)*count), quantity: count, image: props.img}
+                var cartitem = {name: props.name, ref: props.id, price: Number(props.price)*count, quantity: count, image: props.img}
                 if (cartJson != null) {
                     var cart = JSON.parse(cartJson);
                     console.log(cart);
@@ -59,6 +60,11 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                         cart[props.id] = cartitem;
                     } else {
                         cart[props.id].quantity = cart[props.id].quantity + count;
+                        if (cart[props.id].quantity>props.stock){
+                            cart[props.id].quantity=props.stock
+                            props.setNbObjectsCart(props.nbObjectsCart+(props.stock-count))
+                        }
+                        cart[props.id].price = cart[props.id].price + Number(props.price)
                     }
                     localStorage.setItem("cart", JSON.stringify(cart));
                 } else {
@@ -67,7 +73,12 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
                     localStorage.setItem("cart", JSON.stringify(cart));
                 }
             }
+            alert(`L'objet a été ajouté au panier`)
         }
+    }
+
+    const openWindowImage=()=>{
+        window.open("http://localhost:5173/src/assets/"+props.img)
     }
 
     return(
@@ -77,7 +88,7 @@ function Card(props:{name:string, id: any, price: string, stock: number, img: st
             <h2 className="produit-card">{props.name}</h2>
             <h4 className="ref-card">N° ref {props.id}</h4>
             <div className='card-div-image'>
-                <img className="card-image" src={imagePath}/>
+                <img className="card-image" src={imagePath} onClick={openWindowImage}/>
             </div>
             <div className='card-products-info'>
                 <div className="grid-card">
