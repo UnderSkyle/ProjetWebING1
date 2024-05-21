@@ -62,9 +62,11 @@ function Card(props:{nbObjectsCart:number, setNbObjectsCart : React.Dispatch<Rea
                         cart[props.id].quantity = cart[props.id].quantity + count;
                         if (cart[props.id].quantity>props.stock){
                             cart[props.id].quantity=props.stock
+                            cart[props.id].price=Number(props.price)*props.stock
                             props.setNbObjectsCart(props.nbObjectsCart+(props.stock-count))
+                        }else{
+                            cart[props.id].price = cart[props.id].price + Number(props.price)
                         }
-                        cart[props.id].price = cart[props.id].price + Number(props.price)
                     }
                     localStorage.setItem("cart", JSON.stringify(cart));
                 } else {
