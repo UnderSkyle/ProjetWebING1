@@ -20,9 +20,9 @@ function Footer() {
                 </div>
                 <div className='social-medias-footer'>
                     <ul>
-                        <li><a href="https://www.facebook.com/"><img src='/src/assets/icons8-facebook.svg'></img></a></li>
-                        <li><a href="https://www.instagram.com/"><img src='/src/assets/icons8-instagram.svg'></img></a></li>
-                        <li><a href="https://www.linkedin.com/"><img src='/src/assets/icons8-linkedin.svg'></img></a></li>
+                        <li><a href="https://youtu.be/xvFZjo5PgG0?si=BE9Nlit_BMl1SIg7"><img src='/src/assets/icons8-facebook.svg'></img></a></li>
+                        <li><a href="https://youtu.be/xvFZjo5PgG0?si=BE9Nlit_BMl1SIg7"><img src='/src/assets/icons8-instagram.svg'></img></a></li>
+                        <li><a href="https://youtu.be/xvFZjo5PgG0?si=BE9Nlit_BMl1SIg7"><img src='/src/assets/icons8-linkedin.svg'></img></a></li>
                     </ul>
                 </div>
                 
