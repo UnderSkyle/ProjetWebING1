@@ -13,6 +13,8 @@ function Standard(props: {nbObjectsCart:number, setNbObjectsCart : React.Dispatc
 
 
     useEffect(() => {
+        setTextButton("Afficher le stock");
+        setStockPrinted(false)
 
         const fetchData = async () => {
             try {
