@@ -15,7 +15,7 @@ function Welcome() {
             <div className="standard-page">
                 <div className="background-welcome">
                     <h1 className="title-welcome">Tout pour votre <br/>hérisson !</h1>
-                    <a href="#blocks-know-more"><button className="button-welcome-know-more" role="button">En savoir plus</button></a>
+                    <a href="#container-blocks-know-more"><button className="button-welcome-know-more" role="button">En savoir plus</button></a>
                 </div>
                 <div className='container-welcome-advantages'>
                     <div>
