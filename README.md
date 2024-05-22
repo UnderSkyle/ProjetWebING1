@@ -1,4 +1,4 @@
-Installation: <br>
+Logiciel a installer: <br>
 Nodejs et Python <br>
 Lancement <br>
 ```bash
@@ -15,5 +15,7 @@ Lancer le backend : <br>
 
 ```bash
 cd ../backend
-python manage.py runserver
+python manage.py runserver // si python ne fonctionne pas essayer python3
 ```
+
+Si il y a un probleme je suis joignable a landrysimo@cy-tech.fr
