@@ -12,6 +12,7 @@ function Contact() {
         date:""
 
     });
+    const [messageSend, setMessageSend] = useState(false);
 
     const sendMail = () => {
         const data = {
@@ -54,6 +55,7 @@ function Contact() {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         sendMail();
+        setMessageSend(true)
     }
 
     return(
@@ -176,10 +178,10 @@ function Contact() {
                 <div className="form_row submit_btn">
                         <div className="input_data">
                             <input className="standard-button" type="submit" value="Envoyer"/>
+                            <p id="message-send" style={{display:messageSend?"block":"none"}}>Votre message a été envoyé</p>
                         </div>
                     </div>
                 </form>
-                
                 </div>
             </div>
         </>

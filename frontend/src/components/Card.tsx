@@ -75,7 +75,6 @@ function Card(props:{nbObjectsCart:number, setNbObjectsCart : React.Dispatch<Rea
                     localStorage.setItem("cart", JSON.stringify(cart));
                 }
             }
-            alert(`L'objet a été ajouté au panier`)
         }
     }
 
